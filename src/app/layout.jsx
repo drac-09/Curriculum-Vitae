@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="flex flex-col h-screen w-screen bg-black text-white">
         <Navbar></Navbar>
-        <div className="container flex mx-auto pt-16 px-2 md:px-32 flex-grow">
+        <div className="container flex mx-auto pt-4 md:pt-16 px-2 md:px-32 flex-grow">
           {children}
         </div>
         {/* <Footer></Footer> */}
