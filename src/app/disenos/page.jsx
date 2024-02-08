@@ -1,3 +1,3 @@
-export default function Diseños() {
+export default function Disenos() {
   return <div>Diseños</div>;
 }
