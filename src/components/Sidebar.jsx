@@ -1,39 +1,93 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
+
+// Icons
+import { PiUserCircleThin } from "react-icons/pi";
+import { FaAnglesDown } from "react-icons/fa6";
 
 export default function Sidebar() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="flex flex-col h-[85vh] border-r-[1px] border-slate-900 pr-10">
-      <div className="flex flex-col gap-3 flex-grow text-sm">
-        <div className="border-b-[1px] border-slate-900 pb-5 mb-5">
-          <Image
-            src="/user.svg"
-            width={150}
-            height={150}
-            alt="user"
-            priority={true}
-          />
-          <h1 className="text-center">Seleccionar Foto...</h1>
+    <div className="flex flex-col w-screen md:w-auto">
+      <div className="hidden md:flex flex-col h-[85vh] border-r-[1px] border-slate-900 pr-10">
+        <div className="flex flex-col gap-3 flex-grow text-sm">
+          <div className="flex flex-col items-center justify-center border-b-[1px] border-slate-900 pb-5 mb-5">
+            <PiUserCircleThin className="text-[150px]" />
+            <button className="Button">Seleccionar Foto...</button>
+          </div>
+          <Link href={"/perfil/info-personal"}>
+            <h1>Información Personal</h1>
+          </Link>
+          <Link href={"/perfil/info-academica"}>
+            <h1>Información Académica</h1>
+          </Link>
+          <Link href={"/perfil/experiencia-laboral"}>
+            <h1>Experiencia Laboral</h1>
+          </Link>
+          <Link href={"/perfil/competencias"}>
+            <h1>Competencias</h1>
+          </Link>
+          <Link href={"/perfil/ref-personales"}>
+            <h1>Referencias Personales</h1>
+          </Link>
         </div>
-        <Link href={"/perfil/info-personal"}>
-          <h1>Información Personal</h1>
-        </Link>
-        <Link href={"/perfil/info-academica"}>
-          <h1>Información Académica</h1>
-        </Link>
-        <Link href={"/perfil/experiencia-laboral"}>
-          <h1>Experiencia Laboral</h1>
-        </Link>
-        <Link href={"/perfil/competencias"}>
-          <h1>Competencias</h1>
-        </Link>
-        <Link href={"/perfil/ref-personales"}>
-          <h1>Referencias Personales</h1>
-        </Link>
+        <button className="Button">Borrar Información</button>
       </div>
-      <button className="border-[1px] border-white py-1 px-4 rounded-xl text-sm mr-auto">
-        Borrar Información
+
+      <button
+        onClick={toggleDropdown}
+        className="flex items-center justify-center gap-2 md:hidden bg-slate-900 p-3"
+      >
+        <h1>Menu Perfil</h1>
+        <FaAnglesDown className="text-xs" />
       </button>
+      {isOpen && (
+        <div className="className=block sm:hidden">
+          <div className="fixed z-0 w-screen bg-black text-white">
+            <div className="flex flex-col text-sm h-[84vh]">
+              <div
+                className="flex flex-col items-center justify-center h-72"
+                onClick={() => {}}
+              >
+                <PiUserCircleThin className="text-[150px]" />
+                <button className="border-[1px] border-white py-1 px-4 rounded-md text-xs">
+                  Seleccionar Foto...
+                </button>
+              </div>
+              <div className="flex-grow flex flex-col gap-5 px-5 items-center ">
+                <Link href={"/perfil/info-personal"} onClick={toggleDropdown}>
+                  <h1>Información Personal</h1>
+                </Link>
+                <Link href={"/perfil/info-academica"} onClick={toggleDropdown}>
+                  <h1>Información Académica</h1>
+                </Link>
+                <Link
+                  href={"/perfil/experiencia-laboral"}
+                  onClick={toggleDropdown}
+                >
+                  <h1>Experiencia Laboral</h1>
+                </Link>
+                <Link href={"/perfil/competencias"} onClick={toggleDropdown}>
+                  <h1>Competencias</h1>
+                </Link>
+                <Link href={"/perfil/ref-personales"} onClick={toggleDropdown}>
+                  <h1>Referencias Personales</h1>
+                </Link>
+              </div>
+              <div className="flex justify-center mb-5">
+                <button className="Button">Borrar Información</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
