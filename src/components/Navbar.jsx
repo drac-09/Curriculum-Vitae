@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -10,6 +11,15 @@ import { LiaEdit } from "react-icons/lia";
 import { LiaInfoCircleSolid } from "react-icons/lia";
 
 export default function Navbar() {
+  const pathName = usePathname();
+  const perfilPaths = [
+    "/perfil/info-personal",
+    "/perfil/info-academica",
+    "/perfil/competencias",
+    "/perfil/experiencia-laboral",
+    "/perfil/ref-personales",
+  ];
+
   const [menu, setMenu] = useState(false);
 
   function openMenu() {
@@ -21,16 +31,32 @@ export default function Navbar() {
       <div className="Barra">
         <div>Curriculum Vitae</div>
         <div className="hidden md:flex gap-5">
-          <Link href={"/"}>
+          <Link
+            href={"/"}
+            className={`${pathName === "/" ? "Seleccionado" : ""}`}
+          >
             <h1>Inicio</h1>
           </Link>
-          <Link href={"/perfil/info-personal"}>
+          <Link
+            href={"/perfil/info-personal"}
+            className={`${
+              pathName.startsWith("/perfil/") && perfilPaths.includes(pathName)
+                ? "Seleccionado"
+                : ""
+            }`}
+          >
             <h1>Perfil</h1>
           </Link>
-          <Link href={"/disenos"}>
+          <Link
+            href={"/disenos"}
+            className={`${pathName === "/disenos" ? "Seleccionado" : ""}`}
+          >
             <h1>Diseños</h1>
           </Link>
-          <Link href={"/informacion"}>
+          <Link
+            href={"/informacion"}
+            className={`${pathName === "/informacion" ? "Seleccionado" : ""}`}
+          >
             <h1>Información</h1>
           </Link>
         </div>

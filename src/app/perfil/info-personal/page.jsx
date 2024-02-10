@@ -1,8 +1,10 @@
 "use client";
-import React from "react";
+import { useState } from "react";
 import Cookies from "js-cookie";
 
 export default function InformacionPersonal() {
+  const [visible, setVisible] = useState(false);
+
   const handlerGuardar = (e) => {
     e.preventDefault();
     const data = {
@@ -16,7 +18,10 @@ export default function InformacionPersonal() {
     };
 
     Cookies.set("InformacionPersonal", JSON.stringify(data));
-
+    setVisible(true);
+    setTimeout(() => {
+      setVisible(false);
+    }, 3000);
     // const ver = JSON.parse(Cookies.get().InformacionPersonal);
     // console.log(ver);
   };
@@ -36,7 +41,7 @@ export default function InformacionPersonal() {
         <textarea
           type="text"
           id="sobremi"
-          className="w-3/4 h-20 my-3 p-3 rounded-md bg-gray-800 text-sm resize-none"
+          className="w-full md:w-3/4 h-20 my-3 p-3 rounded-md bg-gray-800 text-sm resize-none"
         />
         <br />
         <br />
@@ -48,19 +53,19 @@ export default function InformacionPersonal() {
         </p>
         <br />
         <div className="flex flex-col gap-2 mt-2 text-sm">
-          <div className="flex w-3/4">
+          <div className="flex md:w-3/4">
             <label htmlFor="nombre" className="w-1/3">
               Nombre completo:
             </label>
             <input type="text" id="nombre" className="Input w-2/3" />
           </div>
-          <div className="flex w-3/4">
+          <div className="flex md:w-3/4">
             <label htmlFor="direccion" className="w-1/3">
               Dirección:
             </label>
             <input type="text" id="direccion" className="Input w-2/3" />
           </div>
-          <div className="flex w-3/4">
+          <div className="flex md:w-3/4">
             <label htmlFor="correo" className="w-1/3">
               E-mail:
             </label>
@@ -71,7 +76,7 @@ export default function InformacionPersonal() {
               className="Input w-2/3"
             />
           </div>
-          <div className="flex w-3/4">
+          <div className="flex md:w-3/4">
             <label htmlFor="dni" className="w-1/3">
               DNI:
             </label>
@@ -83,8 +88,8 @@ export default function InformacionPersonal() {
               className="Input w-1/3"
             />
           </div>
-          <div className="flex w-2/4">
-            <label htmlFor="celular" className="w-1/2">
+          <div className="flex md:w-2/4">
+            <label htmlFor="celular" className="w-1/3 md:w-1/2">
               Celular:
             </label>
             <input
@@ -95,8 +100,8 @@ export default function InformacionPersonal() {
               className="Input w-1/3"
             />
           </div>
-          <div className="flex w-2/4">
-            <label htmlFor="estadocivil" className="w-1/2">
+          <div className="flex md:w-2/4">
+            <label htmlFor="estadocivil" className="w-1/3 md:w-1/2">
               Estado Civil:
             </label>
             <select name="" id="estadocivil" className="Select w-1/3">
@@ -111,10 +116,16 @@ export default function InformacionPersonal() {
             </select>
           </div>
         </div>
-        <div className="flex mt-10">
+        <div className="flex flex-col items-start gap-3 mt-10">
           <button type="submit" className="Button">
-            Actualizar
+            Guardar
           </button>
+
+          {visible && (
+            <h1 id="mensaje" className={`MsjExito`}>
+              Datos actualizados con éxito!!!
+            </h1>
+          )}
         </div>
       </form>
     </div>

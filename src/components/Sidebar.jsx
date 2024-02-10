@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 // Icons
 import { PiUserCircleThin } from "react-icons/pi";
@@ -9,6 +10,7 @@ import { FaAnglesDown } from "react-icons/fa6";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathName = usePathname();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -22,19 +24,44 @@ export default function Sidebar() {
             <PiUserCircleThin className="text-[150px]" />
             <button className="Button">Seleccionar Foto...</button>
           </div>
-          <Link href={"/perfil/info-personal"}>
+          <Link
+            href={"/perfil/info-personal"}
+            className={`${
+              pathName === "/perfil/info-personal" ? "Seleccionado" : ""
+            }`}
+          >
             <h1>Información Personal</h1>
           </Link>
-          <Link href={"/perfil/info-academica"}>
+          <Link
+            href={"/perfil/info-academica"}
+            className={`${
+              pathName === "/perfil/info-academica" ? "Seleccionado" : ""
+            }`}
+          >
             <h1>Información Académica</h1>
           </Link>
-          <Link href={"/perfil/experiencia-laboral"}>
+          <Link
+            href={"/perfil/experiencia-laboral"}
+            className={`${
+              pathName === "/perfil/experiencia-laboral" ? "Seleccionado" : ""
+            }`}
+          >
             <h1>Experiencia Laboral</h1>
           </Link>
-          <Link href={"/perfil/competencias"}>
+          <Link
+            href={"/perfil/competencias"}
+            className={`${
+              pathName === "/perfil/competencias" ? "Seleccionado" : ""
+            }`}
+          >
             <h1>Competencias</h1>
           </Link>
-          <Link href={"/perfil/ref-personales"}>
+          <Link
+            href={"/perfil/ref-personales"}
+            className={`${
+              pathName === "/perfil/ref-personales" ? "Seleccionado" : ""
+            }`}
+          >
             <h1>Referencias Personales</h1>
           </Link>
         </div>
@@ -43,14 +70,14 @@ export default function Sidebar() {
 
       <button
         onClick={toggleDropdown}
-        className="flex items-center justify-center gap-2 md:hidden bg-slate-900 p-3"
+        className="flex items-center justify-center gap-2 md:hidden bg-slate-900 p-3 mb-3"
       >
         <h1>Menu Perfil</h1>
         <FaAnglesDown className="text-xs" />
       </button>
       {isOpen && (
         <div className="className=block sm:hidden">
-          <div className="fixed z-0 w-screen bg-black text-white">
+          <div className="absolute z-0 w-screen bg-black text-white">
             <div className="flex flex-col text-sm h-[84vh]">
               <div
                 className="flex flex-col items-center justify-center h-72"

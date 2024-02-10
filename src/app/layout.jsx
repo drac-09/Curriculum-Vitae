@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${titilliumWeb.className} antialiased`}>
       <body className="flex flex-col h-screen w-screen bg-black text-white">
         <Navbar></Navbar>
-        <div className="container flex md:mx-auto md:pt-16 md:px-60 flex-grow">
+        <div className="container mx-auto flex md:px-20 2xl:px-80 xl:px-60 md:pt-16">
           {children}
         </div>
         {/* <Footer></Footer> */}

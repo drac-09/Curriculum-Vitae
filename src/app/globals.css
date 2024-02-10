@@ -9,6 +9,27 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(0, 0, 0) rgb(255, 255, 255);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 3px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(0, 0, 0);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(0, 0, 0);
+  border-radius: 20px;
+  border: 3px solid rgb(255, 255, 255);
+}
+
 @layer components {
   .Barra {
     @apply container py-2 px-2 md:px-20 flex items-center mx-auto justify-between text-white;
@@ -19,10 +40,26 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
   .Select {
-    @apply rounded-sm bg-gray-800 text-sm px-2;
+    @apply rounded-sm bg-gray-800 text-sm px-1;
   }
 
   .Button {
     @apply border-[1px] border-white py-1 px-4 rounded-md text-xs hover:bg-white hover:text-black hover:font-bold;
+  }
+
+  .Seleccionado {
+    @apply text-sky-400 font-bold;
+  }
+
+  .Hr {
+    @apply opacity-20 my-1;
+  }
+
+  .MsjExito {
+    @apply text-sm text-lime-300;
+  }
+
+  .Desvanecer {
+    @apply animate-fade animate-once animate-duration-[2000ms] animate-reverse;
   }
 }
