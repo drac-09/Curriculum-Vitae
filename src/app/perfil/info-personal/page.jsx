@@ -1,37 +1,104 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
 export default function InformacionPersonal() {
+  const [sobremi, setSobremi] = useState([]);
+  const [nombre, setNombre] = useState("");
+  const [direccion, setDireccion] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [celular, setCelular] = useState("");
+  const [dni, setDni] = useState("");
+  const [estadocivil, setEstadocivil] = useState("");
   const [visible, setVisible] = useState(false);
+  const [animacion, setAnimacion] = useState();
 
-  const handlerGuardar = (e) => {
-    e.preventDefault();
-    const data = {
-      sobremi: e.target.sobremi.value,
-      nombre: e.target.nombre.value,
-      direccion: e.target.direccion.value,
-      correo: e.target.correo.value,
-      celular: e.target.celular.value,
-      dni: e.target.dni.value,
-      estadocivil: e.target.estadocivil.value,
-    };
+  useEffect(() => {
+    const info = [];
+    const existe = Cookies.get("InformacionPersonal");
+    if (!existe) Cookies.set("InformacionAcademica", JSON.stringify(info));
+    if (existe) obtenerDatosDesdeCookies();
+  }, []);
 
+  const obtenerDatosDesdeCookies = () => {
+    const nivelesDesdeCookies = Cookies.get("InformacionPersonal");
+    if (nivelesDesdeCookies) {
+      cargarDatos(JSON.parse(nivelesDesdeCookies));
+    }
+  };
+
+  // Manejar cambios en los campos.
+  const campoSobremi = (event) => {
+    setSobremi(event.target.value);
+  };
+
+  const campoNombre = (event) => {
+    setNombre(event.target.value);
+  };
+
+  const campoDireccion = (event) => {
+    setDireccion(event.target.value);
+  };
+
+  const campoCorreo = (event) => {
+    setCorreo(event.target.value);
+  };
+
+  const campoCelular = (event) => {
+    setCelular(event.target.value);
+  };
+
+  const campoDni = (event) => {
+    setDni(event.target.value);
+  };
+
+  const campoEstadoCivil = (event) => {
+    setEstadocivil(event.target.value);
+  };
+
+  function guardar() {
+    const data = nuevo();
     Cookies.set("InformacionPersonal", JSON.stringify(data));
+
     setVisible(true);
+    setAnimacion("animate-fade-right");
+    setTimeout(() => {
+      setAnimacion("animate-fade-right animate-reverse animate-delay-[2000ms]");
+    }, 2000);
     setTimeout(() => {
       setVisible(false);
     }, 3000);
-    // const ver = JSON.parse(Cookies.get().InformacionPersonal);
-    // console.log(ver);
-  };
+  }
+
+  function cargarDatos(data) {
+    setSobremi(data.sobremi);
+    setNombre(data.nombre);
+    setDireccion(data.direccion);
+    setCorreo(data.correo);
+    setCelular(data.celular);
+    setDni(data.dni);
+    setEstadocivil(data.estadocivil);
+  }
+
+  function nuevo() {
+    const info = {
+      sobremi: sobremi,
+      nombre: nombre,
+      direccion: direccion,
+      correo: correo,
+      celular: celular,
+      dni: dni,
+      estadocivil: estadocivil,
+    };
+    return info;
+  }
 
   return (
     <div>
-      <form action="" onSubmit={handlerGuardar}>
+      <form>
         <h5>Acerca de mi.</h5>
         <hr className="opacity-20 my-1" />
-        <p className="text-sm text-gray-300">
+        <p className="text-sm text-gray-200">
           En esta sección coloca una breve descripción que resume tus
           habilidades y logros profesionales. Destaca tus puntos fuertes y
           objetivos de carrera en pocas palabras, manteniendo un tono
@@ -41,6 +108,8 @@ export default function InformacionPersonal() {
         <textarea
           type="text"
           id="sobremi"
+          value={sobremi}
+          onChange={campoSobremi}
           className="w-full md:w-3/4 h-20 my-3 p-3 rounded-md bg-gray-800 text-sm resize-none"
         />
         <br />
@@ -57,13 +126,25 @@ export default function InformacionPersonal() {
             <label htmlFor="nombre" className="w-1/3">
               Nombre completo:
             </label>
-            <input type="text" id="nombre" className="Input w-2/3" />
+            <input
+              type="text"
+              id="nombre"
+              value={nombre}
+              onChange={campoNombre}
+              className="Input w-2/3"
+            />
           </div>
           <div className="flex md:w-3/4">
             <label htmlFor="direccion" className="w-1/3">
               Dirección:
             </label>
-            <input type="text" id="direccion" className="Input w-2/3" />
+            <input
+              type="text"
+              id="direccion"
+              value={direccion}
+              onChange={campoDireccion}
+              className="Input w-2/3"
+            />
           </div>
           <div className="flex md:w-3/4">
             <label htmlFor="correo" className="w-1/3">
@@ -72,6 +153,8 @@ export default function InformacionPersonal() {
             <input
               type="email"
               id="correo"
+              value={correo}
+              onChange={campoCorreo}
               placeholder="correoelectronico@server.com"
               className="Input w-2/3"
             />
@@ -83,6 +166,8 @@ export default function InformacionPersonal() {
             <input
               type="text"
               id="dni"
+              value={dni}
+              onChange={campoDni}
               pattern="\d{4}-\d{4}-\d{5}"
               placeholder="0000-0000-00000"
               className="Input w-1/3"
@@ -95,6 +180,8 @@ export default function InformacionPersonal() {
             <input
               type="text"
               id="celular"
+              value={celular}
+              onChange={campoCelular}
               pattern="\d{4}-\d{4}"
               placeholder="9999-9999"
               className="Input w-1/3"
@@ -104,7 +191,13 @@ export default function InformacionPersonal() {
             <label htmlFor="estadocivil" className="w-1/3 md:w-1/2">
               Estado Civil:
             </label>
-            <select name="" id="estadocivil" className="Select w-1/3">
+            <select
+              name=""
+              id="estadocivil"
+              value={estadocivil}
+              onChange={campoEstadoCivil}
+              className="Select w-1/3"
+            >
               <option value="Soltero">Soltero</option>
               <option value="Soltera">Soltera</option>
               <option value="Casado">Casado</option>
@@ -116,13 +209,19 @@ export default function InformacionPersonal() {
             </select>
           </div>
         </div>
-        <div className="flex flex-col items-start gap-3 mt-10">
-          <button type="submit" className="Button">
-            Guardar
+        <div className="flex items-start gap-3 mt-10">
+          <button
+            type="button"
+            onClick={() => {
+              guardar();
+            }}
+            className="Button"
+          >
+            Actualizar
           </button>
 
           {visible && (
-            <h1 id="mensaje" className={`MsjExito`}>
+            <h1 id="mensaje" className={`MsjExito ${animacion}`}>
               Datos actualizados con éxito!!!
             </h1>
           )}

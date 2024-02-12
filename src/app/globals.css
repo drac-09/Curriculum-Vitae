@@ -12,7 +12,7 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Works on Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgb(0, 0, 0) rgb(255, 255, 255);
+  scrollbar-color: rgb(0, 0, 0) rgb(32, 32, 32);
 }
 
 /* Works on Chrome, Edge, and Safari */
@@ -35,6 +35,10 @@ input[type="number"]::-webkit-outer-spin-button {
     @apply container py-2 px-2 md:px-20 flex items-center mx-auto justify-between text-white;
   }
 
+  .Titulo {
+    @apply text-lime-300;
+  }
+
   .Input {
     @apply rounded-sm bg-gray-800 text-sm px-2;
   }
@@ -48,7 +52,7 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
   .Seleccionado {
-    @apply text-sky-400 font-bold;
+    @apply text-orange-500 font-semibold;
   }
 
   .Hr {
@@ -59,7 +63,31 @@ input[type="number"]::-webkit-outer-spin-button {
     @apply text-sm text-lime-300;
   }
 
+  .MsjFallo {
+    @apply text-xs md:text-sm text-orange-600 font-semibold antialiased;
+  }
+
+  .Alerta {
+    @apply text-orange-400;
+  }
+
   .Desvanecer {
     @apply animate-fade animate-once animate-duration-[2000ms] animate-reverse;
+  }
+
+  .Border-r {
+    @apply border-r-[1px] border-gray-800;
+  }
+
+  .Border-l {
+    @apply border-l-[1px] border-gray-800;
+  }
+
+  .Card {
+    @apply border-[1px] rounded-md border-dashed p-3 my-5;
+  }
+
+  .Etiqueta {
+    @apply text-sm border-[1px] rounded-md border-dashed py-1 px-2;
   }
 }

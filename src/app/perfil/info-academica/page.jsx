@@ -1,19 +1,24 @@
 "use client";
 import Cookies from "js-cookie";
 import fechas from "@/data/fechas";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function InformacionAcademica() {
   const [button, setButton] = useState(true);
+  const [bAgregar, setBAgregar] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [animacion, setAnimacion] = useState();
+  const formulario = useRef(null);
+
   const [niveles, setNiveles] = useState([]);
   const [identificador, setIdentificador] = useState("");
-  const [nivel, setNivel] = useState("");
+  const [nivel, setNivel] = useState("Secundaria");
   const [centro, setCentro] = useState("");
   const [titulo, setTitulo] = useState("");
-  const [mesInicio, setMesInicio] = useState("");
-  const [anioInicio, setAnioInicio] = useState();
-  const [mesFinal, setMesFinal] = useState("");
-  const [anioFinal, setAnioFinal] = useState();
+  const [mesInicio, setMesInicio] = useState("Enero");
+  const [anioInicio, setAnioInicio] = useState(2024);
+  const [mesFinal, setMesFinal] = useState("Diciembre");
+  const [anioFinal, setAnioFinal] = useState(2024);
 
   const meses = fechas.meses;
   const anios = fechas.anios;
@@ -33,9 +38,19 @@ export default function InformacionAcademica() {
     }
   };
 
-  // Manejar cambios en los campos <select>
+  useEffect(() => {
+    verificarCamposVacios();
+  });
+
+  // Manejar cambios en los campos.
   const selectNivel = (event) => {
     setNivel(event.target.value);
+  };
+  const selectCentro = (event) => {
+    setCentro(event.target.value);
+  };
+  const selectTitulo = (event) => {
+    setTitulo(event.target.value);
   };
   const selectMesInicio = (event) => {
     setMesInicio(event.target.value);
@@ -49,36 +64,37 @@ export default function InformacionAcademica() {
   const selectAnioFinal = (event) => {
     setAnioFinal(event.target.value);
   };
-  const selectCentro = (event) => {
-    setCentro(event.target.value);
-  };
-  const selectTitulo = (event) => {
-    setTitulo(event.target.value);
-  };
 
   // Guarda los datos
-  const Guardar = (e) => {
-    e.preventDefault();
-    const fecha = new Date();
-    const id = fecha.getTime().toString();
+  function guardar() {
+    if (!bAgregar) {
+      const fecha = new Date();
+      const id = fecha.getTime().toString();
 
-    const data = {
-      id: id,
-      nivel: e.target.nivel.value,
-      centro: e.target.centro.value,
-      titulo: e.target.titulo.value,
-      mesInicio: e.target.mesInicio.value,
-      anioInicio: e.target.anioInicio.value,
-      mesFinal: e.target.mesFinal.value,
-      anioFinal: e.target.anioFinal.value,
-    };
+      const data = cargarDatos(id);
+      const tmp = JSON.parse(Cookies.get("InformacionAcademica"));
+      tmp.push(data);
+      Cookies.set("InformacionAcademica", JSON.stringify(tmp));
 
-    const tmp = JSON.parse(Cookies.get("InformacionAcademica"));
-    tmp.push(data);
-    Cookies.set("InformacionAcademica", JSON.stringify(tmp));
+      limpiar();
+      obtenerNivelesDesdeCookies();
+      datosPorDefecto();
+    } else {
+      setVisible(true);
+      setAnimacion("animate-fade-right");
+      setTimeout(() => {
+        setAnimacion(
+          "animate-fade-right animate-reverse animate-delay-[3000ms]"
+        );
+      }, 3000);
+      setTimeout(() => {
+        setVisible(false);
+      }, 4000);
+    }
+  }
 
-    limpiar();
-    obtenerNivelesDesdeCookies();
+  const irAlFormulario = () => {
+    formulario.current.scrollIntoView({ behavior: "smooth" });
   };
 
   function obtener(id) {
@@ -92,27 +108,23 @@ export default function InformacionAcademica() {
     setAnioInicio(tmp.anioInicio);
     setMesFinal(tmp.mesFinal);
     setAnioFinal(tmp.anioFinal);
+    irAlFormulario();
   }
 
   function actualizar() {
-    const nuevoObjeto = {
-      id: identificador,
-      nivel: nivel,
-      centro: centro,
-      titulo: titulo,
-      mesInicio: mesInicio,
-      anioInicio: anioInicio,
-      mesFinal: mesFinal,
-      anioFinal: anioFinal,
-    };
-
+    const nivel = cargarDatos();
     const index = niveles.findIndex((objeto) => objeto.id === identificador);
     if (index !== -1) {
-      niveles[index] = { ...niveles[index], ...nuevoObjeto };
+      niveles[index] = { ...niveles[index], ...nivel };
       Cookies.set("InformacionAcademica", JSON.stringify(niveles));
       limpiar();
       obtenerNivelesDesdeCookies();
+      datosPorDefecto();
     }
+
+    setTimeout(() => {
+      setButton(true);
+    }, 500);
   }
 
   function eliminar(id) {
@@ -135,15 +147,67 @@ export default function InformacionAcademica() {
     setAnioFinal();
   }
 
+  function cancelar() {
+    limpiar();
+    datosPorDefecto();
+    setButton(true);
+  }
+
+  function cargarDatos(id) {
+    if (id === undefined) {
+      const nuevoObjeto = {
+        id: identificador,
+        nivel: nivel,
+        centro: centro,
+        titulo: titulo,
+        mesInicio: mesInicio,
+        anioInicio: anioInicio,
+        mesFinal: mesFinal,
+        anioFinal: anioFinal,
+      };
+      return nuevoObjeto;
+    } else {
+      const nuevoObjeto = {
+        id: id,
+        nivel: nivel,
+        centro: centro,
+        titulo: titulo,
+        mesInicio: mesInicio,
+        anioInicio: anioInicio,
+        mesFinal: mesFinal,
+        anioFinal: anioFinal,
+      };
+      return nuevoObjeto;
+    }
+  }
+
+  function verificarCamposVacios() {
+    const todasVacias = !centro || !titulo;
+
+    if (todasVacias) {
+      setBAgregar(true);
+    } else {
+      setBAgregar(false);
+    }
+  }
+
+  function datosPorDefecto() {
+    setNivel("Secundaria");
+    setMesInicio("Enero");
+    setAnioInicio(2024);
+    setMesFinal("Diciembre");
+    setAnioFinal(2024);
+  }
+
   return (
     <div>
-      <form action="" onSubmit={Guardar}>
-        <h5>Información Academica</h5>
+      <form ref={formulario}>
+        <h5 className="Titulo">Información Academica</h5>
         <hr className="Hr" />
-        <p className="text-sm text-gray-300">
-          En esta sección proporciona a los empleadores una visión general de tu
-          formación y tus logros académicos, lo que puede ser crucial para
-          determinar tu idoneidad para el puesto. Asegúrate de incluir
+        <p className="text-sm text-gray-200">
+          En esta sección, debes presentar a los empleadores una visión general
+          de tu educación y tus logros académicos. Esto es importante porque les
+          ayuda a evaluar si eres adecuado para el puesto. Asegúrate de incluir
           información precisa y relevante sobre tus estudios.
         </p>
         <br />
@@ -250,7 +314,7 @@ export default function InformacionAcademica() {
                 className="Select"
               >
                 {anios.map((anio, index) => (
-                  <option key={index} value={anio}>
+                  <option key={index} value={anio} defaultValue={2024}>
                     {anio}
                   </option>
                 ))}
@@ -259,58 +323,74 @@ export default function InformacionAcademica() {
           </section>
         </div>
 
-        <div className="flex flex-col items-start gap-3 mt-10">
+        <div className="flex items-end gap-3 mt-10">
           {button ? (
-            <button type="submit" className="Button">
-              Agregar
-            </button>
-          ) : (
             <button
               type="button"
               onClick={() => {
-                actualizar();
+                guardar();
               }}
               className="Button"
             >
-              Actualizar
+              Agregar
             </button>
+          ) : (
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  actualizar();
+                }}
+                className="Button"
+              >
+                Actualizar
+              </button>
+              <button
+                className="Button"
+                onClick={() => {
+                  cancelar();
+                }}
+              >
+                Cancelar
+              </button>
+            </div>
+          )}
+          {visible && (
+            <h1 id="mensaje" className={`MsjFallo ${animacion}`}>
+              Por favor ingresar: Centro de estudio y Titulo obtenido.
+            </h1>
           )}
         </div>
       </form>
       <br />
+      <br />
 
-      <div className="flex-grow h-[40.5vh] overflow-y-auto border-[1px] border-gray-800 rounded-lg p-5">
+      <h5 className="Titulo">Datos Obtenidos</h5>
+      <hr className="Hr" />
+      <div className="flex-grow">
         {niveles.map((nivel) => (
-          <div key={nivel.id}>
+          <div key={nivel.id} className="Card">
             <section className="text-sm">
-              <table className="w-3/4">
-                <tbody>
-                  <tr>
-                    <td className="w-1/3">Nivel Educativo:</td>
-                    <td className="w-3/3">{nivel.nivel}</td>
-                  </tr>
-                  <tr>
-                    <td>Centro Educativo:</td>
-                    <td className="truncate">{nivel.centro}</td>
-                  </tr>
-                  <tr>
-                    <td>Titulo Obtenido:</td>
-                    <td className="flex-wrap">{nivel.titulo}</td>
-                  </tr>
-                  <tr>
-                    <td>Fecha de Inicio:</td>
-                    <td>
-                      {nivel.mesInicio} de {nivel.anioInicio}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Fecha de Finalización:</td>
-                    <td>
-                      {nivel.mesFinal} de {nivel.anioFinal}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="flex gap-3 w-full">
+                <div className="w-1/3 Border-l">
+                  <h1>Nivel Educativo</h1>
+                  <h1>Centro Educativo</h1>
+                  <h1>Titulo Obtenido</h1>
+                  <h1>Fecha de Inicio</h1>
+                  <h1>Fecha de Finalización</h1>
+                </div>
+                <div className="w-2/3">
+                  <h1>{nivel.nivel}</h1>
+                  <h1>{nivel.centro}</h1>
+                  <h1>{nivel.titulo}</h1>
+                  <h1>
+                    {nivel.mesInicio} de {nivel.anioInicio}
+                  </h1>
+                  <h1>
+                    {nivel.mesFinal} de {nivel.anioFinal}
+                  </h1>
+                </div>
+              </div>
               <div className="flex-grow flex justify-end gap-3">
                 <button
                   className="Button mt-2"
@@ -332,7 +412,6 @@ export default function InformacionAcademica() {
                 </button>
               </div>
             </section>
-            <hr className="Hr my-3" />
           </div>
         ))}
       </div>
