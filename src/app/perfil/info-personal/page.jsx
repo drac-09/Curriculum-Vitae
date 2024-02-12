@@ -9,6 +9,7 @@ export default function InformacionPersonal() {
   const [correo, setCorreo] = useState("");
   const [celular, setCelular] = useState("");
   const [dni, setDni] = useState("");
+
   const [estadocivil, setEstadocivil] = useState("");
   const [visible, setVisible] = useState(false);
   const [animacion, setAnimacion] = useState();
@@ -66,8 +67,8 @@ export default function InformacionPersonal() {
 
   return (
     <div>
-      <form>
-        <h5>Acerca de mi.</h5>
+      <form action="">
+        <h5 className="Titulo">Acerca de mi.</h5>
         <hr className="opacity-20 my-1" />
         <p className="text-sm text-gray-200">
           En esta sección coloca una breve descripción que resume tus
@@ -85,7 +86,7 @@ export default function InformacionPersonal() {
         />
         <br />
         <br />
-        <h5>Datos Personales</h5>
+        <h5 className="Titulo">Datos Personales</h5>
         <hr className="opacity-20 my-1" />
         <p className="text-sm text-gray-300">
           Proporciona esta información de contacto de manera clara y precisa
@@ -149,11 +150,12 @@ export default function InformacionPersonal() {
               Celular:
             </label>
             <input
-              type="text"
+              type="number"
               id="celular"
               value={celular}
+              maxLength={9}
+              pattern="[0-9]{4}-[0-9]{4}"
               onChange={(e) => setCelular(e.target.value)}
-              pattern="\d{4}-\d{4}"
               placeholder="9999-9999"
               className="Input w-1/3"
             />
