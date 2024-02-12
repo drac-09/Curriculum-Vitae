@@ -347,16 +347,16 @@ export default function InformacionAcademica() {
       <div className="flex-grow">
         {niveles.map((nivel) => (
           <div key={nivel.id} className="Card">
-            <section className="text-sm">
+            <section className="text-xs md:text-sm">
               <div className="flex gap-3 w-full">
-                <div className="w-1/3 Border-l">
-                  <h1>Nivel Educativo</h1>
-                  <h1>Centro Educativo</h1>
-                  <h1>Titulo Obtenido</h1>
-                  <h1>Fecha de Inicio</h1>
-                  <h1>Fecha de Finalización</h1>
+                <div className="w-1/3 Border-r">
+                  <h1>Nivel educativo</h1>
+                  <h1>Centro educativo</h1>
+                  <h1>Titulo obtenido</h1>
+                  <h1>Fecha de inicio</h1>
+                  <h1>Fecha de finalización</h1>
                 </div>
-                <div className="w-2/3">
+                <div className="w-2/3 truncate">
                   <h1>{nivel.nivel}</h1>
                   <h1>{nivel.centro}</h1>
                   <h1>{nivel.titulo}</h1>
