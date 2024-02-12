@@ -27,35 +27,6 @@ export default function InformacionPersonal() {
     }
   };
 
-  // Manejar cambios en los campos.
-  const campoSobremi = (event) => {
-    setSobremi(event.target.value);
-  };
-
-  const campoNombre = (event) => {
-    setNombre(event.target.value);
-  };
-
-  const campoDireccion = (event) => {
-    setDireccion(event.target.value);
-  };
-
-  const campoCorreo = (event) => {
-    setCorreo(event.target.value);
-  };
-
-  const campoCelular = (event) => {
-    setCelular(event.target.value);
-  };
-
-  const campoDni = (event) => {
-    setDni(event.target.value);
-  };
-
-  const campoEstadoCivil = (event) => {
-    setEstadocivil(event.target.value);
-  };
-
   function guardar() {
     const data = nuevo();
     Cookies.set("InformacionPersonal", JSON.stringify(data));
@@ -109,7 +80,7 @@ export default function InformacionPersonal() {
           type="text"
           id="sobremi"
           value={sobremi}
-          onChange={campoSobremi}
+          onChange={(e) => setSobremi(e.target.value)}
           className="w-full md:w-3/4 h-20 my-3 p-3 rounded-md bg-gray-800 text-sm resize-none"
         />
         <br />
@@ -130,7 +101,7 @@ export default function InformacionPersonal() {
               type="text"
               id="nombre"
               value={nombre}
-              onChange={campoNombre}
+              onChange={(e) => setNombre(e.target.value)}
               className="Input w-2/3"
             />
           </div>
@@ -142,7 +113,7 @@ export default function InformacionPersonal() {
               type="text"
               id="direccion"
               value={direccion}
-              onChange={campoDireccion}
+              onChange={(e) => setDireccion(e.target.value)}
               className="Input w-2/3"
             />
           </div>
@@ -154,7 +125,7 @@ export default function InformacionPersonal() {
               type="email"
               id="correo"
               value={correo}
-              onChange={campoCorreo}
+              onChange={(e) => setCorreo(e.target.value)}
               placeholder="correoelectronico@server.com"
               className="Input w-2/3"
             />
@@ -167,7 +138,7 @@ export default function InformacionPersonal() {
               type="text"
               id="dni"
               value={dni}
-              onChange={campoDni}
+              onChange={(e) => setDni(e.target.value)}
               pattern="\d{4}-\d{4}-\d{5}"
               placeholder="0000-0000-00000"
               className="Input w-1/3"
@@ -181,7 +152,7 @@ export default function InformacionPersonal() {
               type="text"
               id="celular"
               value={celular}
-              onChange={campoCelular}
+              onChange={(e) => setCelular(e.target.value)}
               pattern="\d{4}-\d{4}"
               placeholder="9999-9999"
               className="Input w-1/3"
@@ -195,7 +166,7 @@ export default function InformacionPersonal() {
               name=""
               id="estadocivil"
               value={estadocivil}
-              onChange={campoEstadoCivil}
+              onChange={(e) => setEstadocivil(e.target.value)}
               className="Select w-1/3"
             >
               <option value="Soltero">Soltero</option>
