@@ -42,29 +42,6 @@ export default function InformacionAcademica() {
     verificarCamposVacios();
   });
 
-  // Manejar cambios en los campos.
-  const selectNivel = (event) => {
-    setNivel(event.target.value);
-  };
-  const selectCentro = (event) => {
-    setCentro(event.target.value);
-  };
-  const selectTitulo = (event) => {
-    setTitulo(event.target.value);
-  };
-  const selectMesInicio = (event) => {
-    setMesInicio(event.target.value);
-  };
-  const selectAnioInicio = (event) => {
-    setAnioInicio(event.target.value);
-  };
-  const selectMesFinal = (event) => {
-    setMesFinal(event.target.value);
-  };
-  const selectAnioFinal = (event) => {
-    setAnioFinal(event.target.value);
-  };
-
   // Guarda los datos
   function guardar() {
     if (!bAgregar) {
@@ -219,7 +196,7 @@ export default function InformacionAcademica() {
             <select
               id="nivel"
               value={nivel}
-              onChange={selectNivel}
+              onChange={(e) => setNivel(e.target.value)}
               className="Select w-2/2"
             >
               <option value="Secundaria">Secundaria</option>
@@ -237,7 +214,7 @@ export default function InformacionAcademica() {
               type="text"
               id="centro"
               value={centro}
-              onChange={selectCentro}
+              onChange={(e) => setCentro(e.target.value)}
               className="Input w-2/3"
             />
           </section>
@@ -249,7 +226,7 @@ export default function InformacionAcademica() {
               type="text"
               id="titulo"
               value={titulo}
-              onChange={selectTitulo}
+              onChange={(e) => setTitulo(e.target.value)}
               className="Input w-2/3"
             />
           </section>
@@ -262,7 +239,7 @@ export default function InformacionAcademica() {
                 id="mesInicio"
                 name="mes"
                 value={mesInicio}
-                onChange={selectMesInicio}
+                onChange={(e) => setMesInicio(e.target.value)}
                 className="Select"
               >
                 {meses.map((mes, index) => (
@@ -276,7 +253,7 @@ export default function InformacionAcademica() {
                 id="anioInicio"
                 name="anio"
                 value={anioInicio}
-                onChange={selectAnioInicio}
+                onChange={(e) => setAnioInicio(e.target.value)}
                 className="Select"
               >
                 {anios.map((anio, index) => (
@@ -296,7 +273,7 @@ export default function InformacionAcademica() {
                 id="mesFinal"
                 name="mes"
                 value={mesFinal}
-                onChange={selectMesFinal}
+                onChange={(e) => setMesFinal(e.target.value)}
                 className="Select"
               >
                 {meses.map((mes, index) => (
@@ -310,7 +287,7 @@ export default function InformacionAcademica() {
                 id="anioFinal"
                 name="anio"
                 value={anioFinal}
-                onChange={selectAnioFinal}
+                onChange={(e) => setAnioFinal(e.target.value)}
                 className="Select"
               >
                 {anios.map((anio, index) => (
