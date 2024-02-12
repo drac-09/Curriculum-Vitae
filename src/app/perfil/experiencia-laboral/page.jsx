@@ -27,44 +27,19 @@ export default function ExperienciaLaboral() {
     const experiencia = [];
     const existe = Cookies.get("ExperienciaLaboral");
     if (!existe) Cookies.set("ExperienciaLaboral", JSON.stringify(experiencia));
-    if (existe) obtenerExperienciaDesdeCookies();
+    if (existe) obtenerExperienciaCookies();
   }, []);
 
-  // Obteniendo Datos desde las Cookies
-  const obtenerExperienciaDesdeCookies = () => {
-    const experienciaDesdeCookies = Cookies.get("ExperienciaLaboral");
-    if (experienciaDesdeCookies) {
-      setExperiencia(JSON.parse(experienciaDesdeCookies));
-      // console.log(JSON.parse(experienciaDesdeCookies));
+  const obtenerExperienciaCookies = () => {
+    const experienciaCookies = Cookies.get("ExperienciaLaboral");
+    if (experienciaCookies) {
+      setExperiencia(JSON.parse(experienciaCookies));
     }
   };
 
   useEffect(() => {
     verificarCamposVacios();
   });
-
-  // Manejar cambios en los campos.
-  const selectDescripcion = (event) => {
-    setDescripcion(event.target.value);
-  };
-  const selectEmpresa = (event) => {
-    setEmpresa(event.target.value);
-  };
-  const selectCargo = (event) => {
-    setCargo(event.target.value);
-  };
-  const selectMesInicio = (event) => {
-    setMesInicio(event.target.value);
-  };
-  const selectAnioInicio = (event) => {
-    setAnioInicio(event.target.value);
-  };
-  const selectMesFinal = (event) => {
-    setMesFinal(event.target.value);
-  };
-  const selectAnioFinal = (event) => {
-    setAnioFinal(event.target.value);
-  };
 
   // Guarda los datos
   function guardar() {
@@ -78,7 +53,7 @@ export default function ExperienciaLaboral() {
       Cookies.set("ExperienciaLaboral", JSON.stringify(tmp));
 
       limpiar();
-      obtenerExperienciaDesdeCookies();
+      obtenerExperienciaCookies();
       datosPorDefecto();
     } else {
       setVisible(true);
@@ -121,7 +96,7 @@ export default function ExperienciaLaboral() {
       experiencia[index] = { ...experiencia[index], ...descripcion };
       Cookies.set("ExperienciaLaboral", JSON.stringify(experiencia));
       limpiar();
-      obtenerExperienciaDesdeCookies();
+      obtenerExperienciaCookies();
       datosPorDefecto();
     }
 
@@ -135,7 +110,7 @@ export default function ExperienciaLaboral() {
     if (index !== -1) {
       experiencia.splice(index, 1);
       Cookies.set("ExperienciaLaboral", JSON.stringify(experiencia));
-      obtenerExperienciaDesdeCookies();
+      obtenerExperienciaCookies();
     }
   }
 
@@ -157,31 +132,24 @@ export default function ExperienciaLaboral() {
   }
 
   function cargarDatos(id) {
+    let valorUnico = null;
     if (id === undefined) {
-      const nuevoObjeto = {
-        id: identificador,
-        descripcion: descripcion,
-        empresa: empresa,
-        cargo: cargo,
-        mesInicio: mesInicio,
-        anioInicio: anioInicio,
-        mesFinal: mesFinal,
-        anioFinal: anioFinal,
-      };
-      return nuevoObjeto;
+      valorUnico = identificador;
     } else {
-      const nuevoObjeto = {
-        id: id,
-        descripcion: descripcion,
-        empresa: empresa,
-        cargo: cargo,
-        mesInicio: mesInicio,
-        anioInicio: anioInicio,
-        mesFinal: mesFinal,
-        anioFinal: anioFinal,
-      };
-      return nuevoObjeto;
+      valorUnico = id;
     }
+
+    const nuevoObjeto = {
+      id: valorUnico,
+      descripcion: descripcion,
+      empresa: empresa,
+      cargo: cargo,
+      mesInicio: mesInicio,
+      anioInicio: anioInicio,
+      mesFinal: mesFinal,
+      anioFinal: anioFinal,
+    };
+    return nuevoObjeto;
   }
 
   function verificarCamposVacios() {
@@ -207,12 +175,12 @@ export default function ExperienciaLaboral() {
         <h5 className="Titulo">Experiencia Laboral</h5>
         <hr className="Hr" />
         <p className="text-sm text-gray-200">
-          En esta sección, tienes la oportunidad de resumir tus
-          responsabilidades y las actividades que llevabas a cabo en tus
-          trabajos anteriores. Es crucial que comuniques de manera clara y
-          precisa las tareas que realizabas en cada puesto de trabajo.
+          En esta sección, resume tus responsabilidades y las actividades que
+          llevabas a cabo en tus trabajos anteriores. Es crucial que comuniques
+          de manera clara y precisa las tareas que realizabas en cada puesto de
+          trabajo.
         </p>
-        <p className="Alerta">
+        <p className="Alerta text-sm font-semibold">
           Recomendación: Empiece desde los mas recientes a los mas antiguos.
         </p>
         <br />
@@ -231,7 +199,7 @@ export default function ExperienciaLaboral() {
           </section>
           <section className="flex md:w-3/4">
             <label htmlFor="cargo" className="w-1/3">
-              Cargo o Puesto:
+              Cargo:
             </label>
             <input
               type="text"
@@ -239,6 +207,7 @@ export default function ExperienciaLaboral() {
               value={cargo}
               onChange={(e) => setCargo(e.target.value)}
               className="Input w-2/3"
+              placeholder="Puesto que ocupaste en la empresa"
             />
           </section>
           <section className="flex md:w-2/4">
@@ -319,6 +288,7 @@ export default function ExperienciaLaboral() {
               value={descripcion}
               onChange={(e) => setDescripcion(e.target.value)}
               className="h-20 w-2/3 md:w-3/4 p-3 rounded-md bg-gray-800 text-sm resize-none"
+              placeholder="Describe brevemente las responsabilidades y logros relevantes durante tu tiempo en este puesto."
             ></textarea>
           </section>
         </div>
@@ -370,16 +340,16 @@ export default function ExperienciaLaboral() {
       <div className="flex-grow">
         {experiencia.map((exp) => (
           <div key={exp.id} className="Card">
-            <section className="text-sm">
+            <section className="text-xs md:text-sm">
               <div className="flex gap-3 w-full">
-                <div className="w-1/3 Border-l">
-                  <h1>Nombre de la Empresa</h1>
-                  <h1>Cargo o Puesto</h1>
-                  <h1>Fecha de Inicio</h1>
-                  <h1>Fecha de Finalización</h1>
-                  <h1 className="mt-1">Descripción</h1>
+                <div className="w-1/3 md:w-1/4 Border-r">
+                  <h1>Empresa</h1>
+                  <h1>Cargo</h1>
+                  <h1>Fecha-Inicio</h1>
+                  <h1>Fecha-Finalización</h1>
+                  <h1>Descripción</h1>
                 </div>
-                <div className="w-2/3">
+                <div className="w-2/3 truncate">
                   <h1>{exp.empresa}</h1>
                   <h1>{exp.cargo}</h1>
                   <h1>
