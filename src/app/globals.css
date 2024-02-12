@@ -88,6 +88,6 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
   .Etiqueta {
-    @apply text-sm border-[1px] rounded-md border-dashed py-1 px-2;
+    @apply text-sm border-[1px] rounded-md border-dashed border-orange-400 border-opacity-20 py-1 px-2;
   }
 }

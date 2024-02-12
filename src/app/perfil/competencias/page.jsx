@@ -11,11 +11,8 @@ export default function Competencias() {
     aptitudes: [],
     lenguajes: [],
   });
-  const [habilidades, setHabilidades] = useState([]);
   const [habilidad, setHabilidad] = useState("");
-  const [aptitudes, setAptitudes] = useState([]);
   const [aptitud, setAptitud] = useState("");
-  const [lenguajes, setLenguajes] = useState([]);
   const [lenguaje, setLenguaje] = useState([]);
 
   useEffect(() => {
@@ -41,7 +38,7 @@ export default function Competencias() {
         id: fecha.getTime().toString(),
         habilidad: habilidad,
       };
-      habilidades.push(Nueva);
+      actualizarCookies("habilidades", Nueva);
       setHabilidad("");
     }
 
@@ -51,7 +48,7 @@ export default function Competencias() {
         id: fecha.getTime().toString(),
         aptitud: aptitud,
       };
-      aptitudes.push(Nueva);
+      actualizarCookies("aptitudes", Nueva);
       setAptitud("");
     }
 
@@ -61,30 +58,26 @@ export default function Competencias() {
         id: fecha.getTime().toString(),
         lenguaje: lenguaje,
       };
-      lenguajes.push(Nueva);
+      actualizarCookies("lenguajes", Nueva);
       setLenguaje("");
     }
-
-    actualizarCookies();
     obtenerCompetenciasDesdeCookies();
   }
 
   function eliminar(id, competencia) {
-    const index = competencia.findIndex((objeto) => objeto.id === id);
+    const tmp = JSON.parse(Cookies.get("Competencias"));
+    const index = tmp[competencia].findIndex((objeto) => objeto.id === id);
     if (index !== -1) {
-      competencia.splice(index, 1);
-      actualizarCookies();
+      tmp[competencia].splice(index, 1);
+      Cookies.set("Competencias", JSON.stringify(tmp));
       obtenerCompetenciasDesdeCookies();
     }
   }
 
-  function actualizarCookies() {
-    const competencias = {
-      habilidades: habilidades,
-      aptitudes: aptitudes,
-      lenguajes: lenguajes,
-    };
-    Cookies.set("Competencias", JSON.stringify(competencias));
+  function actualizarCookies(competencia, nueva) {
+    const tmp = JSON.parse(Cookies.get("Competencias"));
+    tmp[competencia].push(nueva);
+    Cookies.set("Competencias", JSON.stringify(tmp));
   }
 
   const ordenarPorLongitud = (a, b, propiedad) => {
@@ -104,7 +97,7 @@ export default function Competencias() {
         </p>
       </div>
       <br />
-      <form action="">
+      <form action="" className="mb-32">
         <section className="flex gap-3 md:w-full">
           <label htmlFor="habilidad" className="w-1/8">
             Habilidad:
@@ -141,7 +134,7 @@ export default function Competencias() {
                   <button
                     type="button"
                     className="Border-l pl-2"
-                    onClick={() => eliminar(habilidad.id, habilidades)}
+                    onClick={() => eliminar(habilidad.id, "habilidades")}
                   >
                     <IoIosCloseCircleOutline className="text-lg Alerta" />
                   </button>
@@ -150,9 +143,6 @@ export default function Competencias() {
           </div>
         </section>
       </form>
-      <br />
-      <br />
-      <br />
 
       <div>
         <h5 className="Titulo">Aptitudes</h5>
@@ -165,7 +155,7 @@ export default function Competencias() {
         </p>
       </div>
       <br />
-      <form action="">
+      <form action="" className="mb-32">
         <section className="flex gap-3 md:w-full">
           <label htmlFor="aptitud" className="w-1/8">
             Aptitud:
@@ -199,7 +189,7 @@ export default function Competencias() {
                   <button
                     type="button"
                     className="Border-l pl-2"
-                    onClick={() => eliminar(aptitud.id, aptitudes)}
+                    onClick={() => eliminar(aptitud.id, "aptitudes")}
                   >
                     <IoIosCloseCircleOutline className="text-lg Alerta" />
                   </button>
@@ -208,9 +198,6 @@ export default function Competencias() {
           </div>
         </section>
       </form>
-      <br />
-      <br />
-      <br />
 
       <div>
         <h5 className="Titulo">Lenguajes</h5>
@@ -224,7 +211,7 @@ export default function Competencias() {
         </p>
       </div>
       <br />
-      <form action="">
+      <form action="" className="mb-32">
         <section className="flex gap-3 md:w-full">
           <label htmlFor="lenguaje" className="w-1/8">
             Lenguajes:
@@ -261,7 +248,7 @@ export default function Competencias() {
                   <button
                     type="button"
                     className="Border-l pl-2"
-                    onClick={() => eliminar(lenguaje.id, lenguajes)}
+                    onClick={() => eliminar(lenguaje.id, "lenguajes")}
                   >
                     <IoIosCloseCircleOutline className="text-lg Alerta" />
                   </button>
@@ -270,7 +257,6 @@ export default function Competencias() {
           </div>
         </section>
       </form>
-      <br />
     </div>
   );
 }
