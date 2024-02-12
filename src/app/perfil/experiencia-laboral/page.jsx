@@ -225,7 +225,7 @@ export default function ExperienciaLaboral() {
               type="text"
               id="empresa"
               value={empresa}
-              onChange={selectEmpresa}
+              onChange={(e) => setEmpresa(e.target.value)}
               className="Input w-2/3"
             />
           </section>
@@ -237,7 +237,7 @@ export default function ExperienciaLaboral() {
               type="text"
               id="cargo"
               value={cargo}
-              onChange={selectCargo}
+              onChange={(e) => setCargo(e.target.value)}
               className="Input w-2/3"
             />
           </section>
@@ -250,7 +250,7 @@ export default function ExperienciaLaboral() {
                 id="mesInicio"
                 name="mes"
                 value={mesInicio}
-                onChange={selectMesInicio}
+                onChange={(e) => setMesInicio(e.target.value)}
                 className="Select"
               >
                 {meses.map((mes, index) => (
@@ -264,7 +264,7 @@ export default function ExperienciaLaboral() {
                 id="anioInicio"
                 name="anio"
                 value={anioInicio}
-                onChange={selectAnioInicio}
+                onChange={(e) => setAnioInicio(e.target.value)}
                 className="Select"
               >
                 {anios.map((anio, index) => (
@@ -284,7 +284,7 @@ export default function ExperienciaLaboral() {
                 id="mesFinal"
                 name="mes"
                 value={mesFinal}
-                onChange={selectMesFinal}
+                onChange={(e) => setMesFinal(e.target.value)}
                 className="Select"
               >
                 {meses.map((mes, index) => (
@@ -298,7 +298,7 @@ export default function ExperienciaLaboral() {
                 id="anioFinal"
                 name="anio"
                 value={anioFinal}
-                onChange={selectAnioFinal}
+                onChange={(e) => setAnioFinal(e.target.value)}
                 className="Select"
               >
                 {anios.map((anio, index) => (
@@ -317,7 +317,7 @@ export default function ExperienciaLaboral() {
               name=""
               id="descripcion"
               value={descripcion}
-              onChange={selectDescripcion}
+              onChange={(e) => setDescripcion(e.target.value)}
               className="h-20 w-2/3 md:w-3/4 p-3 rounded-md bg-gray-800 text-sm resize-none"
             ></textarea>
           </section>
