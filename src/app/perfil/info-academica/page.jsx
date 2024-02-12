@@ -131,31 +131,24 @@ export default function InformacionAcademica() {
   }
 
   function cargarDatos(id) {
+    let valorUnico = null;
     if (id === undefined) {
-      const nuevoObjeto = {
-        id: identificador,
-        nivel: nivel,
-        centro: centro,
-        titulo: titulo,
-        mesInicio: mesInicio,
-        anioInicio: anioInicio,
-        mesFinal: mesFinal,
-        anioFinal: anioFinal,
-      };
-      return nuevoObjeto;
+      valorUnico = identificador;
     } else {
-      const nuevoObjeto = {
-        id: id,
-        nivel: nivel,
-        centro: centro,
-        titulo: titulo,
-        mesInicio: mesInicio,
-        anioInicio: anioInicio,
-        mesFinal: mesFinal,
-        anioFinal: anioFinal,
-      };
-      return nuevoObjeto;
+      valorUnico = id;
     }
+
+    const nuevoObjeto = {
+      id: valorUnico,
+      nivel: nivel,
+      centro: centro,
+      titulo: titulo,
+      mesInicio: mesInicio,
+      anioInicio: anioInicio,
+      mesFinal: mesFinal,
+      anioFinal: anioFinal,
+    };
+    return nuevoObjeto;
   }
 
   function verificarCamposVacios() {
