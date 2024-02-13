@@ -96,7 +96,7 @@ export default function InformacionPersonal() {
         <div className="flex flex-col gap-2 mt-2 text-sm">
           <div className="flex md:w-3/4">
             <label htmlFor="nombre" className="w-1/3">
-              Nombre completo:
+              Nombre:
             </label>
             <input
               type="text"

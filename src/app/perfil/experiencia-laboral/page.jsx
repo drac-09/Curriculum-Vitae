@@ -187,7 +187,7 @@ export default function ExperienciaLaboral() {
         <div className="flex flex-col gap-2 mt-2 text-sm">
           <section className="flex md:w-3/4">
             <label htmlFor="empresa" className="w-1/3">
-              Nombre de la Empresa:
+              Empresa:
             </label>
             <input
               type="text"
@@ -195,6 +195,7 @@ export default function ExperienciaLaboral() {
               value={empresa}
               onChange={(e) => setEmpresa(e.target.value)}
               className="Input w-2/3"
+              placeholder="Nombre de la empresa"
             />
           </section>
           <section className="flex md:w-3/4">

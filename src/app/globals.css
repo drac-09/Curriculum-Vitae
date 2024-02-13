@@ -76,15 +76,15 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 
   .Border-r {
-    @apply border-r-[1px] border-gray-800;
+    @apply border-r-[1px] border-orange-400 border-opacity-30;
   }
 
   .Border-l {
-    @apply border-l-[1px] border-gray-800;
+    @apply border-l-[1px] border-orange-400 border-opacity-30;
   }
 
   .Card {
-    @apply border-[1px] rounded-md border-dashed p-3 my-5;
+    @apply border-[1px] rounded-md border-dashed border-orange-400 border-opacity-30 p-3 my-5;
   }
 
   .Etiqueta {

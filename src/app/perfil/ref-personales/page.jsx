@@ -147,16 +147,13 @@ export default function ReferenciasPersonales() {
         <p className="text-sm text-gray-200">
           En esta sección es donde proporcionas los nombres y la información de
           contacto de personas que pueden dar testimonio de tu experiencia
-          laboral, habilidades y carácter. Estas referencias son individuos con
-          quienes has trabajado directamente, como antiguos colegas,
-          supervisores o profesionales con los que has tenido una relación
-          laboral estrecha.
+          laboral, habilidades y carácter.
         </p>
         <br />
         <div className="flex flex-col gap-2 mt-2 text-sm">
           <section className="flex md:w-3/4">
             <label htmlFor="nombre" className="w-1/3">
-              Nombre Completo:
+              Nombre:
             </label>
             <input
               type="text"
@@ -164,6 +161,7 @@ export default function ReferenciasPersonales() {
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
               className="Input w-2/3"
+              placeholder="Nombre de la persona"
             />
           </section>
           <section className="flex md:w-3/4">
@@ -176,11 +174,12 @@ export default function ReferenciasPersonales() {
               value={empresa}
               onChange={(e) => setEmpresa(e.target.value)}
               className="Input w-2/3"
+              placeholder="Nombre de la empresa"
             />
           </section>
           <section className="flex md:w-3/4">
             <label htmlFor="cargo" className="w-1/3">
-              Cargo o Puesto:
+              Cargo:
             </label>
             <input
               type="text"
@@ -188,6 +187,7 @@ export default function ReferenciasPersonales() {
               value={cargo}
               onChange={(e) => setCargo(e.target.value)}
               className="Input w-2/3"
+              placeholder="Puesto que ocupa en la empresa"
             />
           </section>
           <div className="flex md:w-2/4">
@@ -195,11 +195,12 @@ export default function ReferenciasPersonales() {
               Celular:
             </label>
             <input
-              type="text"
+              type="number"
               id="celular"
               value={celular}
+              maxLength={9}
+              pattern="[0-9]{4}-[0-9]{4}"
               onChange={(e) => setCelular(e.target.value)}
-              pattern="\d{4}-\d{4}"
               placeholder="9999-9999"
               className="Input w-1/3"
             />
