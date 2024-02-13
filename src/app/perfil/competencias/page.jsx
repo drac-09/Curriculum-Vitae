@@ -90,10 +90,10 @@ export default function Competencias() {
         <h5 className="Titulo">Habilidades</h5>
         <hr className="Hr" />
         <p className="text-sm text-gray-200">
-          Aquí mencionas las cosas que sabes hacer bien. Pueden ser cosas como
-          usar computadoras, hablar en público, o trabajar en equipo. Por
-          ejemplo, si eres bueno con Excel o sabes programar en Python, es
-          importante mencionarlo aquí.
+          Son las capacidades y competencias que posees y que son relevantes
+          para el puesto al que estás aplicando. Pueden ser habilidades blandas
+          o habilidades interpersonales. Al ingresar las habilidades tendrás una
+          lista de ejemplos.
         </p>
       </div>
       <br />
@@ -108,7 +108,29 @@ export default function Competencias() {
             value={habilidad}
             onChange={(e) => setHabilidad(e.target.value)}
             className="Input flex-grow"
+            list="habilidades"
+            autocomplete="off"
           />
+          <datalist
+            id="habilidades"
+            className="absolute left-0 w-full bg-slate-600"
+          >
+            <option value="Empatía.">Empatía.</option>
+            <option value="Creatividad.">Creatividad.</option>
+            <option value="Trabajo en equipo.">Trabajo en equipo.</option>
+            <option value="Toma de decisiones.">Toma de decisiones.</option>
+            <option value="Gestión del tiempo.">Gestión del tiempo.</option>
+            <option value="Pensamiento crítico.">Pensamiento crítico.</option>
+            <option value="Comunicación efectiva.">
+              Comunicación efectiva.
+            </option>
+            <option value="Capacidad de liderazgo.">
+              Capacidad de liderazgo.
+            </option>
+            <option value="Resolución de problemas.">
+              Resolución de problemas.
+            </option>
+          </datalist>
           <button
             type="button"
             onClick={() => {
@@ -148,10 +170,9 @@ export default function Competencias() {
         <h5 className="Titulo">Aptitudes</h5>
         <hr className="Hr" />
         <p className="text-sm text-gray-200">
-          Son las cosas que se te dan naturalmente o que has aprendido a hacer
-          muy bien. Por ejemplo, si eres muy bueno para resolver problemas
-          complicados o tienes mucha paciencia para tratar con personas
-          difíciles, es bueno mencionarlo aquí.
+          Son las características personales, talentos o inclinaciones naturales
+          que pueden influir en tu desempeño laboral. Al ingresar las aptitudes
+          tendrás una lista de ejemplos.
         </p>
       </div>
       <br />
@@ -166,7 +187,26 @@ export default function Competencias() {
             value={aptitud}
             onChange={(e) => setAptitud(e.target.value)}
             className="Input flex-grow"
+            list="aptitudes"
+            autoComplete="off"
           />
+          <datalist id="aptitudes">
+            <option value="Empatía.">Empatía.</option>
+            <option value="Optimismo.">Optimismo.</option>
+            <option value="Creatividad.">Creatividad.</option>
+            <option value="Resiliencia.">Resiliencia.</option>
+            <option value="Flexibilidad.">Flexibilidad.</option>
+            <option value="Organización.">Organización.</option>
+            <option value="Pensamiento analítico.">
+              Pensamiento analítico.
+            </option>
+            <option value="Resolución de conflictos.">
+              Resolución de conflictos.
+            </option>
+            <option value="Capacidad de aprendizaje.">
+              Capacidad de aprendizaje.
+            </option>
+          </datalist>
           <button
             type="button"
             onClick={() => {
@@ -203,11 +243,8 @@ export default function Competencias() {
         <h5 className="Titulo">Lenguajes</h5>
         <hr className="Hr" />
         <p className="text-sm text-gray-200">
-          En esta parte, dices qué idiomas hablas y qué tan bien los hablas. Si
-          hablas inglés, puedes decir si lo hablas básico, intermedio o
-          avanzado. Por ejemplo, si has vivido en Estados Unidos y puedes
-          conversar fácilmente con personas en inglés, es importante mencionarlo
-          aquí.
+          En esta parte, dices qué idiomas hablas. Al ingresar los lenguajes
+          tendrás una lista de ejemplos.
         </p>
       </div>
       <br />
@@ -222,7 +259,19 @@ export default function Competencias() {
             value={lenguaje}
             onChange={(e) => setLenguaje(e.target.value)}
             className="Input flex-grow"
+            list="lenguajes"
+            autoComplete="off"
           />
+          <datalist id="lenguajes">
+            <option value="Ruso.">Ruso.</option>
+            <option value="Ingles.">Ingles.</option>
+            <option value="Español.">Español.</option>
+            <option value="Japones.">Japones.</option>
+            <option value="Frances.">Frances.</option>
+            <option value="Italiano.">Italiano.</option>
+            <option value="Portugués.">Portugués.</option>
+            <option value="Chino Mandarin.">Chino Mandarin.</option>
+          </datalist>
           <button
             type="button"
             onClick={() => {
