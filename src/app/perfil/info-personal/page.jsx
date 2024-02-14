@@ -82,7 +82,7 @@ export default function InformacionPersonal() {
           id="sobremi"
           value={sobremi}
           onChange={(e) => setSobremi(e.target.value)}
-          className="w-full md:w-3/4 h-20 my-3 p-3 rounded-md bg-gray-800 text-sm resize-none"
+          className="w-full h-32 my-3 p-3 rounded-md bg-gray-800 text-sm resize-none"
         />
         <br />
         <br />
@@ -104,6 +104,7 @@ export default function InformacionPersonal() {
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
               className="Input w-2/3"
+              autoComplete="off"
             />
           </div>
           <div className="flex md:w-3/4">
@@ -116,6 +117,7 @@ export default function InformacionPersonal() {
               value={direccion}
               onChange={(e) => setDireccion(e.target.value)}
               className="Input w-2/3"
+              autoComplete="off"
             />
           </div>
           <div className="flex md:w-3/4">
@@ -129,6 +131,7 @@ export default function InformacionPersonal() {
               onChange={(e) => setCorreo(e.target.value)}
               placeholder="correoelectronico@server.com"
               className="Input w-2/3"
+              autoComplete="off"
             />
           </div>
           <div className="flex md:w-3/4">
@@ -143,6 +146,7 @@ export default function InformacionPersonal() {
               pattern="\d{4}-\d{4}-\d{5}"
               placeholder="0000-0000-00000"
               className="Input w-1/3"
+              autoComplete="off"
             />
           </div>
           <div className="flex md:w-2/4">
@@ -150,7 +154,7 @@ export default function InformacionPersonal() {
               Celular:
             </label>
             <input
-              type="number"
+              type="text"
               id="celular"
               value={celular}
               maxLength={9}
@@ -158,6 +162,7 @@ export default function InformacionPersonal() {
               onChange={(e) => setCelular(e.target.value)}
               placeholder="9999-9999"
               className="Input w-1/3"
+              autoComplete="off"
             />
           </div>
           <div className="flex md:w-2/4">
