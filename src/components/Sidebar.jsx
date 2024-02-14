@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import FotoPerfil from "./FotoPerfil";
 
 // Icons
 import { PiUserCircleThin } from "react-icons/pi";
@@ -20,10 +20,7 @@ export default function Sidebar() {
     <div className="flex flex-col w-screen md:w-auto">
       <div className="hidden md:flex flex-col h-[85vh] border-r-[1px] border-slate-900 pr-10">
         <div className="flex flex-col gap-3 flex-grow text-sm">
-          <div className="flex flex-col items-center justify-center border-b-[1px] border-slate-900 pb-5 mb-5">
-            <PiUserCircleThin className="text-[150px]" />
-            <button className="Button">Seleccionar Foto...</button>
-          </div>
+          <FotoPerfil />
           <Link
             href={"/perfil/info-personal"}
             className={`${
@@ -79,7 +76,7 @@ export default function Sidebar() {
         <div className="className=block sm:hidden">
           <div className="absolute z-0 w-screen bg-black text-white">
             <div className="flex flex-col text-sm h-[84vh]">
-              <div
+              {/* <div
                 className="flex flex-col items-center justify-center h-72"
                 onClick={() => {}}
               >
@@ -87,7 +84,8 @@ export default function Sidebar() {
                 <button className="border-[1px] border-white py-1 px-4 rounded-md text-xs">
                   Seleccionar Foto...
                 </button>
-              </div>
+              </div> */}
+              <FotoPerfil />
               <div className="flex-grow flex flex-col gap-5 px-5 items-center ">
                 <Link href={"/perfil/info-personal"} onClick={toggleDropdown}>
                   <h1>Información Personal</h1>
