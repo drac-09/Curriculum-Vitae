@@ -41,50 +41,52 @@ export default function Page() {
       <br />
       <br />
       <div className="flex flex-col md:flex-row gap-10 w-full">
-        <Cropper
-          src={image}
-          style={{ height: 300, width: "100%" }}
-          initialAspectRatio={1}
-          viewMode={1}
-          dragMode="move"
-          cropBoxMovable={false}
-          cropBoxResizable={false}
-          preview=".overflow-hidden"
-          minCropBoxHeight={10}
-          minCropBoxWidth={10}
-          background={false}
-          responsive={true}
-          autoCropArea={1}
-          checkOrientation={false}
-          onInitialized={(instance) => {
-            setCropper(instance);
-          }}
-          guides={true}
-        />
-        <div className="flex flex-col justify-start items-center p-[10px] box-border w-1/2 float-right">
+        <div className="Etiqueta">
+          <Cropper
+            src={image}
+            style={{ height: 300, width: "100%" }}
+            initialAspectRatio={1}
+            viewMode={1}
+            dragMode="move"
+            cropBoxMovable={false}
+            cropBoxResizable={false}
+            preview=".overflow-hidden"
+            minCropBoxHeight={10}
+            minCropBoxWidth={10}
+            background={false}
+            responsive={true}
+            autoCropArea={1}
+            checkOrientation={false}
+            onInitialized={(instance) => {
+              setCropper(instance);
+            }}
+            guides={true}
+          />
+        </div>
+        <div className="Etiqueta flex flex-col justify-start items-center p-[10px] box-border w-1/2 float-right">
           <h1>Preview</h1>
           <br />
           <div className="overflow-hidden h-[170px] w-[200px] rounded-[50%]" />
         </div>
       </div>
 
-      {/* <div
-          className="inline-block p-[10px] box-border"
-          id="ImagenRecortada"
-          style={{ width: "50%", float: "right", height: "300px" }}
-        >
-          <h1>
-            <span>Crop</span>
-            <button
-              className="Button"
-              style={{ float: "right" }}
-              onClick={getCropData}
-            >
-              Crop Image
-            </button>
-          </h1>
-          <img style={{ width: "100%" }} src={cropData} alt="cropped" />
-        </div> */}
+      <div
+        className="inline-block p-[10px] box-border"
+        id="ImagenRecortada"
+        style={{ width: "50%", float: "right", height: "300px" }}
+      >
+        <h1>
+          <span>Crop</span>
+          <button
+            className="Button"
+            style={{ float: "right" }}
+            onClick={getCropData}
+          >
+            Crop Image
+          </button>
+        </h1>
+        <img style={{ width: "100%" }} src={cropData} alt="cropped" />
+      </div>
       <br style={{ clear: "both" }} />
     </div>
   );
