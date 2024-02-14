@@ -109,7 +109,7 @@ export default function Competencias() {
             onChange={(e) => setHabilidad(e.target.value)}
             className="Input flex-grow"
             list="habilidades"
-            autocomplete="off"
+            autoComplete="off"
           />
           <datalist
             id="habilidades"
