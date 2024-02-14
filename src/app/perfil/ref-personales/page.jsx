@@ -162,6 +162,7 @@ export default function ReferenciasPersonales() {
               onChange={(e) => setNombre(e.target.value)}
               className="Input w-2/3"
               placeholder="Nombre de la persona"
+              autoComplete="off"
             />
           </section>
           <section className="flex md:w-3/4">
@@ -175,6 +176,7 @@ export default function ReferenciasPersonales() {
               onChange={(e) => setEmpresa(e.target.value)}
               className="Input w-2/3"
               placeholder="Nombre de la empresa"
+              autoComplete="off"
             />
           </section>
           <section className="flex md:w-3/4">
@@ -188,6 +190,7 @@ export default function ReferenciasPersonales() {
               onChange={(e) => setCargo(e.target.value)}
               className="Input w-2/3"
               placeholder="Puesto que ocupa en la empresa"
+              autoComplete="off"
             />
           </section>
           <div className="flex md:w-2/4">
@@ -195,7 +198,7 @@ export default function ReferenciasPersonales() {
               Celular:
             </label>
             <input
-              type="number"
+              type="text"
               id="celular"
               value={celular}
               maxLength={9}
@@ -203,6 +206,7 @@ export default function ReferenciasPersonales() {
               onChange={(e) => setCelular(e.target.value)}
               placeholder="9999-9999"
               className="Input w-1/3"
+              autoComplete="off"
             />
           </div>
         </div>
@@ -256,7 +260,7 @@ export default function ReferenciasPersonales() {
           <div key={ref.id} className="Card">
             <section className="text-sm">
               <div className="flex gap-3 w-full">
-                <div className="w-1/3 Border-l">
+                <div className="w-1/3 Border-r">
                   <h1>Nombre Completo</h1>
                   <h1>Nombre de la Empresa</h1>
                   <h1>Cargo o Puesto</h1>
