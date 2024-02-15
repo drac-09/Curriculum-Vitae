@@ -20,6 +20,8 @@ export default function Navbar() {
     "/perfil/ref-personales",
   ];
 
+  const diseniosPaths = ["/disenios/cv1", "/disenios/cv2", "/disenios/cv3"];
+
   const [menu, setMenu] = useState(false);
 
   function openMenu() {
@@ -48,8 +50,13 @@ export default function Navbar() {
             <h1>Perfil</h1>
           </Link>
           <Link
-            href={"/disenos"}
-            className={`${pathName === "/disenos" ? "Seleccionado" : ""}`}
+            href={"/disenios/cv1"}
+            className={`${
+              pathName.startsWith("/disenios/") &&
+              diseniosPaths.includes(pathName)
+                ? "Seleccionado"
+                : ""
+            }`}
           >
             <h1>Diseños</h1>
           </Link>
@@ -89,7 +96,10 @@ export default function Navbar() {
                   <LiaUserEditSolid />
                   <h1>Perfil</h1>
                 </Link>
-                <Link href={"/disenos"} className="flex  items-center gap-2">
+                <Link
+                  href={"/disenios/cv1"}
+                  className="flex  items-center gap-2"
+                >
                   <LiaEdit />
                   <h1>Diseños</h1>
                 </Link>

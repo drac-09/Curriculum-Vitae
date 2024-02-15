@@ -76,15 +76,6 @@ export default function Sidebar() {
         <div className="className=block sm:hidden">
           <div className="absolute z-0 w-screen bg-black text-white">
             <div className="flex flex-col text-sm h-[84vh]">
-              {/* <div
-                className="flex flex-col items-center justify-center h-72"
-                onClick={() => {}}
-              >
-                <PiUserCircleThin className="text-[150px]" />
-                <button className="border-[1px] border-white py-1 px-4 rounded-md text-xs">
-                  Seleccionar Foto...
-                </button>
-              </div> */}
               <FotoPerfil />
               <div className="flex-grow flex flex-col gap-5 px-5 items-center ">
                 <Link href={"/perfil/info-personal"} onClick={toggleDropdown}>
