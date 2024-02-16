@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 export default function InformacionPersonal() {
   const [sobremi, setSobremi] = useState([]);
   const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
   const [direccion, setDireccion] = useState("");
   const [correo, setCorreo] = useState("");
   const [celular, setCelular] = useState("");
@@ -45,6 +46,7 @@ export default function InformacionPersonal() {
   function cargarDatos(data) {
     setSobremi(data.sobremi);
     setNombre(data.nombre);
+    setApellido(data.apellido);
     setDireccion(data.direccion);
     setCorreo(data.correo);
     setCelular(data.celular);
@@ -56,6 +58,7 @@ export default function InformacionPersonal() {
     const info = {
       sobremi: sobremi,
       nombre: nombre,
+      apellido: apellido,
       direccion: direccion,
       correo: correo,
       celular: celular,
@@ -103,6 +106,19 @@ export default function InformacionPersonal() {
               id="nombre"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
+              className="Input w-2/3"
+              autoComplete="off"
+            />
+          </div>
+          <div className="flex md:w-3/4">
+            <label htmlFor="apellido" className="w-1/3">
+              Apellido:
+            </label>
+            <input
+              type="text"
+              id="apellido"
+              value={apellido}
+              onChange={(e) => setApellido(e.target.value)}
               className="Input w-2/3"
               autoComplete="off"
             />
