@@ -6,12 +6,13 @@ export default function InformacionPersonal() {
   const [sobremi, setSobremi] = useState([]);
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
+  const [profesion, setProfesion] = useState("");
   const [direccion, setDireccion] = useState("");
   const [correo, setCorreo] = useState("");
   const [celular, setCelular] = useState("");
   const [dni, setDni] = useState("");
+  const [estadocivil, setEstadocivil] = useState("Soltero");
 
-  const [estadocivil, setEstadocivil] = useState("");
   const [visible, setVisible] = useState(false);
   const [animacion, setAnimacion] = useState();
 
@@ -47,6 +48,7 @@ export default function InformacionPersonal() {
     setSobremi(data.sobremi);
     setNombre(data.nombre);
     setApellido(data.apellido);
+    setProfesion(data.profesion);
     setDireccion(data.direccion);
     setCorreo(data.correo);
     setCelular(data.celular);
@@ -59,6 +61,7 @@ export default function InformacionPersonal() {
       sobremi: sobremi,
       nombre: nombre,
       apellido: apellido,
+      profesion: profesion,
       direccion: direccion,
       correo: correo,
       celular: celular,
@@ -85,7 +88,7 @@ export default function InformacionPersonal() {
           id="sobremi"
           value={sobremi}
           onChange={(e) => setSobremi(e.target.value)}
-          className="w-full h-32 my-3 p-3 rounded-md bg-gray-800 text-sm resize-none"
+          className="w-full h-24 my-3 p-3 rounded-md bg-gray-800 text-sm resize-none"
         />
         <br />
         <br />
@@ -106,7 +109,8 @@ export default function InformacionPersonal() {
               id="nombre"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className="Input w-2/3"
+              className="Input w-1/3"
+              placeholder="Primer nombre"
               autoComplete="off"
             />
           </div>
@@ -119,7 +123,22 @@ export default function InformacionPersonal() {
               id="apellido"
               value={apellido}
               onChange={(e) => setApellido(e.target.value)}
+              className="Input w-1/3"
+              placeholder="Primer apellido"
+              autoComplete="off"
+            />
+          </div>
+          <div className="flex md:w-3/4">
+            <label htmlFor="profesion" className="w-1/3">
+              Profesión:
+            </label>
+            <input
+              type="text"
+              id="profesion"
+              value={profesion}
+              onChange={(e) => setProfesion(e.target.value)}
               className="Input w-2/3"
+              placeholder="Profesión u Oficio"
               autoComplete="off"
             />
           </div>
@@ -133,6 +152,7 @@ export default function InformacionPersonal() {
               value={direccion}
               onChange={(e) => setDireccion(e.target.value)}
               className="Input w-2/3"
+              placeholder="Dirección de su domicilio"
               autoComplete="off"
             />
           </div>
@@ -158,6 +178,7 @@ export default function InformacionPersonal() {
               type="text"
               id="dni"
               value={dni}
+              maxLength={15}
               onChange={(e) => setDni(e.target.value)}
               pattern="\d{4}-\d{4}-\d{5}"
               placeholder="0000-0000-00000"
