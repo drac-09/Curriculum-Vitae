@@ -87,13 +87,13 @@ export default function Competencias() {
   return (
     <div>
       <div>
-        <h5 className="Titulo">Habilidades</h5>
+        <h5 className="Titulo">Habilidades Blandas</h5>
         <hr className="Hr" />
         <p className="text-sm text-gray-200">
-          Son las capacidades y competencias que posees y que son relevantes
-          para el puesto al que estás aplicando. Pueden ser habilidades blandas
-          o habilidades interpersonales. Al ingresar las habilidades tendrás una
-          lista de ejemplos.
+          on habilidades sociales, emocionales y de comunicación que te permiten
+          interactuar efectivamente con otras personas y trabajar en equipo.
+          Algunos ejemplos de habilidades blandas son la capacidad de
+          comunicación, la empatía, el trabajo en equipo y el liderazgo.
         </p>
       </div>
       <br />
@@ -167,12 +167,12 @@ export default function Competencias() {
       </form>
 
       <div>
-        <h5 className="Titulo">Aptitudes</h5>
+        <h5 className="Titulo">Habilidades Técnicas</h5>
         <hr className="Hr" />
         <p className="text-sm text-gray-200">
-          Son las características personales, talentos o inclinaciones naturales
-          que pueden influir en tu desempeño laboral. Al ingresar las aptitudes
-          tendrás una lista de ejemplos.
+          Son habilidades específicas y prácticas que necesitas para desempeñar
+          un trabajo o tarea particular. Por ejemplo, saber programar, operar
+          maquinaria, o utilizar software especializado.
         </p>
       </div>
       <br />
@@ -191,20 +191,28 @@ export default function Competencias() {
             autoComplete="off"
           />
           <datalist id="aptitudes">
-            <option value="Empatía.">Empatía.</option>
-            <option value="Optimismo.">Optimismo.</option>
-            <option value="Creatividad.">Creatividad.</option>
-            <option value="Resiliencia.">Resiliencia.</option>
-            <option value="Flexibilidad.">Flexibilidad.</option>
-            <option value="Organización.">Organización.</option>
-            <option value="Pensamiento analítico.">
-              Pensamiento analítico.
+            <option value="Microsoft Office.">Microsoft Office.</option>
+            <option value="Dominio de idiomas.">Dominio de idiomas.</option>
+            <option value="Atención al cliente.">Atención al cliente.</option>
+            <option value="Redacción de textos.">Redacción de textos.</option>
+            <option value="Gestión de proyectos.">Gestión de proyectos.</option>
+            <option value="Manejo de contabilidad.">
+              Manejo de contabilidad.
             </option>
-            <option value="Resolución de conflictos.">
-              Resolución de conflictos.
+            <option value="SEO y marketing digital.">
+              SEO y marketing digital.
             </option>
-            <option value="Capacidad de aprendizaje.">
-              Capacidad de aprendizaje.
+            <option value="Configuración de servidores.">
+              Configuración de servidores.
+            </option>
+            <option value="Manejo de maquinaria pesada.">
+              Manejo de maquinaria pesada.
+            </option>
+            <option value="Soldadura y ensamblaje mecánico.">
+              Soldadura y ensamblaje mecánico.
+            </option>
+            <option value="Técnicas básicas de diseño gráfico.">
+              Técnicas básicas de diseño gráfico.
             </option>
           </datalist>
           <button
