@@ -54,12 +54,12 @@ export default function Sidebar() {
             <h1>Competencias</h1>
           </Link>
           <Link
-            href={"/perfil/ref-personales"}
+            href={"/perfil/ref-profesionales"}
             className={`${
-              pathName === "/perfil/ref-personales" ? "Seleccionado" : ""
+              pathName === "/perfil/ref-profesionales" ? "Seleccionado" : ""
             }`}
           >
-            <h1>Referencias Personales</h1>
+            <h1>Referencias Profesionales</h1>
           </Link>
         </div>
         <button className="Button">Borrar Información</button>
@@ -93,8 +93,11 @@ export default function Sidebar() {
                 <Link href={"/perfil/competencias"} onClick={toggleDropdown}>
                   <h1>Competencias</h1>
                 </Link>
-                <Link href={"/perfil/ref-personales"} onClick={toggleDropdown}>
-                  <h1>Referencias Personales</h1>
+                <Link
+                  href={"/perfil/ref-profesionales"}
+                  onClick={toggleDropdown}
+                >
+                  <h1>Referencias Profesionales</h1>
                 </Link>
               </div>
               <div className="flex justify-center mb-5">
