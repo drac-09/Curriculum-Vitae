@@ -2,7 +2,7 @@
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
-export default function DatosPersonales() {
+export default function DatosPersonales(props) {
   const [datos, setDatos] = useState([]);
 
   useEffect(() => {
@@ -11,12 +11,21 @@ export default function DatosPersonales() {
   }, []);
 
   return (
-    <div>
-      <h1>{datos.correo}</h1>
-      <h1>{datos.direccion}</h1>
-      <h1>{datos.celular}</h1>
-      <h1>{datos.dni}</h1>
-      <h1>{datos.estadocivil}</h1>
-    </div>
+    <>
+      {datos.length !== 0 ? (
+        <div>
+          <h2 className="font-black mb-1">CONTACTO</h2>
+          <div>
+            <h1>{datos.correo}</h1>
+            <h1>{datos.direccion}</h1>
+            {/* <h1>{datos.dni}</h1> */}
+            <h1>{datos.celular}</h1>
+            <h1>{datos.estadocivil}</h1>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+    </>
   );
 }
