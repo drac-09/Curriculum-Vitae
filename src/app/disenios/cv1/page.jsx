@@ -13,6 +13,13 @@ import { Roboto, Playfair_Display } from "next/font/google";
 import Cookies from "js-cookie";
 import Image from "next/image";
 
+// Iconos cv1
+import { AiOutlineMail } from "react-icons/ai";
+import { IoLocationOutline } from "react-icons/io5";
+import { PiIdentificationBadge } from "react-icons/pi";
+import { IoPhonePortraitOutline } from "react-icons/io5";
+import { GiLinkedRings } from "react-icons/gi";
+
 // Imprimir PDF
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
@@ -26,6 +33,14 @@ const play = Playfair_Display({
   subsets: ["latin"],
   weight: ["600", "700"],
 });
+
+const cv1 = {
+  correo: <AiOutlineMail />,
+  direccion: <IoLocationOutline />,
+  dni: <PiIdentificationBadge />,
+  celular: <IoPhonePortraitOutline />,
+  estadocivil: <GiLinkedRings />,
+};
 
 const defaultSrc = "/imagen.jpg";
 
@@ -98,7 +113,7 @@ export default function CurriculumVitaeUno() {
           </section>
           <section className="flex text-[9px]">
             <section className="w-2/5 py-2 pr-2">
-              <DatosPersonales />
+              <DatosPersonales cv={cv1} />
               <HabilidadesBlandas icono="▪" />
               <HabilidadesTecnicas icono="▪" />
               <Lenguajes icono="▪" />
