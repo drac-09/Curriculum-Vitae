@@ -2,6 +2,7 @@
 import Cookies from "js-cookie";
 import fechas from "@/data/fechas";
 import { useEffect, useState, useRef } from "react";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 export default function ExperienciaLaboral() {
   const [button, setButton] = useState(true);
@@ -12,13 +13,16 @@ export default function ExperienciaLaboral() {
 
   const [experiencia, setExperiencia] = useState([]);
   const [identificador, setIdentificador] = useState("");
-  const [descripcion, setDescripcion] = useState("");
   const [empresa, setEmpresa] = useState("");
   const [cargo, setCargo] = useState("");
   const [mesInicio, setMesInicio] = useState("Enero");
   const [anioInicio, setAnioInicio] = useState(2024);
   const [mesFinal, setMesFinal] = useState("Diciembre");
   const [anioFinal, setAnioFinal] = useState(2024);
+  // const [descripcion, setDescripcion] = useState("");
+
+  const [tareas, setTareas] = useState([]);
+  const [tarea, setTarea] = useState("");
 
   const meses = fechas.meses;
   const anios = fechas.anios;
@@ -77,23 +81,24 @@ export default function ExperienciaLaboral() {
     setButton(false);
     const tmp = experiencia.find((objeto) => objeto.id === id);
     setIdentificador(tmp.id);
-    setDescripcion(tmp.descripcion);
     setEmpresa(tmp.empresa);
     setCargo(tmp.cargo);
     setMesInicio(tmp.mesInicio);
     setAnioInicio(tmp.anioInicio);
     setMesFinal(tmp.mesFinal);
     setAnioFinal(tmp.anioFinal);
+    // setDescripcion(tmp.descripcion);
+    setTareas(tmp.tareas);
     irAlFormulario();
   }
 
   function actualizar() {
-    const descripcion = cargarDatos();
+    const exp = cargarDatos();
     const index = experiencia.findIndex(
       (objeto) => objeto.id === identificador
     );
     if (index !== -1) {
-      experiencia[index] = { ...experiencia[index], ...descripcion };
+      experiencia[index] = { ...experiencia[index], ...exp };
       Cookies.set("ExperienciaLaboral", JSON.stringify(experiencia));
       limpiar();
       obtenerExperienciaCookies();
@@ -116,13 +121,14 @@ export default function ExperienciaLaboral() {
 
   function limpiar() {
     setIdentificador("");
-    setDescripcion("");
     setEmpresa("");
     setCargo("");
     setMesInicio("");
     setAnioInicio();
     setMesFinal("");
     setAnioFinal();
+    // setDescripcion("");
+    setTareas([]);
   }
 
   function cancelar() {
@@ -141,13 +147,14 @@ export default function ExperienciaLaboral() {
 
     const nuevoObjeto = {
       id: valorUnico,
-      descripcion: descripcion,
       empresa: empresa,
       cargo: cargo,
       mesInicio: mesInicio,
       anioInicio: anioInicio,
       mesFinal: mesFinal,
       anioFinal: anioFinal,
+      // descripcion: descripcion,
+      tareas: tareas,
     };
     return nuevoObjeto;
   }
@@ -168,6 +175,25 @@ export default function ExperienciaLaboral() {
     setMesFinal("Diciembre");
     setAnioFinal(2024);
   }
+
+  function agregar() {
+    const fecha = new Date();
+    const Nueva = {
+      id: fecha.getTime().toString(),
+      tarea: tarea,
+    };
+    setTareas([...tareas, Nueva]);
+    setTarea("");
+  }
+
+  function eliminar(id) {
+    const nuevasTareas = tareas.filter((tarea) => tarea.id !== id);
+    setTareas(nuevasTareas);
+  }
+
+  const ordenarPorLongitud = (a, b, propiedad) => {
+    return a.tarea.length - b.tarea.length;
+  };
 
   return (
     <div>
@@ -196,6 +222,7 @@ export default function ExperienciaLaboral() {
               onChange={(e) => setEmpresa(e.target.value)}
               className="Input w-2/3"
               placeholder="Nombre de la empresa"
+              autoComplete="off"
             />
           </section>
           <section className="flex md:w-3/4">
@@ -209,6 +236,7 @@ export default function ExperienciaLaboral() {
               onChange={(e) => setCargo(e.target.value)}
               className="Input w-2/3"
               placeholder="Puesto que ocupaste en la empresa"
+              autoComplete="off"
             />
           </section>
           <section className="flex md:w-2/4">
@@ -279,7 +307,7 @@ export default function ExperienciaLaboral() {
               </select>
             </div>
           </section>
-          <section className="flex md:w-full">
+          {/* <section className="flex md:w-full">
             <label htmlFor="descripcion" className="w-1/3 md:w-1/4">
               Descripción:
             </label>
@@ -290,9 +318,61 @@ export default function ExperienciaLaboral() {
               onChange={(e) => setDescripcion(e.target.value)}
               className="h-20 w-2/3 md:w-3/4 p-3 rounded-md bg-gray-800 text-sm resize-none"
               placeholder="Describe brevemente las responsabilidades y logros relevantes durante tu tiempo en este puesto."
+              autoComplete="off"
             ></textarea>
+          </section> */}
+
+          <section className="flex md:w-3/4">
+            <label htmlFor="tarea" className="w-1/3">
+              Tareas:
+            </label>
+            <div className="w-2/3 flex flex-col">
+              <div className="flex gap-3">
+                <input
+                  type="text"
+                  id="tarea"
+                  value={tarea}
+                  onChange={(e) => setTarea(e.target.value)}
+                  className="Input flex-grow"
+                  autoComplete="off"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    agregar();
+                  }}
+                  className="Button"
+                >
+                  Añadir
+                </button>
+              </div>
+              <br />
+            </div>
           </section>
+          <hr className="Hr" />
+          <div className="flex flex-col ">
+            {tareas
+              .slice()
+              .sort((a, b) => ordenarPorLongitud(a, b))
+              .map((tarea) => (
+                <div key={tarea.id} className="flex justify-between w-full">
+                  <div className="flex gap-3">
+                    <h1>✔</h1>
+                    <h1>{tarea.tarea}</h1>
+                  </div>
+                  <button
+                    type="button"
+                    className="pl-2"
+                    onClick={() => eliminar(tarea.id)}
+                  >
+                    <IoIosCloseCircleOutline className="text-lg Alerta" />
+                  </button>
+                </div>
+              ))}
+          </div>
         </div>
+        <br />
+        <hr className="Hr" />
 
         <div className="flex items-end gap-3 mt-10">
           {button ? (
@@ -348,7 +428,8 @@ export default function ExperienciaLaboral() {
                   <h1>Cargo</h1>
                   <h1>Fecha-Inicio</h1>
                   <h1>Fecha-Finalización</h1>
-                  <h1>Descripción</h1>
+                  {/* <h1>Descripción</h1> */}
+                  <h1>Tareas</h1>
                 </div>
                 <div className="w-2/3 truncate">
                   <h1>{exp.empresa}</h1>
@@ -359,7 +440,18 @@ export default function ExperienciaLaboral() {
                   <h1>
                     {exp.mesFinal} de {exp.anioFinal}
                   </h1>
-                  <h1 className="h-20">{exp.descripcion}</h1>
+                  {/* <label>{exp.descripcion}</label> */}
+                  {exp.tareas
+                    .slice()
+                    .sort((a, b) => ordenarPorLongitud(a, b))
+                    .map((tarea) => (
+                      <div key={tarea.id} className="max-w-max flex gap-3">
+                        <div className="flex gap-3">
+                          <h1>✔</h1>
+                          <h1>{tarea.tarea}</h1>
+                        </div>
+                      </div>
+                    ))}
                 </div>
               </div>
               <div className="flex-grow flex justify-end gap-3">

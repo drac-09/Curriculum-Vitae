@@ -16,6 +16,7 @@ export default function LinkDisenios({ dato }) {
         width={120}
         height={60}
         className="w-auto h-auto md:ml-[22px]"
+        priority
       />
     </Link>
   );
