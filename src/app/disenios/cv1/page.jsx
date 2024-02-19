@@ -108,11 +108,14 @@ export default function CurriculumVitaeUno() {
               {datos.sobremi ? (
                 <div>
                   <h2 className="font-black">PERFIL</h2>
-                  <label htmlFor="">{datos.sobremi}</label>
+                  <p htmlFor="" className="text-justify">
+                    {datos.sobremi}
+                  </p>
                 </div>
               ) : (
                 <></>
               )}
+              {datos.sobremi && <hr className="my-2" />}
               <Experiencia icono="▪" />
               <Educacion />
             </section>

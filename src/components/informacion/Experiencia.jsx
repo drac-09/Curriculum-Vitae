@@ -20,7 +20,6 @@ export default function Experiencia(props) {
     <>
       {datos.length !== 0 ? (
         <div>
-          <hr className="my-2" />
           <div>
             <h2 className="font-black mb-1">EXPERIENCIA LABORAL</h2>
             {datos.map((exp) => (
