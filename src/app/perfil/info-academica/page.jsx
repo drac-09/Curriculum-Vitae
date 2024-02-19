@@ -209,6 +209,7 @@ export default function InformacionAcademica() {
               value={centro}
               onChange={(e) => setCentro(e.target.value)}
               className="Input w-2/3"
+              autoComplete="off"
             />
           </section>
           <section className="flex md:w-3/4">
@@ -221,6 +222,7 @@ export default function InformacionAcademica() {
               value={titulo}
               onChange={(e) => setTitulo(e.target.value)}
               className="Input w-2/3"
+              autoComplete="off"
             />
           </section>
           <section className="flex md:w-2/4">
