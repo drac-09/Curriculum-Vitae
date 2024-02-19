@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import FotoPerfil from "./FotoPerfil";
+import DescargarJSON from "./informacion/DescargarJSON";
 
 // Icons
 import { PiUserCircleThin } from "react-icons/pi";
@@ -62,7 +63,10 @@ export default function Sidebar() {
             <h1>Referencias Profesionales</h1>
           </Link>
         </div>
-        <button className="Button">Borrar Información</button>
+        <div className="flex flex-col gap-3">
+          <DescargarJSON />
+          <button className="Button">Borrar Información</button>
+        </div>
       </div>
 
       <button
@@ -101,6 +105,7 @@ export default function Sidebar() {
                 </Link>
               </div>
               <div className="flex justify-center mb-5">
+                <DescargarJSON />
                 <button className="Button">Borrar Información</button>
               </div>
             </div>
