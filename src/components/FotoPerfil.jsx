@@ -24,7 +24,7 @@ export default function FotoPerfil() {
       setCropData(fotoPerfil);
       // setImage(fotoPerfil);
     }
-  }, []);
+  });
 
   const onChange = (e) => {
     e.preventDefault();

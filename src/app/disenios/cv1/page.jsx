@@ -1,5 +1,5 @@
 "use client";
-import DatosPersonales from "@/components/DatosPersonales";
+import DatosPersonales from "@/components/informacion/DatosPersonales";
 import HabilidadesBlandas from "@/components/informacion/HabilidadesBlandas";
 import HabilidadesTecnicas from "@/components/informacion/HabilidadesTecnicas";
 import Lenguajes from "@/components/informacion/Lenguajes";
