@@ -1,11 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
-
-import { PiUserCircleThin } from "react-icons/pi";
-import CropperImg from "@/components/CropperImg";
 import { Cropper } from "react-cropper";
-import { CiImageOn } from "react-icons/ci";
 import Image from "next/image";
 import "cropperjs/dist/cropper.css";
 import fotoPerfil from "../../public/imagen.jpg";
@@ -22,7 +17,6 @@ export default function FotoPerfil() {
     const fotoPerfil = localStorage.getItem("fotoPerfil");
     if (fotoPerfil) {
       setCropData(fotoPerfil);
-      // setImage(fotoPerfil);
     }
   });
 

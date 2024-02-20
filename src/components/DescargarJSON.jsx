@@ -1,4 +1,5 @@
 import Cookies from "js-cookie";
+import DatosPersonales from "./informacion/DatosPersonales";
 
 export default function DescargarJSON() {
   const fotoPerfil = localStorage.getItem("fotoPerfil");
@@ -7,6 +8,8 @@ export default function DescargarJSON() {
   const ExperienciaLaboral = Cookies.get("ExperienciaLaboral");
   const Competencias = Cookies.get("Competencias");
   const ReferenciasProfesionales = Cookies.get("ReferenciasProfesionales");
+
+  const info = JSON.parse(InformacionPersonal);
 
   const contenidoJSON = {
     fotoPerfil: fotoPerfil,
@@ -28,7 +31,7 @@ export default function DescargarJSON() {
     // Crear un enlace de descarga
     const enlaceDescarga = document.createElement("a");
     enlaceDescarga.href = url;
-    enlaceDescarga.download = "datos.json";
+    enlaceDescarga.download = `datos_${info.nombre}${info.apellido}.json`;
 
     // Simular un clic en el enlace de descarga
     document.body.appendChild(enlaceDescarga);
