@@ -18,6 +18,7 @@ export default function Navbar() {
     "/perfil/competencias",
     "/perfil/experiencia-laboral",
     "/perfil/ref-profesionales",
+    "/perfil/cargar-informacion",
   ];
 
   const diseniosPaths = ["/disenios/cv1", "/disenios/cv2", "/disenios/cv3"];
