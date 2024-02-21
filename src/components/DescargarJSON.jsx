@@ -1,23 +1,49 @@
 import Cookies from "js-cookie";
-import DatosPersonales from "./informacion/DatosPersonales";
+import { useEffect, useState } from "react";
 
 export default function DescargarJSON() {
-  const fotoPerfil = localStorage.getItem("fotoPerfil");
-  const InformacionPersonal = Cookies.get("InformacionPersonal");
-  const InformacionAcademica = Cookies.get("InformacionAcademica");
-  const ExperienciaLaboral = Cookies.get("ExperienciaLaboral");
-  const Competencias = Cookies.get("Competencias");
-  const ReferenciasProfesionales = Cookies.get("ReferenciasProfesionales");
+  const [fotoperfil, setFotoperfil] = useState("");
+  const [informacionpersonal, setInformacionpersonal] = useState([]);
+  const [informacionacademica, setInformacionacademica] = useState([]);
+  const [experiencialaboral, setExperiencialaboral] = useState([]);
+  const [competencias, setCompetencias] = useState([]);
+  const [referenciasprofesionales, setReferenciasprofesionales] = useState([]);
+  const [info, setInfo] = useState({
+    nombre: "Nombre",
+    apellido: "Apellido",
+  });
 
-  const info = JSON.parse(InformacionPersonal);
+  useEffect(() => {
+    const fotoPerfil = localStorage.getItem("fotoPerfil");
+    if (fotoPerfil) setFotoperfil(fotoPerfil);
+
+    const InformacionPersonal = Cookies.get("InformacionPersonal");
+    if (InformacionPersonal) {
+      setInformacionpersonal(InformacionPersonal);
+      setInfo(JSON.parse(InformacionPersonal));
+    }
+
+    const InformacionAcademica = Cookies.get("InformacionAcademica");
+    if (InformacionAcademica) setInformacionacademica(InformacionAcademica);
+
+    const ExperienciaLaboral = Cookies.get("ExperienciaLaboral");
+    if (ExperienciaLaboral) setExperiencialaboral(ExperienciaLaboral);
+
+    const Competencias = Cookies.get("Competencias");
+    if (Competencias) setCompetencias(Competencias);
+
+    const ReferenciasProfesionales = Cookies.get("ReferenciasProfesionales");
+    if (ReferenciasProfesionales)
+      setReferenciasprofesionales(ReferenciasProfesionales);
+  }, []);
 
   const contenidoJSON = {
-    fotoPerfil: fotoPerfil,
-    Competencias: Competencias,
-    ExperienciaLaboral: ExperienciaLaboral,
-    InformacionPersonal: InformacionPersonal,
-    InformacionAcademica: InformacionAcademica,
-    ReferenciasProfesionales: ReferenciasProfesionales,
+    fotoPerfil: fotoperfil,
+    Competencias: competencias,
+    ExperienciaLaboral: experiencialaboral,
+    InformacionPersonal: informacionpersonal,
+    InformacionAcademica: informacionacademica,
+    ReferenciasProfesionales: referenciasprofesionales,
   };
 
   // Convertir el objeto JSON a una cadena JSON
@@ -44,7 +70,7 @@ export default function DescargarJSON() {
 
   return (
     <div>
-      <button onClick={descargarArchivoJSON} className="Button">
+      <button onClick={descargarArchivoJSON} className="Button w-full">
         Descargar Información
       </button>
     </div>

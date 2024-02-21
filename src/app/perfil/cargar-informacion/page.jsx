@@ -1,23 +1,16 @@
 "use client";
 import { useState, useRef } from "react";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 export default function Cargar() {
+  const router = useRouter();
   const [archivo, serArchivo] = useState(null);
   const fileInputRef = useRef(null);
   const [fileName, setFileName] = useState("Selecciona un archivo");
 
   const [visible, setVisible] = useState(false);
   const [animacion, setAnimacion] = useState();
-
-  const handleFileChange = (event) => {
-    const selectedFile = event.target.files[0];
-    if (selectedFile) {
-      setFileName(selectedFile.name);
-    } else {
-      setFileName("Selecciona un archivo");
-    }
-  };
 
   const handleClick = () => {
     fileInputRef.current.click();
@@ -49,19 +42,19 @@ export default function Cargar() {
           "ReferenciasProfesionales",
           contenidoJSON.ReferenciasProfesionales
         );
-        setVisible(true);
-        setAnimacion("animate-fade-right");
-        setTimeout(() => {
-          setAnimacion(
-            "animate-fade-right animate-reverse animate-delay-[2000ms]"
-          );
-        }, 2000);
-        setTimeout(() => {
-          setVisible(false);
-        }, 3000);
+        // setVisible(true);
+        // setAnimacion("animate-fade-right");
+        // setTimeout(() => {
+        //   setAnimacion(
+        //     "animate-fade-right animate-reverse animate-delay-[2000ms]"
+        //   );
+        // }, 2000);
+        // setTimeout(() => {
+        //   setVisible(false);
+        // }, 3000);
       };
-
       reader.readAsText(archivo);
+      router.push("/disenios/cv1");
     } else {
       alert("Por favor selecciona un archivo JSON.");
     }
@@ -97,6 +90,7 @@ export default function Cargar() {
         <div className="flex items-center text-sm max-w-max">
           <button
             onClick={handleClick}
+            type="button"
             className="border-[1px] rounded-none text-sm py-1 px-2 bg-slate-900"
           >
             Seleccionar Archivo
