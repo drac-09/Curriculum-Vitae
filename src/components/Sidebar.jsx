@@ -4,6 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import FotoPerfil from "./FotoPerfil";
 import DescargarJSON from "./DescargarJSON";
+import BorrarInformacion from "./BorrarInformacion";
 
 // Icons
 import { PiUserCircleThin } from "react-icons/pi";
@@ -72,7 +73,7 @@ export default function Sidebar() {
             <h1>Cargar Informacion</h1>
           </Link>
           <DescargarJSON />
-          <button className="Button">Borrar Información</button>
+          <BorrarInformacion />
         </div>
       </div>
 
