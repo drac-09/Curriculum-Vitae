@@ -2,7 +2,11 @@
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
-export default function HabilidadesTecnicas(props) {
+export default function HabilidadesTecnicas({
+  icono,
+  classTitulo,
+  classBloque,
+}) {
   const [datos, setDatos] = useState([]);
 
   useEffect(() => {
@@ -21,21 +25,20 @@ export default function HabilidadesTecnicas(props) {
   return (
     <>
       {datos.length !== 0 ? (
-        <div>
-          <hr className="my-2" />
-          <div>
-            <h2 className="font-black mb-1">HABILIDADES TECNICAS</h2>
-            {datos
-              .slice()
-              .sort((a, b) => ordenarPorLongitud(a, b))
-              .map((aptitud) => (
-                <div key={aptitud.id}>
-                  <h1>
-                    {props.icono} {aptitud.aptitud}
-                  </h1>
-                </div>
-              ))}
-          </div>
+        <div className={`${classBloque}`}>
+          <h2 className={`${classTitulo} font-bold mb-1`}>
+            HABILIDADES TÉCNICAS
+          </h2>
+          {datos
+            .slice()
+            .sort((a, b) => ordenarPorLongitud(a, b))
+            .map((aptitud) => (
+              <div key={aptitud.id}>
+                <h1>
+                  {icono} {aptitud.aptitud}
+                </h1>
+              </div>
+            ))}
         </div>
       ) : (
         <></>

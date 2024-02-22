@@ -2,7 +2,11 @@
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
-export default function HabilidadesBlandas(props) {
+export default function HabilidadesBlandas({
+  icono,
+  classTitulo,
+  classBloque,
+}) {
   const [datos, setDatos] = useState([]);
 
   useEffect(() => {
@@ -21,21 +25,20 @@ export default function HabilidadesBlandas(props) {
   return (
     <>
       {datos.length !== 0 ? (
-        <div>
-          <hr className="my-2" />
-          <div>
-            <h2 className="font-black mb-1">HABILIDADES BLANDAS</h2>
-            {datos
-              .slice()
-              .sort((a, b) => ordenarPorLongitud(a, b))
-              .map((habilidad) => (
-                <div key={habilidad.id}>
-                  <h1>
-                    {props.icono} {habilidad.habilidad}
-                  </h1>
-                </div>
-              ))}
-          </div>
+        <div className={`${classBloque}`}>
+          <h2 className={`${classTitulo} font-bold mb-1`}>
+            HABILIDADES BLANDAS
+          </h2>
+          {datos
+            .slice()
+            .sort((a, b) => ordenarPorLongitud(a, b))
+            .map((habilidad) => (
+              <div key={habilidad.id}>
+                <h1>
+                  {icono} {habilidad.habilidad}
+                </h1>
+              </div>
+            ))}
         </div>
       ) : (
         <></>
