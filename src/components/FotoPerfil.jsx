@@ -73,6 +73,7 @@ export default function FotoPerfil() {
             ></Image>
           )}
           <br />
+          <br />
         </div>
         <button className="Button" onClick={openmodal}>
           Seleccionar Foto...

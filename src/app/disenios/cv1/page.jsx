@@ -64,7 +64,7 @@ export default function CurriculumVitaeUno() {
     contenidoDiv.height = 700; // Alto del canvas en píxeles
 
     // Convertir el contenido a canvas
-    html2canvas(contenidoDiv, { scale: 10 }).then((canvas) => {
+    html2canvas(contenidoDiv, { scale: 5 }).then((canvas) => {
       const imgData = canvas.toDataURL("image/jpeg");
 
       // Agregar la imagen al documento PDF
@@ -89,7 +89,7 @@ export default function CurriculumVitaeUno() {
       <div className={`${roboto.className} antialiased text-xs font-semibold`}>
         <div
           id="contenido-pdf"
-          className="flex flex-col w-[350px] h-[453px] md:w-[541px] md:h-[700px] p-5 bg-white text-black"
+          className="flex flex-col w-[350px] h-[453px] md:w-[541px] md:h-[700px] p-5 bg-white text-black overflow-hidden"
         >
           <section className="flex justify-between w-auto h-auto border-b-[1px] pb-2">
             <div className="flex flex-col justify-between">
@@ -105,19 +105,25 @@ export default function CurriculumVitaeUno() {
               <Image
                 src={fotoPerfil}
                 alt="Foto de Perfil"
-                width={78}
-                height={78}
+                width={83}
+                height={83}
                 className="rounded-[50%]"
               ></Image>
             </div>
           </section>
           <section className="flex text-[9px]">
             <section className="w-2/5 py-2 pr-2">
-              <DatosPersonales cv={cv1} />
-              <HabilidadesBlandas icono="▪" />
-              <HabilidadesTecnicas icono="▪" />
-              <Lenguajes icono="▪" />
-              <RefProfesionales />
+              <DatosPersonales icono={cv1} />
+              <HabilidadesBlandas
+                icono="▪"
+                classBloque="border-t-[1px] pt-2 mt-2"
+              />
+              <HabilidadesTecnicas
+                icono="▪"
+                classBloque="border-t-[1px] pt-2 mt-2"
+              />
+              <Lenguajes icono="▪" classBloque="border-t-[1px] pt-2 mt-2" />
+              <RefProfesionales classBloque="border-t-[1px] pt-2 mt-2" />
             </section>
             <section className="w-3/5 md:h-[580px] border-l-[1px] py-2 pl-2">
               {datos.sobremi ? (
@@ -130,9 +136,14 @@ export default function CurriculumVitaeUno() {
               ) : (
                 <></>
               )}
-              {datos.sobremi && <hr className="my-2" />}
-              <Experiencia icono="▪" />
-              <Educacion />
+              {/* {datos.sobremi && <hr className="my-2" />} */}
+              <Experiencia
+                icono="✓&nbsp;"
+                classBloque={`${
+                  datos.sobremi ? "border-t-[1px] pt-2 mt-2" : ""
+                }`}
+              />
+              <Educacion classBloque="border-t-[1px] pt-2 mt-2" />
             </section>
           </section>
           {/* <DatosPersonales /> */}
