@@ -2,7 +2,12 @@
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
-export default function Experiencia({ icono, classTitulo, classBloque }) {
+export default function Experiencia({
+  icono,
+  classTitulo,
+  classBloque,
+  classBody,
+}) {
   const [datos, setDatos] = useState([]);
 
   useEffect(() => {
@@ -24,7 +29,7 @@ export default function Experiencia({ icono, classTitulo, classBloque }) {
             EXPERIENCIA LABORAL
           </h2>
           {datos.map((exp) => (
-            <div key={exp.id}>
+            <div key={exp.id} className={`${classBody}`}>
               <div className="flex gap-1">
                 <h1 className="font-semibold">{exp.empresa}</h1>
                 <h1>|</h1>

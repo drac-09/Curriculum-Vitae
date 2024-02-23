@@ -18,21 +18,26 @@ export default function DatosPersonales({ icono, classTitulo, classBloque }) {
             INFORMACION PERSONAL
           </h2>
           <div>
-            <h1>
-              {icono} {datos.correo}
-            </h1>
-            <h1>
-              {icono} {datos.direccion}
-            </h1>
-            <h1>
-              {icono} {datos.dni}
-            </h1>
-            <h1>
-              {icono} {datos.celular}
-            </h1>
-            <h1>
-              {icono} {datos.estadocivil}
-            </h1>
+            <div className="flex items-center justify-start gap-2">
+              <h1 className="text-[10px]">{icono.correo} </h1>
+              <h1>{datos.correo}</h1>
+            </div>
+            <div className="flex items-center justify-start gap-2">
+              <h1 className="text-[10px]">{icono.direccion} </h1>
+              <h1>{datos.direccion}</h1>
+            </div>
+            <div className="flex items-center justify-start gap-2">
+              <h1 className="text-[10px]">{icono.dni} </h1>
+              <h1>{datos.dni}</h1>
+            </div>
+            <div className="flex items-center justify-start gap-2">
+              <h1 className="text-[10px]">{icono.celular} </h1>
+              <h1>{datos.celular}</h1>
+            </div>
+            <div className="flex items-center justify-start gap-2">
+              <h1 className="text-[10px]">{icono.estadocivil} </h1>
+              <h1>{datos.estadocivil}</h1>
+            </div>
           </div>
         </div>
       ) : (

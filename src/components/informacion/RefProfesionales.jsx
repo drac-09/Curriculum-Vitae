@@ -2,7 +2,12 @@
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
-export default function RefProfesionales({ classTitulo, classBloque }) {
+export default function RefProfesionales({
+  icon,
+  classTitulo,
+  classBloque,
+  classBody,
+}) {
   const [datos, setDatos] = useState([]);
 
   useEffect(() => {
@@ -20,7 +25,7 @@ export default function RefProfesionales({ classTitulo, classBloque }) {
             REFERENCIAS PROFESIONALES
           </h2>
           {datos.map((ref, index) => (
-            <div key={ref.id} className="mb-2">
+            <div key={ref.id} className={`${classBody} mb-2`}>
               <h1 className="font-semibold">{ref.nombre}</h1>
               <div className="flex gap-1">
                 <h1>{ref.empresa}</h1>
