@@ -14,7 +14,7 @@ export default function SidebarDisenios() {
 
   return (
     <div className="flex flex-col w-screen md:w-auto">
-      <div className="hidden md:flex flex-col h-[85vh] border-r-[1px] border-slate-900 pr-10">
+      <div className="hidden md:flex flex-col h-[85vh] border-r-[1px] border-slate-500 pr-10">
         <div className="flex flex-col items-center gap-3 flex-grow text-sm">
           <LinkDisenios dato="cv1" />
           <LinkDisenios dato="cv2" />
