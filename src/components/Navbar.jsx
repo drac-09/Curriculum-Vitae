@@ -3,6 +3,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useState } from "react";
+import { Courgette } from "next/font/google";
+
+const logo = Courgette({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 // icons
 import { LiaHomeSolid } from "react-icons/lia";
@@ -18,7 +24,7 @@ export default function Navbar() {
     "/perfil/competencias",
     "/perfil/experiencia-laboral",
     "/perfil/ref-profesionales",
-    "/perfil/cargar-informacion",
+    "/perfil/cargar-importante",
   ];
 
   const diseniosPaths = ["/disenios/cv1", "/disenios/cv2", "/disenios/cv3"];
@@ -31,12 +37,19 @@ export default function Navbar() {
 
   return (
     <div className="border-b-[1px] border-slate-900 text-sm">
-      <div className="Barra">
-        <div>Curriculum Vitae</div>
-        <div className="hidden md:flex gap-5">
+      <div className="Barra flex">
+        <div>
           <Link
             href={"/"}
-            className={`${pathName === "/" ? "Seleccionado" : ""}`}
+            className={`${logo.className} antialiased text-xl font-bold`}
+          >
+            Curriculum Vitae
+          </Link>
+        </div>
+        <div className="hidden md:flex gap-5 items-center">
+          <Link
+            href={"/"}
+            className={`${pathName === "/" ? "SeleccionadoNavbar" : ""}`}
           >
             <h1>Inicio</h1>
           </Link>
@@ -44,7 +57,7 @@ export default function Navbar() {
             href={"/perfil/info-personal"}
             className={`${
               pathName.startsWith("/perfil/") && perfilPaths.includes(pathName)
-                ? "Seleccionado"
+                ? "SeleccionadoNavbar"
                 : ""
             }`}
           >
@@ -55,17 +68,19 @@ export default function Navbar() {
             className={`${
               pathName.startsWith("/disenios/") &&
               diseniosPaths.includes(pathName)
-                ? "Seleccionado"
+                ? "SeleccionadoNavbar"
                 : ""
             }`}
           >
             <h1>Diseños</h1>
           </Link>
           <Link
-            href={"/informacion"}
-            className={`${pathName === "/informacion" ? "Seleccionado" : ""}`}
+            href={"/importante"}
+            className={`${
+              pathName === "/importante" ? "SeleccionadoNavbar" : ""
+            }`}
           >
-            <h1>Información</h1>
+            <h1>Importante</h1>
           </Link>
         </div>
         <div className="md:hidden flex-grow flex justify-end">
