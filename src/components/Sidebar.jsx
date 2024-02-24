@@ -20,13 +20,13 @@ export default function Sidebar() {
 
   return (
     <div className="flex flex-col w-screen md:w-auto">
-      <div className="hidden md:flex flex-col h-[85vh] border-r-[1px] border-slate-900 pr-10">
+      <div className="hidden md:flex flex-col h-[85vh] border-r-[1px] border-slate-500 pr-10">
         <div className="flex flex-col gap-3 flex-grow text-sm">
           <FotoPerfil />
           <Link
             href={"/perfil/info-personal"}
             className={`${
-              pathName === "/perfil/info-personal" ? "Seleccionado" : ""
+              pathName === "/perfil/info-personal" ? "SeleccionadoSidebar" : ""
             }`}
           >
             <h1>Información Personal</h1>
@@ -34,7 +34,7 @@ export default function Sidebar() {
           <Link
             href={"/perfil/info-academica"}
             className={`${
-              pathName === "/perfil/info-academica" ? "Seleccionado" : ""
+              pathName === "/perfil/info-academica" ? "SeleccionadoSidebar" : ""
             }`}
           >
             <h1>Información Académica</h1>
@@ -42,7 +42,9 @@ export default function Sidebar() {
           <Link
             href={"/perfil/experiencia-laboral"}
             className={`${
-              pathName === "/perfil/experiencia-laboral" ? "Seleccionado" : ""
+              pathName === "/perfil/experiencia-laboral"
+                ? "SeleccionadoSidebar"
+                : ""
             }`}
           >
             <h1>Experiencia Laboral</h1>
@@ -50,7 +52,7 @@ export default function Sidebar() {
           <Link
             href={"/perfil/competencias"}
             className={`${
-              pathName === "/perfil/competencias" ? "Seleccionado" : ""
+              pathName === "/perfil/competencias" ? "SeleccionadoSidebar" : ""
             }`}
           >
             <h1>Competencias</h1>
@@ -58,7 +60,9 @@ export default function Sidebar() {
           <Link
             href={"/perfil/ref-profesionales"}
             className={`${
-              pathName === "/perfil/ref-profesionales" ? "Seleccionado" : ""
+              pathName === "/perfil/ref-profesionales"
+                ? "SeleccionadoSidebar"
+                : ""
             }`}
           >
             <h1>Referencias Profesionales</h1>
