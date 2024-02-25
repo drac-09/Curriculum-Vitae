@@ -42,7 +42,8 @@ const cv1 = {
   estadocivil: <GiLinkedRings />,
 };
 
-const defaultSrc = "/user.svg";
+const defaultSrc = "/user2.svg";
+const item = "▪";
 
 export default function CurriculumVitaeUno() {
   const [datos, setDatos] = useState([]);
@@ -115,14 +116,14 @@ export default function CurriculumVitaeUno() {
             <section className="w-2/5 py-2 pr-2">
               <DatosPersonales icono={cv1} />
               <HabilidadesBlandas
-                icono="▪"
+                icono={item}
                 classBloque="border-t-[1px] pt-2 mt-2"
               />
               <HabilidadesTecnicas
-                icono="▪"
+                icono={item}
                 classBloque="border-t-[1px] pt-2 mt-2"
               />
-              <Lenguajes icono="▪" classBloque="border-t-[1px] pt-2 mt-2" />
+              <Lenguajes icono={item} classBloque="border-t-[1px] pt-2 mt-2" />
               <RefProfesionales classBloque="border-t-[1px] pt-2 mt-2" />
             </section>
             <section className="w-3/5 md:h-[580px] border-l-[1px] py-2 pl-2">
