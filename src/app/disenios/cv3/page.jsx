@@ -42,7 +42,7 @@ const cv3 = {
   estadocivil: <GiLinkedRings />,
 };
 
-const defaultSrc = "/user2.svg";
+const defaultSrc = "/user.svg";
 const item = "•";
 
 export default function CurriculumVitaeTres() {
