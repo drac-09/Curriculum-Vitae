@@ -11,7 +11,7 @@ export default function InformacionPersonal() {
   const [correo, setCorreo] = useState("");
   const [celular, setCelular] = useState("");
   const [dni, setDni] = useState("");
-  const [estadocivil, setEstadocivil] = useState("Soltero");
+  const [estadocivil, setEstadocivil] = useState("");
 
   const [visible, setVisible] = useState(false);
   const [animacion, setAnimacion] = useState();
@@ -213,6 +213,9 @@ export default function InformacionPersonal() {
               onChange={(e) => setEstadocivil(e.target.value)}
               className="Select w-1/3"
             >
+              <option value="" selected>
+                Omitir
+              </option>
               <option value="Soltero">Soltero</option>
               <option value="Soltera">Soltera</option>
               <option value="Casado">Casado</option>
