@@ -3,12 +3,35 @@ import Image from "next/image";
 export default function Informacion() {
   return (
     <div className="flex flex-col gap-10 p-5 md:p-0">
+      <section>
+        <h1 className="Alerta">Preguntas Frecuentes</h1>
+        <hr className="Hr" />
+      </section>
+      <section className="flex gap-5 text-xs md:text-sm">
+        <Image
+          src="/importante/write.svg"
+          alt="descargar"
+          height={0}
+          width={0}
+          className="w-[60px] h-auto"
+        />
+        <div>
+          <h1 className="Titulo">
+            ¿Es necesario llenar todos los campos o ingresar toda la información
+            que se pide?
+          </h1>
+          <p>
+            No, los campos que dejes vacíos no se agregaran al curriculum vitae.
+          </p>
+        </div>
+      </section>
       <section className="flex gap-5 text-xs md:text-sm">
         <Image
           src="/importante/archive.svg"
           alt="descargar"
-          width={80}
-          height={50}
+          height={0}
+          width={0}
+          className="w-[60px] h-auto"
         />
         <div>
           <h1 className="Titulo">¿Donde se guarda la información?</h1>
@@ -24,8 +47,9 @@ export default function Informacion() {
         <Image
           src="/importante/download.svg"
           alt="descargar"
-          width={80}
-          height={50}
+          height={0}
+          width={0}
+          className="w-[60px] h-auto"
         />
         <div>
           <h1 className="Titulo">¿Puedo hacer una copia de mi informacion?</h1>
@@ -44,8 +68,9 @@ export default function Informacion() {
         <Image
           src="/importante/upload.svg"
           alt="descargar"
-          width={80}
-          height={50}
+          height={0}
+          width={0}
+          className="w-[60px] h-auto"
         />
         <div>
           <h1 className="Titulo">¿Que hacer con el archivo descargado?</h1>
@@ -65,8 +90,9 @@ export default function Informacion() {
         <Image
           src="/importante/delete.svg"
           alt="descargar"
-          width={80}
-          height={50}
+          height={0}
+          width={0}
+          className="w-[60px] h-auto"
         />
         <div>
           <h1 className="Titulo">
