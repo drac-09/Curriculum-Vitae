@@ -213,9 +213,7 @@ export default function InformacionPersonal() {
               onChange={(e) => setEstadocivil(e.target.value)}
               className="Select w-1/3"
             >
-              <option value="" selected>
-                Omitir
-              </option>
+              <option value="">Omitir</option>
               <option value="Soltero">Soltero</option>
               <option value="Soltera">Soltera</option>
               <option value="Casado">Casado</option>
