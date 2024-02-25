@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${titilliumWeb.className} antialiased`}>
-      <body className="flex flex-col h-screen w-screen text-white bg-[url('/fondo2.svg')] bg-no-repeat bg-cover md:bg-center">
+      <body className="flex flex-col h-screen w-screen text-white bg-[url('/fondo2.svg')] bg-no-repeat bg-cover bg-center">
         <div className="bg-black bg-opacity-90 md:bg-opacity-90 h-screen">
           <Navbar></Navbar>
           <div className="container mx-auto flex md:px-20 2xl:px-80 xl:px-60 md:pt-16 ">
