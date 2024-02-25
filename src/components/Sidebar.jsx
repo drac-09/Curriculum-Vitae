@@ -80,7 +80,6 @@ export default function Sidebar() {
           <BorrarInformacion />
         </div>
       </div>
-
       <button
         onClick={toggleDropdown}
         className="flex items-center justify-center gap-2 md:hidden bg-slate-900 p-3 mb-3"
@@ -89,11 +88,11 @@ export default function Sidebar() {
         <FaAnglesDown className="text-xs" />
       </button>
       {isOpen && (
-        <div className="className=block sm:hidden">
+        <div className="block sm:hidden ">
           <div className="absolute z-0 w-screen bg-black text-white">
-            <div className="flex flex-col text-sm h-[84vh]">
+            <div className="flex flex-col text-sm h-[85vh] ">
               <FotoPerfil />
-              <div className="flex-grow flex flex-col gap-5 px-5 items-center ">
+              <div className="flex-grow flex flex-col gap-3 px-5 items-center ">
                 <Link href={"/perfil/info-personal"} onClick={toggleDropdown}>
                   <h1>Información Personal</h1>
                 </Link>
@@ -117,12 +116,13 @@ export default function Sidebar() {
                 </Link>
               </div>
               <div className="flex flex-col items-center justify-center gap-3 mb-5">
-                {/* <Link
+                <Link
                   href={"/perfil/cargar-informacion"}
-                  className="Button flex justify-center"
+                  type="button"
+                  className="Button flex items-center justify-center"
                 >
                   <h1>Cargar Informacion</h1>
-                </Link> */}
+                </Link>
                 <DescargarJSON />
                 <button className="Button">Borrar Información</button>
               </div>

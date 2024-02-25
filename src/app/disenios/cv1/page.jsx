@@ -86,7 +86,7 @@ export default function CurriculumVitaeUno() {
   }
 
   return (
-    <div className="flex flex-col mt-10 md:mt-0">
+    <div className="flex flex-col pt-10 md:pt-0">
       <div className={`${roboto.className} antialiased text-xs font-semibold`}>
         <div
           id="contenido-pdf"
@@ -137,7 +137,6 @@ export default function CurriculumVitaeUno() {
               ) : (
                 <></>
               )}
-              {/* {datos.sobremi && <hr className="my-2" />} */}
               <Experiencia
                 icono="✓&nbsp;"
                 classBloque={`${
@@ -147,7 +146,6 @@ export default function CurriculumVitaeUno() {
               <Educacion classBloque="border-t-[1px] pt-2 mt-2" />
             </section>
           </section>
-          {/* <DatosPersonales /> */}
         </div>
         <br />
         <button onClick={generarPDF} className="Button mr-auto">

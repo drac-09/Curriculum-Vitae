@@ -119,9 +119,9 @@ export default function Navbar() {
                   <LiaEdit />
                   <h1>Diseños</h1>
                 </Link>
-                <Link href={"/info"} className="flex  items-center gap-2">
+                <Link href={"/importante"} className="flex  items-center gap-2">
                   <LiaInfoCircleSolid />
-                  <h1>Información</h1>
+                  <h1>Importante</h1>
                 </Link>
               </div>
             </div>
