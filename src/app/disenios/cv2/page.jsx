@@ -113,7 +113,7 @@ export default function CurriculumVitaeDos() {
                   <h5 className="text-[14px] mt-1">{datos.profesion}</h5>
                 </div>
               </section>
-              {datos.sobremi ? (
+              {datos.sobremi !== "" ? (
                 <div className="mb-2">
                   <h2 className="font-bold mt-2 border-b-[1px] mb-1">PERFIL</h2>
                   <p htmlFor="" className="text-balance">

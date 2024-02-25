@@ -139,7 +139,7 @@ export default function CurriculumVitaeTres() {
             </section>
 
             <section className="w-3/5 md:h-[580px] py-2 pr-5 pl-3">
-              {datos.sobremi ? (
+              {datos.sobremi !== "" ? (
                 <div>
                   <h2 className="border-b-[1px] border-black mb-1 font-black">
                     PERFIL

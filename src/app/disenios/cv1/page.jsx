@@ -126,7 +126,7 @@ export default function CurriculumVitaeUno() {
               <RefProfesionales classBloque="border-t-[1px] pt-2 mt-2" />
             </section>
             <section className="w-3/5 md:h-[580px] border-l-[1px] py-2 pl-2">
-              {datos.sobremi ? (
+              {datos.sobremi !== "" ? (
                 <div>
                   <h2 className="font-black">PERFIL</h2>
                   <p htmlFor="" className="text-justify">
