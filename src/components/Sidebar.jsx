@@ -89,10 +89,10 @@ export default function Sidebar() {
       </button>
       {isOpen && (
         <div className="block sm:hidden ">
-          <div className="absolute z-0 w-screen bg-black text-white">
+          <div className="absolute z-10 w-screen bg-black text-white">
             <div className="flex flex-col text-sm h-[85vh] ">
               <FotoPerfil />
-              <div className="flex-grow flex flex-col gap-3 px-5 items-center ">
+              <div className="flex-grow flex flex-col gap-4 px-5 items-center ">
                 <Link href={"/perfil/info-personal"} onClick={toggleDropdown}>
                   <h1>Información Personal</h1>
                 </Link>
@@ -120,11 +120,12 @@ export default function Sidebar() {
                   href={"/perfil/cargar-informacion"}
                   type="button"
                   className="Button flex items-center justify-center"
+                  onClick={toggleDropdown}
                 >
                   <h1>Cargar Informacion</h1>
                 </Link>
                 <DescargarJSON />
-                <button className="Button">Borrar Información</button>
+                <BorrarInformacion />
               </div>
             </div>
           </div>
