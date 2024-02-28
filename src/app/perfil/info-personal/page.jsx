@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
 export default function InformacionPersonal() {
-  const [sobremi, setSobremi] = useState([]);
+  const [sobremi, setSobremi] = useState("");
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [profesion, setProfesion] = useState("");
@@ -19,7 +19,7 @@ export default function InformacionPersonal() {
   useEffect(() => {
     const info = [];
     const existe = Cookies.get("InformacionPersonal");
-    if (!existe) Cookies.set("InformacionAcademica", JSON.stringify(info));
+    if (!existe) Cookies.set("InformacionPersonal", JSON.stringify(info));
     if (existe) obtenerDatosDesdeCookies();
   }, []);
 
