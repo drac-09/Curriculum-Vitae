@@ -29,8 +29,8 @@ export default function BorrarInformacion() {
       </button>
       {modal && (
         <div className="fixed z-40 md:absolute md:z-50 top-0 left-0 h-screen w-screen flex justify-center items-center bg-red-600 bg-opacity-0 text-white">
-          <div className="CardModal w-max h-max p-20 bg-black">
-            <h1 className="text-red-500 text-xl font-bold">
+          <div className="CardModal md:w-max md:h-max py-20 md:p-20 mx-5 bg-black">
+            <h1 className="text-red-500 text-center text-xl font-bold">
               Deseas eliminar los datos permanentemente!!!
             </h1>
             <br />

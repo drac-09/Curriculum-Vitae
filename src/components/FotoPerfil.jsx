@@ -52,7 +52,7 @@ export default function FotoPerfil() {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-center border-b-[1px] border-slate-500 pb-5 mb-5 h-72 md:h-auto">
+      <div className="flex flex-col items-center justify-center md:border-b-[1px] border-slate-500 pb-5 mb-5 h-72 md:h-auto">
         {/* <PiUserCircleThin className="w-[150px] text-[150px] bg-red-300" /> */}
         <div className="w-[200px] md:w-[150px] rounded-[50%]">
           {cropData === "#" ? (
@@ -93,7 +93,7 @@ export default function FotoPerfil() {
                   />
                   <br />
                   <br />
-                  <div className="flex flex-col md:flex-row gap-10 w-full">
+                  <div className="flex flex-col justify-center md:flex-row gap-10 w-full">
                     <div className="Etiqueta">
                       <Cropper
                         src={image}
@@ -116,7 +116,7 @@ export default function FotoPerfil() {
                         guides={true}
                       />
                     </div>
-                    <div className="Etiqueta flex flex-col justify-start items-center p-[10px] box-border w-1/2 float-right">
+                    <div className="Etiqueta flex flex-col justify-start items-center p-[10px] box-border w-full md:w-1/3 float-right">
                       <h1>Preview</h1>
                       <br />
                       <div className="overflow-hidden h-[170px] w-[200px] rounded-[50%]" />
