@@ -4,27 +4,43 @@ import { useEffect, useState } from "react";
 
 export default function DatosPersonales({ icono, classTitulo, classBloque }) {
   const [datos, setDatos] = useState([]);
+  const [mostrar, setMostrar] = useState(false);
 
   useEffect(() => {
-    const existe = Cookies.get("InformacionPersonal");
-    if (existe) setDatos(JSON.parse(existe));
+    const tmp = Cookies.get("InformacionPersonal");
+    if (tmp) {
+      const tmp2 = JSON.parse(tmp);
+      const existe = {
+        direccion: tmp2.direccion || "",
+        correo: tmp2.correo || "",
+        celular: tmp2.celular || "",
+        dni: tmp2.dni || "",
+        estadocivil: tmp2.estadocivil || "",
+      };
+      if (algunaPropiedadConDatos(existe)) {
+        setDatos(existe);
+        setMostrar(true);
+      }
+    }
   }, []);
 
-  const verificar = `${
-    datos.correo !== "" ||
-    datos.direccion !== "" ||
-    datos.dni !== "" ||
-    datos.celular !== "" ||
-    datos.estadocivil !== ""
-  }`;
+  function algunaPropiedadConDatos(objeto) {
+    for (let propiedad in objeto) {
+      if (objeto.hasOwnProperty(propiedad) && objeto[propiedad] !== "") {
+        return true; // Retorna true si encuentra al menos una propiedad con datos
+      }
+    }
+    return false; // Retorna false si ninguna propiedad tiene datos
+  }
 
   return (
     <>
-      {verificar && datos.length !== 0 ? (
+      {mostrar ? (
         <div className={`${classBloque}`}>
           <h2 className={`${classTitulo} font-bold mb-1`}>
             INFORMACION PERSONAL
           </h2>
+
           <div>
             {datos.correo !== "" && datos.correo ? (
               <div className="flex items-center justify-start gap-2">
