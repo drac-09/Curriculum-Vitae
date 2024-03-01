@@ -7,16 +7,17 @@ import DescargarJSON from "./DescargarJSON";
 import BorrarInformacion from "./BorrarInformacion";
 
 // Icons
-import { PiUserCircleThin } from "react-icons/pi";
 import { FaAnglesDown } from "react-icons/fa6";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [titulo, setTitulo] = useState("Informacion Personal");
   const pathName = usePathname();
 
-  const toggleDropdown = () => {
+  function toggleDropdown(name) {
     setIsOpen(!isOpen);
-  };
+    setTitulo(name);
+  }
 
   return (
     <div className="flex flex-col w-screen md:w-auto">
@@ -81,10 +82,12 @@ export default function Sidebar() {
         </div>
       </div>
       <button
-        onClick={toggleDropdown}
+        onClick={() => {
+          toggleDropdown(titulo);
+        }}
         className="flex items-center justify-center gap-2 md:hidden bg-slate-900 p-3 mb-3"
       >
-        <h1>Menu Perfil</h1>
+        <h1>{titulo}</h1>
         <FaAnglesDown className="text-xs" />
       </button>
       {isOpen && (
@@ -93,24 +96,43 @@ export default function Sidebar() {
             <div className="flex flex-col text-sm h-[85vh] ">
               <FotoPerfil />
               <div className="flex-grow flex flex-col gap-4 px-5 items-center ">
-                <Link href={"/perfil/info-personal"} onClick={toggleDropdown}>
+                <Link
+                  href={"/perfil/info-personal"}
+                  onClick={() => {
+                    toggleDropdown("Información Personal");
+                  }}
+                >
                   <h1>Información Personal</h1>
                 </Link>
-                <Link href={"/perfil/info-academica"} onClick={toggleDropdown}>
+                <Link
+                  href={"/perfil/info-academica"}
+                  onClick={() => {
+                    toggleDropdown("Información Académica");
+                  }}
+                >
                   <h1>Información Académica</h1>
                 </Link>
                 <Link
                   href={"/perfil/experiencia-laboral"}
-                  onClick={toggleDropdown}
+                  onClick={() => {
+                    toggleDropdown("Experiencia Laboral");
+                  }}
                 >
                   <h1>Experiencia Laboral</h1>
                 </Link>
-                <Link href={"/perfil/competencias"} onClick={toggleDropdown}>
+                <Link
+                  href={"/perfil/competencias"}
+                  onClick={() => {
+                    toggleDropdown("Competencias");
+                  }}
+                >
                   <h1>Competencias</h1>
                 </Link>
                 <Link
                   href={"/perfil/ref-profesionales"}
-                  onClick={toggleDropdown}
+                  onClick={() => {
+                    toggleDropdown("Referencias Profesionales");
+                  }}
                 >
                   <h1>Referencias Profesionales</h1>
                 </Link>
@@ -120,7 +142,9 @@ export default function Sidebar() {
                   href={"/perfil/cargar-informacion"}
                   type="button"
                   className="Button flex items-center justify-center"
-                  onClick={toggleDropdown}
+                  onClick={() => {
+                    toggleDropdown("Cargar Informacion");
+                  }}
                 >
                   <h1>Cargar Informacion</h1>
                 </Link>
