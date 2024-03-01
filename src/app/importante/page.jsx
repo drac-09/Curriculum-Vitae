@@ -4,7 +4,7 @@ export default function Informacion() {
   return (
     <div className="flex flex-col gap-10 p-5 md:p-0 h-[92vh] md:h-[85vh] overflow-y-auto">
       <section>
-        <h1 className="Alerta">Preguntas Frecuentes</h1>
+        <h1 className="Alerta font-bold">Preguntas Frecuentes</h1>
         <hr className="Hr" />
       </section>
       <section className="flex gap-5 text-xs leading-5 md:text-sm">
