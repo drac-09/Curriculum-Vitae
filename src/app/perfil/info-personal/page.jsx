@@ -17,18 +17,28 @@ export default function InformacionPersonal() {
   const [animacion, setAnimacion] = useState();
 
   useEffect(() => {
-    const info = [];
+    const info = {
+      sobremi: "",
+      nombre: "",
+      apellido: "",
+      profesion: "",
+      direccion: "",
+      correo: "",
+      celular: "",
+      dni: "",
+      estadocivil: "",
+    };
     const existe = Cookies.get("InformacionPersonal");
     if (!existe) Cookies.set("InformacionPersonal", JSON.stringify(info));
-    if (existe) obtenerDatosDesdeCookies();
+    if (existe) cargarDatos(JSON.parse(existe));
   }, []);
 
-  const obtenerDatosDesdeCookies = () => {
-    const nivelesDesdeCookies = Cookies.get("InformacionPersonal");
-    if (nivelesDesdeCookies) {
-      cargarDatos(JSON.parse(nivelesDesdeCookies));
-    }
-  };
+  // const obtenerDatosDesdeCookies = () => {
+  //   const nivelesDesdeCookies = Cookies.get("InformacionPersonal");
+  //   if (nivelesDesdeCookies) {
+  //     cargarDatos(JSON.parse(nivelesDesdeCookies));
+  //   }
+  // };
 
   function guardar() {
     const data = nuevo();
@@ -57,16 +67,27 @@ export default function InformacionPersonal() {
   }
 
   function nuevo() {
+    console.log(
+      sobremi,
+      nombre,
+      apellido,
+      profesion,
+      direccion,
+      correo,
+      celular,
+      dni,
+      estadocivil
+    );
     const info = {
-      sobremi: sobremi,
-      nombre: nombre,
-      apellido: apellido,
-      profesion: profesion,
-      direccion: direccion,
-      correo: correo,
-      celular: celular,
-      dni: dni,
-      estadocivil: estadocivil,
+      sobremi: sobremi !== undefined ? sobremi : "",
+      nombre: nombre !== undefined ? nombre : "",
+      apellido: apellido !== undefined ? apellido : "",
+      profesion: profesion !== undefined ? profesion : "",
+      direccion: direccion !== undefined ? direccion : "",
+      correo: correo !== undefined ? correo : "",
+      celular: celular !== undefined ? celular : "",
+      dni: dni !== undefined ? dni : "",
+      estadocivil: estadocivil !== undefined ? estadocivil : "",
     };
     return info;
   }
@@ -243,6 +264,7 @@ export default function InformacionPersonal() {
           )}
         </div>
       </form>
+      <br />
     </div>
   );
 }
