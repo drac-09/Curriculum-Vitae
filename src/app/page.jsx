@@ -45,21 +45,21 @@ export default function inicio() {
                 alt="home1"
                 width={250}
                 height={0}
-                className="rounded-md "
+                className="rounded-md w-full h-auto "
               ></Image>
               <Image
                 src="/home/cv2.jpg"
                 alt="home1"
                 width={250}
                 height={0}
-                className="rounded-md hidden lg:block"
+                className="rounded-md w-full h-auto hidden lg:block"
               ></Image>
               <Image
                 src="/home/cv3.jpg"
                 alt="home1"
                 width={250}
                 height={0}
-                className="rounded-md hidden md:block"
+                className="rounded-md w-full h-auto hidden md:block"
               ></Image>
             </div>
             <br />
