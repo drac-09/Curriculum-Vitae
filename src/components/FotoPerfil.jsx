@@ -1,9 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Cropper } from "react-cropper";
 import Image from "next/image";
 import "cropperjs/dist/cropper.css";
-import fotoPerfil from "../../public/imagen.jpg";
+import fotoPerfil from "../../public/user.svg";
 
 const defaultSrc = "/imagen.jpg";
 
@@ -12,6 +12,9 @@ export default function FotoPerfil() {
   const [image, setImage] = useState(defaultSrc);
   const [cropData, setCropData] = useState("#");
   const [cropper, setCropper] = useState();
+
+  const fileInputRef = useRef(null);
+  const [fileName, setFileName] = useState("Selecciona un archivo");
 
   useEffect(() => {
     const fotoPerfil = localStorage.getItem("fotoPerfil");
@@ -33,6 +36,7 @@ export default function FotoPerfil() {
       setImage(reader.result);
     };
     reader.readAsDataURL(files[0]);
+    setFileName(files[0].name);
   };
 
   const getCropData = () => {
@@ -44,6 +48,10 @@ export default function FotoPerfil() {
       );
       setModal(!modal);
     }
+  };
+
+  const handleClick = () => {
+    fileInputRef.current.click();
   };
 
   const openmodal = () => {
@@ -85,45 +93,56 @@ export default function FotoPerfil() {
           <div className=" CardModal flex flex-col gap-5 w-screen h-screen md:w-[800px] md:h-[460px] bg-gray-950 rounded-xl p-5">
             <div className="flex flex-col gap-3 md:flex-row flex-grow w-full h-full">
               <section className="w-full h-full">
-                <div>
-                  <input
-                    type="file"
-                    className="text-white border-red-700"
-                    onChange={onChange}
-                  />
-                  <br />
-                  <br />
-                  <div className="flex flex-col justify-center md:flex-row gap-10 w-full">
-                    <div className="Etiqueta">
-                      <Cropper
-                        src={image}
-                        style={{ height: 300, width: "100%" }}
-                        initialAspectRatio={1}
-                        viewMode={1}
-                        dragMode="move"
-                        cropBoxMovable={false}
-                        cropBoxResizable={false}
-                        preview=".overflow-hidden"
-                        minCropBoxHeight={10}
-                        minCropBoxWidth={10}
-                        background={false}
-                        responsive={true}
-                        autoCropArea={1}
-                        checkOrientation={false}
-                        onInitialized={(instance) => {
-                          setCropper(instance);
-                        }}
-                        guides={true}
-                      />
-                    </div>
-                    <div className="Etiqueta flex flex-col justify-start items-center p-[10px] box-border w-full md:w-1/3 float-right">
-                      <h1>Preview</h1>
-                      <br />
-                      <div className="overflow-hidden h-[170px] w-[200px] rounded-[50%]" />
+                <div className="flex flex-col justify-center md:flex-row gap-10 w-full">
+                  <div className="Etiqueta">
+                    <Cropper
+                      src={image}
+                      style={{ height: 300, width: "100%" }}
+                      initialAspectRatio={1}
+                      viewMode={1}
+                      dragMode="move"
+                      cropBoxMovable={false}
+                      cropBoxResizable={false}
+                      preview=".overflow-hidden"
+                      minCropBoxHeight={10}
+                      minCropBoxWidth={10}
+                      background={false}
+                      responsive={true}
+                      autoCropArea={1}
+                      checkOrientation={false}
+                      onInitialized={(instance) => {
+                        setCropper(instance);
+                      }}
+                      guides={true}
+                    />
+                    <br />
+                    <input
+                      type="file"
+                      className="text-white border-red-700 hidden"
+                      ref={fileInputRef}
+                      onChange={onChange}
+                    />
+                    {/* Botón personalizado */}
+                    <div className="flex items-center text-sm max-w-max">
+                      <button
+                        onClick={handleClick}
+                        type="button"
+                        className="border-[1px] rounded-none text-xs md:text-sm py-1 px-2 bg-slate-900 w-[120px] md:w-[150px]"
+                      >
+                        Seleccionar Archivo
+                      </button>
+                      <p className="border-[1px] border-l-0 px-3 py-1 text-xs md:text-sm w-[180px] md:w-[320px] truncate">
+                        {fileName}
+                      </p>
                     </div>
                   </div>
-                  <br style={{ clear: "both" }} />
+                  <div className="Etiqueta flex flex-col justify-start items-center p-[10px] box-border w-full md:w-1/3 float-right">
+                    <h1>Vista previa</h1>
+                    <br />
+                    <div className="overflow-hidden h-[170px] w-[200px] rounded-[50%]" />
+                  </div>
                 </div>
+                <br style={{ clear: "both" }} />
               </section>
             </div>
 
