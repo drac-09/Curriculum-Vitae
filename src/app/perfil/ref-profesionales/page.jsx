@@ -106,6 +106,10 @@ export default function ReferenciasProfesionales() {
     return nuevoObjeto;
   }
 
+  const irAlFormulario = () => {
+    formulario.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   function obtener(id) {
     setButton(false);
     const tmp = refProfesionales.find((objeto) => objeto.id === id);
@@ -116,10 +120,6 @@ export default function ReferenciasProfesionales() {
     setCelular(tmp.celular);
     irAlFormulario();
   }
-
-  const irAlFormulario = () => {
-    formulario.current.scrollIntoView({ behavior: "smooth" });
-  };
 
   function verificarCamposVacios() {
     const todasVacias = !nombre || !empresa || !cargo || !celular;
@@ -137,6 +137,12 @@ export default function ReferenciasProfesionales() {
     setEmpresa("");
     setCargo("");
     setCelular("");
+  }
+
+  function cancelar() {
+    limpiar();
+    // datosPorDefecto();
+    setButton(true);
   }
 
   return (
