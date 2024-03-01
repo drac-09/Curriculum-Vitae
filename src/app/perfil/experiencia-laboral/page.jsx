@@ -327,7 +327,7 @@ export default function ExperienciaLaboral() {
               Tareas:
             </label>
             <div className="w-2/3 flex flex-col">
-              <div className="flex gap-3">
+              <div className="flex gap-1 md:gap-3">
                 <input
                   type="text"
                   id="tarea"
@@ -350,12 +350,15 @@ export default function ExperienciaLaboral() {
             </div>
           </section>
           <hr className="Hr" />
-          <div className="flex flex-col ">
+          <div className="flex flex-col">
             {tareas
               .slice()
               .sort((a, b) => ordenarPorLongitud(a, b))
               .map((tarea) => (
-                <div key={tarea.id} className="flex justify-between w-full">
+                <div
+                  key={tarea.id}
+                  className="flex justify-between items-start w-full"
+                >
                   <div className="flex gap-3">
                     <h1>✔</h1>
                     <h1>{tarea.tarea}</h1>
@@ -422,8 +425,8 @@ export default function ExperienciaLaboral() {
         {experiencia.map((exp) => (
           <div key={exp.id} className="Card">
             <section className="text-xs md:text-sm">
-              <div className="flex gap-3 w-full">
-                <div className="w-1/3 md:w-1/4 Border-r">
+              <div className="flex gap-3">
+                <div className="w-2/6 md:w-1/4 Border-r">
                   <h1>Empresa</h1>
                   <h1>Cargo</h1>
                   <h1>Fecha-Inicio</h1>
@@ -431,7 +434,7 @@ export default function ExperienciaLaboral() {
                   {/* <h1>Descripción</h1> */}
                   <h1>Tareas</h1>
                 </div>
-                <div className="w-2/3 truncate">
+                <div className="w-full">
                   <h1>{exp.empresa}</h1>
                   <h1>{exp.cargo}</h1>
                   <h1>
@@ -445,11 +448,9 @@ export default function ExperienciaLaboral() {
                     .slice()
                     .sort((a, b) => ordenarPorLongitud(a, b))
                     .map((tarea) => (
-                      <div key={tarea.id} className="max-w-max flex gap-3">
-                        <div className="flex gap-3">
-                          <h1>✔</h1>
-                          <h1>{tarea.tarea}</h1>
-                        </div>
+                      <div key={tarea.id} className="flex">
+                        <h1>✔&nbsp;</h1>
+                        <h1>{tarea.tarea}</h1>
                       </div>
                     ))}
                 </div>
