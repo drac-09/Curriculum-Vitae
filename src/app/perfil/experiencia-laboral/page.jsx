@@ -19,6 +19,8 @@ export default function ExperienciaLaboral() {
   const [anioInicio, setAnioInicio] = useState(2024);
   const [mesFinal, setMesFinal] = useState("Diciembre");
   const [anioFinal, setAnioFinal] = useState(2024);
+
+  const [mostrarAnio, setMostrarAnio] = useState(true);
   // const [descripcion, setDescripcion] = useState("");
 
   const [tareas, setTareas] = useState([]);
@@ -86,7 +88,8 @@ export default function ExperienciaLaboral() {
     setMesInicio(tmp.mesInicio);
     setAnioInicio(tmp.anioInicio);
     setMesFinal(tmp.mesFinal);
-    setAnioFinal(tmp.anioFinal);
+    if (tmp.mesFinal === "Actual") setMostrarAnio(false);
+    if (tmp.mesFinal !== "Actual") setAnioFinal(tmp.anioFinal);
     // setDescripcion(tmp.descripcion);
     setTareas(tmp.tareas);
     irAlFormulario();
@@ -145,6 +148,10 @@ export default function ExperienciaLaboral() {
       valorUnico = id;
     }
 
+    let anioF = null;
+    if (mesFinal === "Actual") anioF = "";
+    if (mesFinal !== "Actual") anioF = anioFinal;
+
     const nuevoObjeto = {
       id: valorUnico,
       empresa: empresa,
@@ -152,7 +159,7 @@ export default function ExperienciaLaboral() {
       mesInicio: mesInicio,
       anioInicio: anioInicio,
       mesFinal: mesFinal,
-      anioFinal: anioFinal,
+      anioFinal: anioF,
       // descripcion: descripcion,
       tareas: tareas,
     };
@@ -174,6 +181,7 @@ export default function ExperienciaLaboral() {
     setAnioInicio(2024);
     setMesFinal("Diciembre");
     setAnioFinal(2024);
+    setMostrarAnio(true);
   }
 
   function agregar() {
@@ -186,7 +194,7 @@ export default function ExperienciaLaboral() {
     setTarea("");
   }
 
-  function eliminar(id) {
+  function eliminarTarea(id) {
     const nuevasTareas = tareas.filter((tarea) => tarea.id !== id);
     setTareas(nuevasTareas);
   }
@@ -282,9 +290,17 @@ export default function ExperienciaLaboral() {
                 id="mesFinal"
                 name="mes"
                 value={mesFinal}
-                onChange={(e) => setMesFinal(e.target.value)}
+                onChange={(e) => {
+                  setMesFinal(e.target.value);
+                  if (e.target.value === "Actual") {
+                    setMostrarAnio(false);
+                  } else {
+                    setMostrarAnio(true);
+                  }
+                }}
                 className="Select"
               >
+                <option value="Actual">Actual</option>
                 {meses.map((mes, index) => (
                   <option key={index} value={mes}>
                     {mes}
@@ -292,19 +308,21 @@ export default function ExperienciaLaboral() {
                 ))}
               </select>
 
-              <select
-                id="anioFinal"
-                name="anio"
-                value={anioFinal}
-                onChange={(e) => setAnioFinal(e.target.value)}
-                className="Select"
-              >
-                {anios.map((anio, index) => (
-                  <option key={index} value={anio} defaultValue={2024}>
-                    {anio}
-                  </option>
-                ))}
-              </select>
+              {mostrarAnio && (
+                <select
+                  id="anioFinal"
+                  name="anio"
+                  value={anioFinal}
+                  onChange={(e) => setAnioFinal(e.target.value)}
+                  className="Select"
+                >
+                  {anios.map((anio, index) => (
+                    <option key={index} value={anio} defaultValue={2024}>
+                      {anio}
+                    </option>
+                  ))}
+                </select>
+              )}
             </div>
           </section>
           {/* <section className="flex md:w-full">
@@ -349,7 +367,7 @@ export default function ExperienciaLaboral() {
               <br />
             </div>
           </section>
-          <hr className="Hr" />
+          {/* <hr className="Hr" /> */}
           <div className="flex flex-col">
             {tareas
               .slice()
@@ -366,7 +384,7 @@ export default function ExperienciaLaboral() {
                   <button
                     type="button"
                     className="pl-2"
-                    onClick={() => eliminar(tarea.id)}
+                    onClick={() => eliminarTarea(tarea.id)}
                   >
                     <IoIosCloseCircleOutline className="text-lg Alerta" />
                   </button>
@@ -425,12 +443,12 @@ export default function ExperienciaLaboral() {
         {experiencia.map((exp) => (
           <div key={exp.id} className="Card">
             <section className="text-xs md:text-sm">
-              <div className="flex gap-3">
-                <div className="w-2/6 md:w-1/4 Border-r">
+              <div className="flex gap-3 w-full">
+                <div className="w-3/6 Border-r">
                   <h1>Empresa</h1>
                   <h1>Cargo</h1>
-                  <h1>Fecha-Inicio</h1>
-                  <h1>Fecha-Finalización</h1>
+                  <h1>Fecha de Inicio</h1>
+                  <h1>Fecha de Finalización</h1>
                   {/* <h1>Descripción</h1> */}
                   <h1>Tareas</h1>
                 </div>
@@ -441,7 +459,8 @@ export default function ExperienciaLaboral() {
                     {exp.mesInicio} de {exp.anioInicio}
                   </h1>
                   <h1>
-                    {exp.mesFinal} de {exp.anioFinal}
+                    {exp.mesFinal}{" "}
+                    {exp.mesFinal === "Actual" ? "" : `de ${exp.anioFinal}`}
                   </h1>
                   {/* <label>{exp.descripcion}</label> */}
                   {exp.tareas

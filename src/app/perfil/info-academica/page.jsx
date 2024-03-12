@@ -20,6 +20,8 @@ export default function InformacionAcademica() {
   const [mesFinal, setMesFinal] = useState("Diciembre");
   const [anioFinal, setAnioFinal] = useState(2024);
 
+  const [mostrarAnio, setMostrarAnio] = useState(true);
+
   const meses = fechas.meses;
   const anios = fechas.anios;
 
@@ -84,7 +86,8 @@ export default function InformacionAcademica() {
     setMesInicio(tmp.mesInicio);
     setAnioInicio(tmp.anioInicio);
     setMesFinal(tmp.mesFinal);
-    setAnioFinal(tmp.anioFinal);
+    if (tmp.mesFinal === "Actual") setMostrarAnio(false);
+    if (tmp.mesFinal !== "Actual") setAnioFinal(tmp.anioFinal);
     irAlFormulario();
   }
 
@@ -138,7 +141,11 @@ export default function InformacionAcademica() {
       valorUnico = id;
     }
 
-    const nuevoObjeto = {
+    let anioF = null;
+    if (mesFinal === "Actual") anioF = "";
+    if (mesFinal !== "Actual") anioF = anioFinal;
+
+    let nuevoObjeto = {
       id: valorUnico,
       nivel: nivel,
       centro: centro,
@@ -146,7 +153,7 @@ export default function InformacionAcademica() {
       mesInicio: mesInicio,
       anioInicio: anioInicio,
       mesFinal: mesFinal,
-      anioFinal: anioFinal,
+      anioFinal: anioF,
     };
     return nuevoObjeto;
   }
@@ -167,6 +174,7 @@ export default function InformacionAcademica() {
     setAnioInicio(2024);
     setMesFinal("Diciembre");
     setAnioFinal(2024);
+    setMostrarAnio(true);
   }
 
   return (
@@ -268,29 +276,38 @@ export default function InformacionAcademica() {
                 id="mesFinal"
                 name="mes"
                 value={mesFinal}
-                onChange={(e) => setMesFinal(e.target.value)}
+                onChange={(e) => {
+                  setMesFinal(e.target.value);
+                  if (e.target.value === "Actual") {
+                    setMostrarAnio(false);
+                  } else {
+                    setMostrarAnio(true);
+                  }
+                }}
                 className="Select"
               >
+                <option value="Actual">Actual</option>
                 {meses.map((mes, index) => (
                   <option key={index} value={mes}>
                     {mes}
                   </option>
                 ))}
               </select>
-
-              <select
-                id="anioFinal"
-                name="anio"
-                value={anioFinal}
-                onChange={(e) => setAnioFinal(e.target.value)}
-                className="Select"
-              >
-                {anios.map((anio, index) => (
-                  <option key={index} value={anio} defaultValue={2024}>
-                    {anio}
-                  </option>
-                ))}
-              </select>
+              {mostrarAnio && (
+                <select
+                  id="anioFinal"
+                  name="anio"
+                  value={anioFinal}
+                  onChange={(e) => setAnioFinal(e.target.value)}
+                  className="Select"
+                >
+                  {anios.map((anio, index) => (
+                    <option key={index} value={anio} defaultValue={2024}>
+                      {anio}
+                    </option>
+                  ))}
+                </select>
+              )}
             </div>
           </section>
         </div>
@@ -359,7 +376,8 @@ export default function InformacionAcademica() {
                     {nivel.mesInicio} de {nivel.anioInicio}
                   </h1>
                   <h1>
-                    {nivel.mesFinal} de {nivel.anioFinal}
+                    {nivel.mesFinal}{" "}
+                    {nivel.mesFinal === "Actual" ? "" : `de ${nivel.anioFinal}`}
                   </h1>
                 </div>
               </div>
