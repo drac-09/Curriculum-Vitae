@@ -20,7 +20,7 @@ export default function Lenguajes({
   }, []);
 
   const ordenarPorLongitud = (a, b) => {
-    return a.length - b.length;
+    return a.lenguaje.length - b.lenguaje.length;
   };
 
   return (

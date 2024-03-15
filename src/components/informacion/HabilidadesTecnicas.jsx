@@ -19,7 +19,7 @@ export default function HabilidadesTecnicas({
   }, []);
 
   const ordenarPorLongitud = (a, b) => {
-    return a.length - b.length;
+    return a.aptitud.length - b.aptitud.length;
   };
 
   return (

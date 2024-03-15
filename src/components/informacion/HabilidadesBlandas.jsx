@@ -19,7 +19,7 @@ export default function HabilidadesBlandas({
   }, []);
 
   const ordenarPorLongitud = (a, b) => {
-    return a.length - b.length;
+    return a.habilidad.length - b.habilidad.length;
   };
 
   return (
