@@ -42,6 +42,7 @@ const cv1 = {
   estadocivil: <GiLinkedRings />,
 };
 
+const borde = "border-t-[1px] pt-2 mt-2";
 const defaultSrc = "/user2.svg";
 const item = "▪";
 
@@ -92,7 +93,10 @@ export default function CurriculumVitaeUno() {
           id="contenido-pdf"
           className="flex flex-col w-[350px] h-[453px] md:w-[541px] md:h-[700px] p-5 bg-white text-black overflow-hidden"
         >
-          <section className="flex justify-between w-auto h-auto border-b-[1px] pb-2">
+          <section
+            id="barra-superior"
+            className="flex justify-between w-auto h-auto border-b-[1px] pb-2"
+          >
             <div className="flex flex-col justify-between">
               <h5 className="text-sm">{datos.profesion}</h5>
               <div
@@ -112,21 +116,18 @@ export default function CurriculumVitaeUno() {
               ></Image>
             </div>
           </section>
-          <section className="flex text-[9px]">
-            <section className="w-2/5 py-2 pr-2">
+          <section id="informacion" className="flex text-[9px]">
+            <section id="col-izquierda" className="w-2/5 py-2 pr-2">
               <DatosPersonales icono={cv1} />
-              <HabilidadesBlandas
-                icono={item}
-                classBloque="border-t-[1px] pt-2 mt-2"
-              />
-              <HabilidadesTecnicas
-                icono={item}
-                classBloque="border-t-[1px] pt-2 mt-2"
-              />
-              <Lenguajes icono={item} classBloque="border-t-[1px] pt-2 mt-2" />
-              <RefProfesionales classBloque="border-t-[1px] pt-2 mt-2" />
+              <HabilidadesBlandas icono={item} classBloque={borde} />
+              <HabilidadesTecnicas icono={item} classBloque={borde} />
+              <Lenguajes icono={item} classBloque={borde} />
+              <RefProfesionales classBloque={borde} />
             </section>
-            <section className="w-3/5 md:h-[580px] border-l-[1px] py-2 pl-2">
+            <section
+              id="col-derecha"
+              className="w-3/5 md:h-[580px] border-l-[1px] py-2 pl-2"
+            >
               {datos.sobremi !== "" && datos.sobremi ? (
                 <div>
                   <h2 className="font-black">PERFIL</h2>

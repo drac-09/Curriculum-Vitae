@@ -67,17 +67,6 @@ export default function InformacionPersonal() {
   }
 
   function nuevo() {
-    console.log(
-      sobremi,
-      nombre,
-      apellido,
-      profesion,
-      direccion,
-      correo,
-      celular,
-      dni,
-      estadocivil
-    );
     const info = {
       sobremi: sobremi !== undefined ? sobremi : "",
       nombre: nombre !== undefined ? nombre : "",
