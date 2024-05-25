@@ -70,7 +70,7 @@ export default function Sidebar() {
           </Link>
         </div>
         <div className="flex flex-col gap-3">
-          <h1 className="Titulo border-b-[1px]">Información:</h1>
+          <h1 className="Titulo font-bold">Datos:</h1>
           <Link
             href={"/perfil/cargar-informacion"}
             type="button"
@@ -163,10 +163,8 @@ export default function Sidebar() {
                   <h1>Referencias Profesionales</h1>
                 </Link>
               </div>
-              <div className="flex flex-col items-center justify-center gap-3 mb-5">
-                <h1 className="Titulo border-b-[1px] w-[70vw] pb-1 text-center">
-                  Información:
-                </h1>
+              <div className="flex flex-col items-center justify-center gap-3 mb-10">
+                <h1 className="Titulo font-bold">Datos:</h1>
                 <div className="flex gap-3">
                   <Link
                     href={"/perfil/cargar-informacion"}
