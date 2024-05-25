@@ -7,7 +7,7 @@ export default function Informacion() {
         <h1 className="Alerta font-bold">Preguntas Frecuentes</h1>
         <hr className="Hr" />
       </section>
-      <section className="flex gap-5 text-xs leading-5 md:text-sm">
+      <section className="flex gap-5 leading-5 text-sm md:text-base">
         <Image
           src="/importante/write.svg"
           alt="descargar"
@@ -25,7 +25,7 @@ export default function Informacion() {
           </p>
         </div>
       </section>
-      <section className="flex gap-5 text-xs leading-5 md:text-sm">
+      <section className="flex gap-5 leading-5  text-sm md:text-base">
         <Image
           src="/importante/archive.svg"
           alt="descargar"
@@ -43,7 +43,7 @@ export default function Informacion() {
           </p>
         </div>
       </section>
-      <section className="flex gap-5 text-xs leading-5 md:text-sm">
+      <section className="flex gap-5 leading-5  text-sm md:text-base ">
         <Image
           src="/importante/download.svg"
           alt="descargar"
@@ -56,7 +56,7 @@ export default function Informacion() {
           <p className="text-justify text-wrap">
             En la pestaña de PERFIL, en el menu a la izquierda en la parte
             inferior encontraras un botón de{" "}
-            <span className="border-[1px] text-[10px] md:text-xs rounded-md mx-1 px-2 py-[1px] whitespace-nowrap">
+            <span className="border-[1px] text-[11px] md:text-xs rounded-md mx-1 px-2 py-[1px] whitespace-nowrap">
               Descargar Información
             </span>{" "}
             al pulsar dicho botón, podrás descargar tu informacion en un
@@ -64,7 +64,7 @@ export default function Informacion() {
           </p>
         </div>
       </section>
-      <section className="flex gap-5 text-xs leading-5 md:text-sm">
+      <section className="flex gap-5 leading-5  text-sm md:text-base">
         <Image
           src="/importante/upload.svg"
           alt="descargar"
@@ -78,7 +78,7 @@ export default function Informacion() {
             Con este archivo podrás cargar tu información para actualizarla o
             agregar mas datos. En la pestaña de PERFIL en el menu ala izquierda
             encontraras un botón de{" "}
-            <span className="border-[1px] text-[10px] md:text-xs rounded-md mx-1 px-2 py-[1px] whitespace-nowrap">
+            <span className="border-[1px] text-[11px] md:text-xs rounded-md mx-1 px-2 py-[1px] whitespace-nowrap">
               Cargar Información
             </span>{" "}
             al pulsar dicho botón este te llevara a una sección donde elegirás
@@ -86,7 +86,7 @@ export default function Informacion() {
           </p>
         </div>
       </section>
-      <section className="flex gap-5 text-xs leading-5 md:text-sm">
+      <section className="flex gap-5 leading-5  text-sm md:text-base">
         <Image
           src="/importante/delete.svg"
           alt="descargar"
@@ -101,7 +101,7 @@ export default function Informacion() {
           <p className="text-justify text-wrap">
             En la pestaña de PERFIL en el menu ala izquierda encontraras un
             botón de{" "}
-            <span className="border-[1px] text-[10px] md:text-xs rounded-md md:mx-1 px-2 py-[1px] whitespace-nowrap">
+            <span className="border-[1px] text-[11px] md:text-xs rounded-md md:mx-1 px-2 py-[1px] whitespace-nowrap">
               Borrar Información
             </span>{" "}
             al pulsar el botón este abrirá una ventana de confirmación, una vez
