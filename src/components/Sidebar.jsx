@@ -98,6 +98,11 @@ export default function Sidebar() {
               <div className="flex-grow flex flex-col gap-4 px-5 items-center ">
                 <Link
                   href={"/perfil/info-personal"}
+                  className={`${
+                    pathName === "/perfil/info-personal"
+                      ? "SeleccionadoSidebar"
+                      : ""
+                  }`}
                   onClick={() => {
                     toggleDropdown("Información Personal");
                   }}
@@ -106,6 +111,11 @@ export default function Sidebar() {
                 </Link>
                 <Link
                   href={"/perfil/info-academica"}
+                  className={`${
+                    pathName === "/perfil/info-academica"
+                      ? "SeleccionadoSidebar"
+                      : ""
+                  }`}
                   onClick={() => {
                     toggleDropdown("Información Académica");
                   }}
@@ -114,6 +124,11 @@ export default function Sidebar() {
                 </Link>
                 <Link
                   href={"/perfil/experiencia-laboral"}
+                  className={`${
+                    pathName === "/perfil/experiencia-laboral"
+                      ? "SeleccionadoSidebar"
+                      : ""
+                  }`}
                   onClick={() => {
                     toggleDropdown("Experiencia Laboral");
                   }}
@@ -122,6 +137,11 @@ export default function Sidebar() {
                 </Link>
                 <Link
                   href={"/perfil/competencias"}
+                  className={`${
+                    pathName === "/perfil/competencias"
+                      ? "SeleccionadoSidebar"
+                      : ""
+                  }`}
                   onClick={() => {
                     toggleDropdown("Competencias");
                   }}
@@ -130,6 +150,11 @@ export default function Sidebar() {
                 </Link>
                 <Link
                   href={"/perfil/ref-profesionales"}
+                  className={`${
+                    pathName === "/perfil/ref-profesionales"
+                      ? "SeleccionadoSidebar"
+                      : ""
+                  }`}
                   onClick={() => {
                     toggleDropdown("Referencias Profesionales");
                   }}
