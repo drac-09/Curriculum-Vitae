@@ -64,15 +64,14 @@ export default function Cargar() {
     <div>
       <h5 className="Titulo">Cargar Información.</h5>
       <hr className="opacity-20 my-1" />
-      <p className="text-sm text-gray-200">
-        Si ya antes habías ingresado tu informacion y descargaste tu informacion
-        en un archivo, puedes cargar nuevamente tu informacion, solo pulsa el
-        botón <span className="MsjExito">Seleccionar archivo</span>, seleccionas
-        el archivo y luego pulsas el botón{" "}
+      <p>
+        Si ya antes habías ingresado tu informacion y la descargaste en un
+        archivo, puedes cargarla nuevamente, solo pulsa el botón{" "}
+        <span className="MsjExito">Seleccionar archivo</span>, seleccionas el
+        archivo y luego pulsas el botón{" "}
         <span className="MsjExito">Cargar Información</span>.
       </p>
-      <br />
-      <h1 className="Alerta">
+      <h1 className="Alerta text-base font-bold">
         Importante: Al cargar tus datos estos reemplazaran los que ya están
         ingresados.
       </h1>
