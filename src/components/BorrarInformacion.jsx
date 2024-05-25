@@ -20,12 +20,12 @@ export default function BorrarInformacion() {
     <div>
       <button
         type="button"
-        className="Button w-full"
+        className="Button w-full text-sm"
         onClick={() => {
           setModal(!modal);
         }}
       >
-        Borrar Información
+        Borrar
       </button>
       {modal && (
         <div className="fixed z-40 md:absolute md:z-50 top-0 left-0 h-screen w-screen flex justify-center items-center bg-red-600 bg-opacity-0 text-white">

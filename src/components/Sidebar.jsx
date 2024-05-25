@@ -70,12 +70,13 @@ export default function Sidebar() {
           </Link>
         </div>
         <div className="flex flex-col gap-3">
+          <h1 className="Titulo border-b-[1px]">Información:</h1>
           <Link
             href={"/perfil/cargar-informacion"}
             type="button"
             className="Button flex items-center justify-center"
           >
-            <h1>Cargar Informacion</h1>
+            <h1 className="text-sm">Cargar</h1>
           </Link>
           <DescargarJSON />
           <BorrarInformacion />
@@ -163,18 +164,23 @@ export default function Sidebar() {
                 </Link>
               </div>
               <div className="flex flex-col items-center justify-center gap-3 mb-5">
-                <Link
-                  href={"/perfil/cargar-informacion"}
-                  type="button"
-                  className="Button flex items-center justify-center"
-                  onClick={() => {
-                    toggleDropdown("Cargar Informacion");
-                  }}
-                >
-                  <h1>Cargar Informacion</h1>
-                </Link>
-                <DescargarJSON />
-                <BorrarInformacion />
+                <h1 className="Titulo border-b-[1px] w-[70vw] pb-1 text-center">
+                  Información:
+                </h1>
+                <div className="flex gap-3">
+                  <Link
+                    href={"/perfil/cargar-informacion"}
+                    type="button"
+                    className="Button flex items-center justify-center"
+                    onClick={() => {
+                      toggleDropdown("Cargar Informacion");
+                    }}
+                  >
+                    <h1>Cargar</h1>
+                  </Link>
+                  <DescargarJSON />
+                  <BorrarInformacion />
+                </div>
               </div>
             </div>
           </div>

@@ -53,8 +53,8 @@ export default function DescargarJSON() {
 
   return (
     <div>
-      <button onClick={descargarArchivoJSON} className="Button w-full">
-        Descargar Información
+      <button onClick={descargarArchivoJSON} className="Button w-full text-sm">
+        Descargar
       </button>
     </div>
   );
