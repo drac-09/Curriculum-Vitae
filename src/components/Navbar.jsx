@@ -95,12 +95,12 @@ export default function Navbar() {
           </button>
         </div>
         {menu && (
-          <div className="block sm:hidden bg-slate-500">
+          <div className="block sm:hidden">
             <div
               onClick={openMenu}
-              className="fixed z-20 inset-0 left-0 flex items-start justify-end mt-10 pr-3"
+              className="fixed z-20 inset-0 left-0 flex items-start justify-end pt-12 pr-3"
             >
-              <div className="flex flex-col gap-3 items-start bg-black text-white border-[1px] rounded-md px-3 py-2">
+              <div className="flex flex-col gap-3 items-start bg-black text-lg text-white border-[1px] rounded-md px-3 py-2">
                 <Link href={"/"} className="flex items-center gap-2">
                   <LiaHomeSolid />
                   <h1>Inicio</h1>
