@@ -43,8 +43,8 @@ export default function DatosPersonales({ icono, classTitulo, classBloque }) {
 
           <div>
             {datos.correo !== "" && datos.correo ? (
-              <div className="flex items-center justify-start gap-2">
-                <h1 className="text-[10px]">{icono.correo} </h1>
+              <div className="flex items-center justify-start gap-1 lg:gap-2">
+                <h1 className="text-[6px] lg:text-[10px]">{icono.correo} </h1>
                 <h1>{datos.correo}</h1>
               </div>
             ) : (
@@ -52,8 +52,10 @@ export default function DatosPersonales({ icono, classTitulo, classBloque }) {
             )}
 
             {datos.direccion !== "" && datos.direccion ? (
-              <div className="flex items-center justify-start gap-2">
-                <h1 className="text-[10px]">{icono.direccion} </h1>
+              <div className="flex items-center justify-start gap-1 lg:gap-2">
+                <h1 className="text-[6px] lg:text-[10px]">
+                  {icono.direccion}{" "}
+                </h1>
                 <h1>{datos.direccion}</h1>
               </div>
             ) : (
@@ -61,8 +63,8 @@ export default function DatosPersonales({ icono, classTitulo, classBloque }) {
             )}
 
             {datos.dni !== "" && datos.dni ? (
-              <div className="flex items-center justify-start gap-2">
-                <h1 className="text-[10px]">{icono.dni} </h1>
+              <div className="flex items-center justify-start gap-1 lg:gap-2">
+                <h1 className="text-[6px] lg:text-[10px]">{icono.dni} </h1>
                 <h1>{datos.dni}</h1>
               </div>
             ) : (
@@ -70,8 +72,8 @@ export default function DatosPersonales({ icono, classTitulo, classBloque }) {
             )}
 
             {datos.celular !== "" && datos.celular ? (
-              <div className="flex items-center justify-start gap-2">
-                <h1 className="text-[10px]">{icono.celular} </h1>
+              <div className="flex items-center justify-start gap-1 lg:gap-2">
+                <h1 className="text-[6px] lg:text-[10px]">{icono.celular} </h1>
                 <h1>{datos.celular}</h1>
               </div>
             ) : (
@@ -79,8 +81,10 @@ export default function DatosPersonales({ icono, classTitulo, classBloque }) {
             )}
 
             {datos.estadocivil !== "" && datos.estadocivil ? (
-              <div className="flex items-center justify-start gap-2">
-                <h1 className="text-[10px]">{icono.estadocivil} </h1>
+              <div className="flex items-center justify-start gap-1 lg:gap-2">
+                <h1 className="text-[6px] lg:text-[10px]">
+                  {icono.estadocivil}{" "}
+                </h1>
                 <h1>{datos.estadocivil}</h1>
               </div>
             ) : (

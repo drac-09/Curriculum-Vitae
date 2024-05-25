@@ -42,7 +42,7 @@ const cv1 = {
   estadocivil: <GiLinkedRings />,
 };
 
-const borde = "border-t-[1px] pt-2 mt-2";
+const borde = "border-t-[1px] pt-1 mt-1 lg:pt-2 lg:mt-2";
 const defaultSrc = "/user2.svg";
 const item = "▪";
 
@@ -88,19 +88,21 @@ export default function CurriculumVitaeUno() {
 
   return (
     <div className="flex flex-col pt-10 md:pt-0">
-      <div className={`${roboto.className} antialiased text-xs font-semibold`}>
+      <div
+        className={`${roboto.className} antialiased leading-[10px] lg:leading-4 font-semibold`}
+      >
         <div
           id="contenido-pdf"
-          className="flex flex-col w-[350px] h-[453px] md:w-[541px] md:h-[700px] p-5 bg-white text-black overflow-hidden"
+          className="flex flex-col w-[350px] h-[453px] md:w-[541px] md:h-[700px] p-3 lg:p-5 bg-white text-black overflow-hidden"
         >
           <section
             id="barra-superior"
-            className="flex justify-between w-auto h-auto border-b-[1px] pb-2"
+            className="flex justify-between w-auto h-auto border-b-[1px] pb-1 lg:pb-2"
           >
             <div className="flex flex-col justify-between">
-              <h5 className="text-sm">{datos.profesion}</h5>
+              <h5 className="text-[9px] lg:text-sm">{datos.profesion}</h5>
               <div
-                className={`${play.className} antialiased text-2xl font-bold tracking-widest uppercase flex flex-col justify-end `}
+                className={`${play.className} antialiased text-sm lg:text-2xl font-bold tracking-widest uppercase flex flex-col justify-end`}
               >
                 <h1>{datos.nombre}</h1>
                 <h1>{datos.apellido}</h1>
@@ -112,12 +114,25 @@ export default function CurriculumVitaeUno() {
                 alt="Foto de Perfil"
                 width={83}
                 height={83}
-                className="rounded-[50%]"
+                className="rounded-[50%] hidden lg:block"
+              ></Image>
+              <Image
+                src={fotoPerfil}
+                alt="Foto de Perfil"
+                width={53}
+                height={53}
+                className="rounded-[50%] lg:hidden"
               ></Image>
             </div>
           </section>
-          <section id="informacion" className="flex text-[9px]">
-            <section id="col-izquierda" className="w-2/5 py-2 pr-2">
+          <section
+            id="informacion"
+            className="flex leading-[10px] lg:leading-4 text-[5.8px] lg:text-[9px]"
+          >
+            <section
+              id="col-izquierda"
+              className="w-2/5 py-1 pr-1 lg:py-2 lg:pr-2"
+            >
               <DatosPersonales icono={cv1} />
               <HabilidadesBlandas icono={item} classBloque={borde} />
               <HabilidadesTecnicas icono={item} classBloque={borde} />
@@ -126,7 +141,7 @@ export default function CurriculumVitaeUno() {
             </section>
             <section
               id="col-derecha"
-              className="w-3/5 md:h-[580px] border-l-[1px] py-2 pl-2"
+              className="w-3/5 h-[372px] lg:h-[580px] border-l-[1px] py-1 pl-1 lg:py-2 lg:pl-2"
             >
               {datos.sobremi !== "" && datos.sobremi ? (
                 <div>
@@ -140,11 +155,9 @@ export default function CurriculumVitaeUno() {
               )}
               <Experiencia
                 icono="✓&nbsp;"
-                classBloque={`${
-                  datos.sobremi ? "border-t-[1px] pt-2 mt-2" : ""
-                }`}
+                classBloque={`${datos.sobremi ? `${borde}` : ""}`}
               />
-              <Educacion classBloque="border-t-[1px] pt-2 mt-2" />
+              <Educacion classBloque={borde} />
             </section>
           </section>
         </div>
