@@ -10,8 +10,8 @@ const titulo = Courgette({
 export default function inicio() {
   return (
     <main className="p-5 md:p-0">
-      <div className="flex h-[80vh] items-center">
-        <div className="flex flex-col gap-10">
+      <div className="flex h-max lg:h-[80vh] lg:items-center">
+        <div className="flex flex-col gap-5 lg:gap-10">
           <section className="flex flex-col justify-center items-center text-sm md:text-base lg:text-lg">
             {/* <h1
               className={`${titulo.className} antialiased text-3xl md:text-5xl font-bold lg:hidden`}
@@ -39,7 +39,7 @@ export default function inicio() {
             </p>
           </section>
           <section className="flex flex-col gap-3">
-            <div className="flex flex-col items-center md:flex-row md:justify-between gap-3 w-auto h-auto">
+            <div className="flex flex-col items-center md:flex-row md:justify-center gap-3 w-auto h-auto">
               <Image
                 src="/home/cv1.jpg"
                 alt="home1"
@@ -62,7 +62,8 @@ export default function inicio() {
                 className="rounded-md w-full h-auto hidden md:block"
               ></Image>
             </div>
-            <br />
+          </section>
+          <section>
             <div className="flex flex-col items-center gap-3">
               <p className="Alerta md:text-xl font-bold">
                 ¿Listo para destacarte en el mercado laboral?
