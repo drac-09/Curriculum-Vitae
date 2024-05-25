@@ -150,13 +150,13 @@ export default function ReferenciasProfesionales() {
       <form ref={formulario}>
         <h5 className="Titulo">Referencias Profesionales</h5>
         <hr className="Hr" />
-        <p className="text-sm text-gray-200">
+        <p>
           En esta sección es donde proporcionas los nombres y la información de
           contacto de personas que pueden dar testimonio de tu experiencia
           laboral, habilidades y carácter.
         </p>
         <br />
-        <div className="flex flex-col gap-2 mt-2 text-sm">
+        <div className="flex flex-col gap-2 mt-2 text-sm lg:text-base">
           <section className="flex md:w-3/4">
             <label htmlFor="nombre" className="w-1/3">
               Nombre:
@@ -166,7 +166,7 @@ export default function ReferenciasProfesionales() {
               id="nombre"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className="Input w-2/3"
+              className="Input w-2/3 lg:text-base"
               placeholder="Nombre de la persona"
               autoComplete="off"
             />
@@ -180,7 +180,7 @@ export default function ReferenciasProfesionales() {
               id="empresa"
               value={empresa}
               onChange={(e) => setEmpresa(e.target.value)}
-              className="Input w-2/3"
+              className="Input w-2/3 lg:text-base"
               placeholder="Nombre de la empresa"
               autoComplete="off"
             />
@@ -194,7 +194,7 @@ export default function ReferenciasProfesionales() {
               id="cargo"
               value={cargo}
               onChange={(e) => setCargo(e.target.value)}
-              className="Input w-2/3"
+              className="Input w-2/3 lg:text-base"
               placeholder="Puesto que ocupa en la empresa"
               autoComplete="off"
             />
@@ -211,7 +211,7 @@ export default function ReferenciasProfesionales() {
               pattern="[0-9]{4}-[0-9]{4}"
               onChange={(e) => setCelular(e.target.value)}
               placeholder="9999-9999"
-              className="Input w-1/3"
+              className="Input w-2/5 lg:text-base"
               autoComplete="off"
             />
           </div>

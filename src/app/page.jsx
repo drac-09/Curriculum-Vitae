@@ -12,13 +12,13 @@ export default function inicio() {
     <main className="p-5 md:p-0">
       <div className="flex h-[80vh] items-center">
         <div className="flex flex-col gap-10">
-          <section className="flex flex-col justify-center items-center text-sm md:text-base">
-            <h1
-              className={`${titulo.className} antialiased text-3xl md:text-5xl font-bold`}
+          <section className="flex flex-col justify-center items-center text-sm md:text-base lg:text-lg">
+            {/* <h1
+              className={`${titulo.className} antialiased text-3xl md:text-5xl font-bold lg:hidden`}
             >
               Curriculum Vitae
             </h1>
-            <br />
+            <br /> */}
             <p>
               Bienvenido a{" "}
               <span className={`${titulo.className} antialiased`}>

@@ -208,17 +208,17 @@ export default function ExperienciaLaboral() {
       <form ref={formulario}>
         <h5 className="Titulo">Experiencia Laboral</h5>
         <hr className="Hr" />
-        <p className="text-sm text-gray-200">
+        <p>
           En esta sección, resume tus responsabilidades y las actividades que
           llevabas a cabo en tus trabajos anteriores. Es crucial que comuniques
           de manera clara y precisa las tareas que realizabas en cada puesto de
           trabajo.
         </p>
-        <p className="Alerta text-sm font-semibold">
+        <p className="Alerta font-semibold">
           Recomendación: Empiece desde los mas recientes a los mas antiguos.
         </p>
         <br />
-        <div className="flex flex-col gap-2 mt-2 text-sm">
+        <div className="flex flex-col gap-2 mt-2 text-sm lg:text-base">
           <section className="flex md:w-3/4">
             <label htmlFor="empresa" className="w-1/3">
               Empresa:
@@ -228,7 +228,7 @@ export default function ExperienciaLaboral() {
               id="empresa"
               value={empresa}
               onChange={(e) => setEmpresa(e.target.value)}
-              className="Input w-2/3"
+              className="Input w-2/3 lg:text-base"
               placeholder="Nombre de la empresa"
               autoComplete="off"
             />
@@ -242,14 +242,14 @@ export default function ExperienciaLaboral() {
               id="cargo"
               value={cargo}
               onChange={(e) => setCargo(e.target.value)}
-              className="Input w-2/3"
+              className="Input w-2/3 lg:text-base"
               placeholder="Puesto que ocupaste en la empresa"
               autoComplete="off"
             />
           </section>
           <section className="flex md:w-2/4">
             <label htmlFor="f-inicio" className="w-1/3 md:w-1/2">
-              Fecha Inicio:
+              Desde:
             </label>
             <div className="w-1/3 flex gap-2">
               <select
@@ -257,7 +257,7 @@ export default function ExperienciaLaboral() {
                 name="mes"
                 value={mesInicio}
                 onChange={(e) => setMesInicio(e.target.value)}
-                className="Select"
+                className="Select lg:text-base"
               >
                 {meses.map((mes, index) => (
                   <option key={index} value={mes}>
@@ -271,7 +271,7 @@ export default function ExperienciaLaboral() {
                 name="anio"
                 value={anioInicio}
                 onChange={(e) => setAnioInicio(e.target.value)}
-                className="Select"
+                className="Select lg:text-base"
               >
                 {anios.map((anio, index) => (
                   <option key={index} value={anio}>
@@ -283,7 +283,7 @@ export default function ExperienciaLaboral() {
           </section>
           <section className="flex md:w-2/4">
             <label htmlFor="f-final" className="w-1/3 md:w-1/2">
-              Fecha Finalización:
+              Hasta:
             </label>
             <div className="w-1/3 flex gap-2">
               <select
@@ -298,7 +298,7 @@ export default function ExperienciaLaboral() {
                     setMostrarAnio(true);
                   }
                 }}
-                className="Select"
+                className="Select lg:text-base"
               >
                 <option value="Actual">Actual</option>
                 {meses.map((mes, index) => (
@@ -314,7 +314,7 @@ export default function ExperienciaLaboral() {
                   name="anio"
                   value={anioFinal}
                   onChange={(e) => setAnioFinal(e.target.value)}
-                  className="Select"
+                  className="Select lg:text-base"
                 >
                   {anios.map((anio, index) => (
                     <option key={index} value={anio} defaultValue={2024}>
@@ -351,7 +351,7 @@ export default function ExperienciaLaboral() {
                   id="tarea"
                   value={tarea}
                   onChange={(e) => setTarea(e.target.value)}
-                  className="Input flex-grow"
+                  className="Input flex-grow lg:text-base"
                   autoComplete="off"
                 />
                 <button
@@ -359,7 +359,7 @@ export default function ExperienciaLaboral() {
                   onClick={() => {
                     agregar();
                   }}
-                  className="Button"
+                  className="Button lg:text-md"
                 >
                   Añadir
                 </button>

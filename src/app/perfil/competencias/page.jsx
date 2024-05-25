@@ -89,10 +89,10 @@ export default function Competencias() {
       <div>
         <h5 className="Titulo">Habilidades Blandas</h5>
         <hr className="Hr" />
-        <p className="text-sm text-gray-200">
-          on habilidades sociales, emocionales y de comunicación que te permiten
-          interactuar efectivamente con otras personas y trabajar en equipo.
-          Algunos ejemplos de habilidades blandas son la capacidad de
+        <p>
+          Son habilidades sociales, emocionales y de comunicación que te
+          permiten interactuar efectivamente con otras personas y trabajar en
+          equipo. Algunos ejemplos de habilidades blandas son la capacidad de
           comunicación, la empatía, el trabajo en equipo y el liderazgo.
         </p>
       </div>
@@ -107,7 +107,7 @@ export default function Competencias() {
             id="habilidad"
             value={habilidad}
             onChange={(e) => setHabilidad(e.target.value)}
-            className="Input flex-grow"
+            className="Input flex-grow lg:text-base"
             list="habilidades"
             autoComplete="off"
           />
@@ -150,7 +150,7 @@ export default function Competencias() {
               .map((habilidad) => (
                 <div
                   key={habilidad.id}
-                  className="Etiqueta max-w-max flex gap-3"
+                  className="Etiqueta max-w-max flex gap-3 lg:text-base"
                 >
                   <h1>{habilidad.habilidad}</h1>
                   <button
@@ -169,7 +169,7 @@ export default function Competencias() {
       <div>
         <h5 className="Titulo">Habilidades Técnicas</h5>
         <hr className="Hr" />
-        <p className="text-sm text-gray-200">
+        <p>
           Son habilidades específicas y prácticas que necesitas para desempeñar
           un trabajo o tarea particular. Por ejemplo, saber programar, operar
           maquinaria, o utilizar software especializado.
@@ -186,7 +186,7 @@ export default function Competencias() {
             id="aptitud"
             value={aptitud}
             onChange={(e) => setAptitud(e.target.value)}
-            className="Input flex-grow"
+            className="Input flex-grow lg:text-base"
             list="aptitudes"
             autoComplete="off"
           />
@@ -232,7 +232,10 @@ export default function Competencias() {
               .slice()
               .sort((a, b) => ordenarPorLongitud(a, b, "aptitud"))
               .map((aptitud) => (
-                <div key={aptitud.id} className="Etiqueta max-w-max flex gap-3">
+                <div
+                  key={aptitud.id}
+                  className="Etiqueta max-w-max flex gap-3 lg:text-base"
+                >
                   <h1>{aptitud.aptitud}</h1>
                   <button
                     type="button"
@@ -250,7 +253,7 @@ export default function Competencias() {
       <div>
         <h5 className="Titulo">Lenguajes</h5>
         <hr className="Hr" />
-        <p className="text-sm text-gray-200">
+        <p>
           En esta parte, dices qué idiomas hablas. Al ingresar los lenguajes
           tendrás una lista de ejemplos.
         </p>
@@ -266,7 +269,7 @@ export default function Competencias() {
             id="lenguaje"
             value={lenguaje}
             onChange={(e) => setLenguaje(e.target.value)}
-            className="Input flex-grow"
+            className="Input flex-grow lg:text-base"
             list="lenguajes"
             autoComplete="off"
           />
@@ -299,7 +302,7 @@ export default function Competencias() {
               .map((lenguaje) => (
                 <div
                   key={lenguaje.id}
-                  className="Etiqueta max-w-max flex gap-3"
+                  className="Etiqueta max-w-max flex gap-3 lg:text-base"
                 >
                   <h1>{lenguaje.lenguaje}</h1>
                   <button

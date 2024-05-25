@@ -86,7 +86,7 @@ export default function InformacionPersonal() {
       <form action="">
         <h5 className="Titulo">Acerca de mi.</h5>
         <hr className="opacity-20 my-1" />
-        <p className="text-sm text-gray-200">
+        <p>
           En esta sección coloca una breve descripción que resume tus
           habilidades y logros profesionales. Destaca tus puntos fuertes y
           objetivos de carrera en pocas palabras, manteniendo un tono
@@ -98,18 +98,18 @@ export default function InformacionPersonal() {
           id="sobremi"
           value={sobremi}
           onChange={(e) => setSobremi(e.target.value)}
-          className="w-full h-24 my-3 p-3 rounded-md bg-gray-800 text-sm resize-none"
+          className="w-full h-24 my-3 p-3 rounded-md bg-gray-800 text-base resize-none"
         />
         <br />
         <br />
         <h5 className="Titulo">Datos Personales</h5>
         <hr className="opacity-20 my-1" />
-        <p className="text-sm text-gray-300">
+        <p>
           Proporciona esta información de contacto de manera clara y precisa
           para que los empleadores puedan comunicarse contigo fácilmente.
         </p>
         <br />
-        <div className="flex flex-col gap-2 mt-2 text-sm">
+        <div className="flex flex-col gap-2 mt-2 text-sm lg:text-base">
           <div className="flex md:w-3/4">
             <label htmlFor="nombre" className="w-1/3">
               Nombre:
@@ -119,7 +119,7 @@ export default function InformacionPersonal() {
               id="nombre"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className="Input w-1/3"
+              className="Input w-1/3 lg:text-base"
               placeholder="Primer nombre"
               autoComplete="off"
             />
@@ -133,7 +133,7 @@ export default function InformacionPersonal() {
               id="apellido"
               value={apellido}
               onChange={(e) => setApellido(e.target.value)}
-              className="Input w-1/3"
+              className="Input w-1/3 lg:text-base"
               placeholder="Primer apellido"
               autoComplete="off"
             />
@@ -147,7 +147,7 @@ export default function InformacionPersonal() {
               id="profesion"
               value={profesion}
               onChange={(e) => setProfesion(e.target.value)}
-              className="Input w-2/3"
+              className="Input w-2/3 lg:text-base"
               placeholder="Profesión u Oficio"
               autoComplete="off"
             />
@@ -161,7 +161,7 @@ export default function InformacionPersonal() {
               id="direccion"
               value={direccion}
               onChange={(e) => setDireccion(e.target.value)}
-              className="Input w-2/3"
+              className="Input w-2/3 lg:text-base"
               placeholder="Dirección de su domicilio"
               autoComplete="off"
             />
@@ -176,7 +176,7 @@ export default function InformacionPersonal() {
               value={correo}
               onChange={(e) => setCorreo(e.target.value)}
               placeholder="correoelectronico@server.com"
-              className="Input w-2/3"
+              className="Input w-2/3 lg:text-base"
               autoComplete="off"
             />
           </div>
@@ -192,7 +192,7 @@ export default function InformacionPersonal() {
               onChange={(e) => setDni(e.target.value)}
               pattern="\d{4}-\d{4}-\d{5}"
               placeholder="0000-0000-00000"
-              className="Input w-1/3"
+              className="Input w-3/7 lg:w-2/5 lg:text-base"
               autoComplete="off"
             />
           </div>
@@ -208,7 +208,7 @@ export default function InformacionPersonal() {
               pattern="[0-9]{4}-[0-9]{4}"
               onChange={(e) => setCelular(e.target.value)}
               placeholder="9999-9999"
-              className="Input w-1/3"
+              className="Input w-2/5 lg:text-base"
               autoComplete="off"
             />
           </div>
@@ -221,7 +221,7 @@ export default function InformacionPersonal() {
               id="estadocivil"
               value={estadocivil}
               onChange={(e) => setEstadocivil(e.target.value)}
-              className="Select w-1/3"
+              className="Select w-1/3 lg:text-base"
             >
               <option value="">Omitir</option>
               <option value="Soltero">Soltero</option>
