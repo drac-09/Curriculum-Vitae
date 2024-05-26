@@ -44,6 +44,7 @@ const cv3 = {
 
 const defaultSrc = "/user.svg";
 const item = "•";
+const borde = "border-b-[0.1px] lg:border-b-[1px] border-gray-300";
 
 export default function CurriculumVitaeTres() {
   const [datos, setDatos] = useState([]);
@@ -86,64 +87,74 @@ export default function CurriculumVitaeTres() {
   }
 
   return (
-    <div className="flex flex-col mt-10 md:mt-0">
+    <div className="flex flex-col pt-10 md:pt-0">
       <div
-        className={`${contenido2.className} antialiased text-xs font-semibold`}
+        className={`${contenido2.className} antialiased leading-[10px] lg:leading-4 font-semibold`}
       >
         <div
           id="contenido-pdf"
           className="flex flex-col w-[350px] h-[453px] md:w-[541px] md:h-[700px] bg-white text-black overflow-hidden"
         >
-          <section className="flex justify-between w-auto h-auto border-b-[1px] px-7 py-2 bg-[#585858] text-white">
-            <div className="w-auto h-auto mt-auto mx-5">
+          <section
+            id="barra-superior"
+            className="flex h-auto border-b-[1px] bg-[#585858] text-white"
+          >
+            <div className="w-3/6 flex justify-center px-7 py-[5px] lg:py-2">
               <Image
                 src={fotoPerfil}
                 alt="Foto de Perfil"
                 width={83}
                 height={83}
-                className="rounded-[50%]"
+                className="rounded-[50%] hidden lg:block"
+              ></Image>
+              <Image
+                src={fotoPerfil}
+                alt="Foto de Perfil"
+                width={53}
+                height={53}
+                className="rounded-[50%] lg:hidden"
               ></Image>
             </div>
-            <div className="flex flex-col flex-grow items-center justify-center">
-              <h5 className="text-sm">{datos.profesion}</h5>
+            <div className="w-3/4 flex flex-col flex-grow items-center justify-center px-7 py-[5px] lg:py-2">
+              <h5 className="text-[9px] lg:text-sm">{datos.profesion}</h5>
               <div
-                className={`${nombreApellido.className} antialiased text-2xl gap-3 tracking-wider uppercase flex`}
+                className={`${nombreApellido.className} antialiased text-base lg:text-2xl gap-3 tracking-wider uppercase flex`}
               >
                 <h1>{datos.nombre}</h1>
                 <h1>{datos.apellido}</h1>
               </div>
             </div>
           </section>
-          <section className="flex text-[9px] h-full">
-            <section className="w-2/5 bg-[#f2f2f2] py-2 pl-5 pr-3">
-              <DatosPersonales icono={cv3} />
-              <Lenguajes
-                icono={item}
-                classBloque="mt-2"
-                classTitulo="border-b-[1px] border-black"
-              />
+          <section
+            id="informacion"
+            className="flex leading-[10px] lg:leading-4 text-[5.8px] lg:text-[9px] h-full"
+          >
+            <section
+              id="izquierda"
+              className="w-2/5 bg-[#f2f2f2] py-1 pl-3 pr-2 lg:py-2 lg:pl-5 lg:pr-3"
+            >
+              <DatosPersonales icono={cv3} classTitulo={borde} />
+              <Lenguajes icono={item} classBloque="mt-2" classTitulo={borde} />
               <HabilidadesBlandas
                 icono={item}
                 classBloque="mt-2"
-                classTitulo="border-b-[1px] border-black"
+                classTitulo={borde}
               />
               <HabilidadesTecnicas
                 icono={item}
                 classBloque="mt-2"
-                classTitulo="border-b-[1px] border-black"
+                classTitulo={borde}
               />
-              <RefProfesionales
-                classBloque="mt-2"
-                classTitulo="border-b-[1px] border-black"
-              />
+              <RefProfesionales classBloque="mt-2" classTitulo={borde} />
             </section>
 
-            <section className="w-3/5 md:h-[580px] py-2 pr-5 pl-3">
+            <section
+              id="derecha"
+              className="w-3/5 md:h-[580px] py-1 pr-3 pl-2 lg:py-2 lg:pr-5 lg:pl-3"
+            >
               {datos.sobremi !== "" && datos.sobremi ? (
                 <div>
-                  <h2 className="border-b-[1px] border-black mb-1 font-black">
-                    PERFIL
-                  </h2>
+                  <h2 className={`${borde} mb-1 font-black`}>PERFIL</h2>
                   <p htmlFor="" className="text-justify">
                     {datos.sobremi}
                   </p>
@@ -154,12 +165,9 @@ export default function CurriculumVitaeTres() {
               <Experiencia
                 icono="✓&nbsp;"
                 classBloque="mt-2"
-                classTitulo="border-b-[1px] border-black"
+                classTitulo={borde}
               />
-              <Educacion
-                classBloque="mt-2"
-                classTitulo="border-b-[1px] border-black"
-              />
+              <Educacion classBloque="mt-2" classTitulo={borde} />
             </section>
           </section>
           {/* <DatosPersonales /> */}
