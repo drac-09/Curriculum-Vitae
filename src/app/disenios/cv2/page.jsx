@@ -85,14 +85,19 @@ export default function CurriculumVitaeDos() {
   }
 
   return (
-    <div className="flex flex-col mt-10 md:mt-0">
-      <div className={`${contenido.className} antialiased text-xs`}>
+    <div className="flex flex-col pt-10 md:pt-0">
+      <div
+        className={`${contenido.className} antialiased leading-[10px] lg:leading-4`}
+      >
         <div
           id="contenido-pdf"
           className="flex flex-col w-[350px] h-[453px] md:w-[541px] md:h-[700px] bg-white text-black overflow-hidden"
         >
-          <section className="flex text-[10px]">
-            <section className="w-2/5 h-[700px] bg-[#424e5e] text-white p-5">
+          <section className="flex text-[6.3px] lg:text-[10px]">
+            <section
+              id="izquierda"
+              className="w-2/5 h-[700px] bg-[#424e5e] text-white p-3 lg:p-5"
+            >
               <section className="flex flex-col justify-between w-auto h-auto pb-2">
                 <div className="mx-auto w-auto h-auto mt-auto mb-2">
                   <Image
@@ -100,23 +105,32 @@ export default function CurriculumVitaeDos() {
                     alt="Foto de Perfil"
                     width={100}
                     height={100}
-                    className="rounded-[50%]"
+                    className="rounded-[50%] hidden lg:block"
+                  ></Image>
+                  <Image
+                    src={fotoPerfil}
+                    alt="Foto de Perfil"
+                    width={65}
+                    height={65}
+                    className="rounded-[50%] lg:hidden"
                   ></Image>
                 </div>
                 <div className="flex flex-col justify-between">
                   <div
-                    className={`${nombreApellido.className} font-semibold antialiased tracking-widest text-[25px] leading-6 uppercase flex flex-col justify-end `}
+                    className={`${nombreApellido.className} font-semibold antialiased tracking-widest text-[16px] lg:text-[25px] leading-[15px] lg:leading-6 uppercase flex flex-col justify-end `}
                   >
                     <h1>{datos.nombre}</h1>
                     <h1>{datos.apellido}</h1>
                   </div>
-                  <h5 className="text-[14px] mt-1">{datos.profesion}</h5>
+                  <h5 className="text-[9px] lg:text-[14px] mt-1">
+                    {datos.profesion}
+                  </h5>
                 </div>
               </section>
               {datos.sobremi !== "" && datos.sobremi ? (
                 <div className="mb-2">
                   <h2 className="font-bold mt-2 border-b-[1px] mb-1">PERFIL</h2>
-                  <p htmlFor="" className="text-balance">
+                  <p htmlFor="" className="hyphens-manual">
                     {datos.sobremi}
                   </p>
                 </div>
@@ -139,7 +153,10 @@ export default function CurriculumVitaeDos() {
                 classTitulo="border-b-[1px] mb-1"
               />
             </section>
-            <section className="w-3/5 md:h-[580px] border-l-[1px] p-5 pl-3">
+            <section
+              id="derecha"
+              className="w-3/5 md:h-[580px] border-l-[1px] p-3 pl-1 lg:p-5 lg:pl-3"
+            >
               <Experiencia
                 icono="✓&nbsp;"
                 classBloque="mb-2"
