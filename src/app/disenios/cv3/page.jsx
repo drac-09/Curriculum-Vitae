@@ -87,7 +87,7 @@ export default function CurriculumVitaeTres() {
   }
 
   return (
-    <div className="flex flex-col pt-10 md:pt-0">
+    <div className="flex flex-col">
       <div
         className={`${contenido2.className} antialiased leading-[10px] lg:leading-4 font-semibold`}
       >
