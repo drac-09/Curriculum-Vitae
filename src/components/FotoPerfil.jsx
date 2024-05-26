@@ -9,9 +9,11 @@ const defaultSrc = "/imagen.jpg";
 
 export default function FotoPerfil() {
   const [modal, setModal] = useState(false);
+  const [modalEliminar, setModalEliminar] = useState(false);
   const [image, setImage] = useState(defaultSrc);
   const [cropData, setCropData] = useState("#");
   const [cropper, setCropper] = useState();
+  const [mostrarBoton, setMostrarBoton] = useState(false);
 
   const fileInputRef = useRef(null);
   const [fileName, setFileName] = useState("Selecciona un archivo");
@@ -24,6 +26,7 @@ export default function FotoPerfil() {
   });
 
   const onChange = (e) => {
+    setMostrarBoton(false);
     e.preventDefault();
     let files;
     if (e.dataTransfer) {
@@ -31,22 +34,29 @@ export default function FotoPerfil() {
     } else if (e.target) {
       files = e.target.files;
     }
+
     const reader = new FileReader();
     reader.onload = () => {
       setImage(reader.result);
     };
     reader.readAsDataURL(files[0]);
     setFileName(files[0].name);
+
+    if (files[0].size <= 1000000) {
+      setMostrarBoton(true);
+    }
   };
 
   const getCropData = () => {
-    if (typeof cropper !== "undefined") {
-      setCropData(cropper.getCroppedCanvas().toDataURL());
-      localStorage.setItem(
-        "fotoPerfil",
-        cropper.getCroppedCanvas().toDataURL()
-      );
-      setModal(!modal);
+    if (fileName !== "Selecciona un archivo") {
+      if (typeof cropper !== "undefined") {
+        setCropData(cropper.getCroppedCanvas().toDataURL());
+        localStorage.setItem(
+          "fotoPerfil",
+          cropper.getCroppedCanvas().toDataURL()
+        );
+        setModal(!modal);
+      }
     }
   };
 
@@ -56,6 +66,13 @@ export default function FotoPerfil() {
 
   const openmodal = () => {
     setModal(!modal);
+    setMostrarBoton(false);
+  };
+
+  const eliminarFoto = () => {
+    localStorage.removeItem("fotoPerfil");
+    setModalEliminar(!modalEliminar);
+    setCropData(fotoPerfil);
   };
 
   return (
@@ -83,9 +100,20 @@ export default function FotoPerfil() {
           <br />
           <br />
         </div>
-        <button className="Button" onClick={openmodal}>
-          Seleccionar Foto...
-        </button>
+        <div className="flex flex-col gap-2">
+          <button className="Button" onClick={openmodal}>
+            Seleccionar Foto...
+          </button>
+          <button
+            className="Button"
+            onClick={() => {
+              setModalEliminar(!modalEliminar);
+            }}
+          >
+            {" "}
+            Eliminar Foto
+          </button>
+        </div>
       </div>
 
       {modal && (
@@ -93,7 +121,7 @@ export default function FotoPerfil() {
           <div className=" CardModal flex flex-col gap-5 w-screen h-screen md:w-[800px] md:h-[460px] bg-gray-950 rounded-xl p-5">
             <div className="flex flex-col gap-3 md:flex-row flex-grow w-full h-full">
               <section className="w-full h-full">
-                <div className="flex flex-col justify-center md:flex-row gap-10 w-full">
+                <div className="flex flex-col justify-center md:flex-row gap-3 lg:gap-10 w-full">
                   <div className="Etiqueta">
                     <Cropper
                       src={image}
@@ -136,10 +164,15 @@ export default function FotoPerfil() {
                       </p>
                     </div>
                   </div>
-                  <div className="Etiqueta flex flex-col justify-start items-center p-[10px] box-border w-full md:w-1/3 float-right">
-                    <h1>Vista previa</h1>
-                    <br />
-                    <div className="overflow-hidden h-[170px] w-[200px] rounded-[50%]" />
+                  <div className="Etiqueta flex flex-col justify-between items-center p-[10px] box-border w-full md:w-1/3 float-right">
+                    <div className="flex flex-col items-center">
+                      <h1 className="font-bold">Vista previa</h1>
+                      <br />
+                      <div className="overflow-hidden h-[170px] w-[200px] rounded-[50%]" />
+                    </div>
+                    <h1 className="Alerta font-bold text-center text-xs lg:text-sm mt-5">
+                      Tamaño Maximo de la imagen 1MB = 1000Kb
+                    </h1>
                   </div>
                 </div>
                 <br style={{ clear: "both" }} />
@@ -147,10 +180,37 @@ export default function FotoPerfil() {
             </div>
 
             <div className="flex gap-3 justify-end">
-              <button type="button" className="Button" onClick={getCropData}>
+              {mostrarBoton && (
+                <button type="button" className="Button" onClick={getCropData}>
+                  Aceptar
+                </button>
+              )}
+              <button type="button" className="Button" onClick={openmodal}>
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {modalEliminar && (
+        <div className="fixed z-40 md:absolute md:z-50 top-0 left-0 h-screen w-screen flex justify-center items-center bg-red-600 bg-opacity-0 text-white">
+          <div className="CardModal md:w-max md:h-max py-20 md:p-20 mx-5 bg-black">
+            <h1 className="text-red-500 text-center text-xl font-bold">
+              Deseas eliminar la Foto permanentemente!!!
+            </h1>
+            <br />
+            <div className="flex gap-3 justify-center items-center">
+              <button type="button" className="Button" onClick={eliminarFoto}>
                 Aceptar
               </button>
-              <button type="button" className="Button" onClick={openmodal}>
+              <button
+                type="button"
+                onClick={() => {
+                  setModalEliminar(!modal);
+                }}
+                className="Button"
+              >
                 Cancelar
               </button>
             </div>
