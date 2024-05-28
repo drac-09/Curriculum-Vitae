@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       <body className="flex flex-col h-screen w-screen text-white bg-[url('/fondo2.svg')] bg-no-repeat bg-cover bg-center">
         <div className="bg-black bg-opacity-90 md:bg-opacity-90 h-screen">
           <Navbar></Navbar>
-          <div className="container md:mx-auto flex md:px-20 2xl:px-80 xl:px-60 md:pt-16 ">
+          <div className="container md:mx-auto flex md:px-20 2xl:px-80 xl:px-60 md:pt-16 text-sm md:text-base lg:text-lg">
             {children}
           </div>
         </div>

@@ -76,7 +76,7 @@ export default function Sidebar() {
             type="button"
             className="Button flex items-center justify-center"
           >
-            <h1 className="text-sm">Cargar</h1>
+            <h1>Cargar</h1>
           </Link>
           <DescargarJSON />
           <BorrarInformacion />
