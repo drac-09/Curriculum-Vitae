@@ -17,7 +17,10 @@ export default function Competencias() {
 
   useEffect(() => {
     const existe = Cookies.get("Competencias");
-    if (!existe) Cookies.set("Competencias", JSON.stringify(competencias));
+    if (!existe)
+      Cookies.set("Competencias", JSON.stringify(competencias), {
+        expires: 3650,
+      });
     if (existe) obtenerCompetenciasDesdeCookies();
   }, []);
 
@@ -69,7 +72,7 @@ export default function Competencias() {
     const index = tmp[competencia].findIndex((objeto) => objeto.id === id);
     if (index !== -1) {
       tmp[competencia].splice(index, 1);
-      Cookies.set("Competencias", JSON.stringify(tmp));
+      Cookies.set("Competencias", JSON.stringify(tmp), { expires: 3650 });
       obtenerCompetenciasDesdeCookies();
     }
   }
@@ -77,7 +80,7 @@ export default function Competencias() {
   function actualizarCookies(competencia, nueva) {
     const tmp = JSON.parse(Cookies.get("Competencias"));
     tmp[competencia].push(nueva);
-    Cookies.set("Competencias", JSON.stringify(tmp));
+    Cookies.set("Competencias", JSON.stringify(tmp), { expires: 3650 });
   }
 
   const ordenarPorLongitud = (a, b, propiedad) => {

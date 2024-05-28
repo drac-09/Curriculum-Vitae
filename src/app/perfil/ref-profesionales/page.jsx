@@ -20,7 +20,9 @@ export default function ReferenciasProfesionales() {
     const referencias = [];
     const existe = Cookies.get("ReferenciasProfesionales");
     if (!existe)
-      Cookies.set("ReferenciasProfesionales", JSON.stringify(referencias));
+      Cookies.set("ReferenciasProfesionales", JSON.stringify(referencias), {
+        expires: 3650,
+      });
     if (existe) obtenerRefProfesionalesCookies();
   }, []);
 
@@ -44,7 +46,9 @@ export default function ReferenciasProfesionales() {
       const data = cargarDatos(id);
       const tmp = JSON.parse(Cookies.get("ReferenciasProfesionales"));
       tmp.push(data);
-      Cookies.set("ReferenciasProfesionales", JSON.stringify(tmp));
+      Cookies.set("ReferenciasProfesionales", JSON.stringify(tmp), {
+        expires: 3650,
+      });
 
       limpiar();
       obtenerRefProfesionalesCookies();
@@ -69,7 +73,11 @@ export default function ReferenciasProfesionales() {
     );
     if (index !== -1) {
       refProfesionales[index] = { ...refProfesionales[index], ...referencia };
-      Cookies.set("ReferenciasProfesionales", JSON.stringify(refProfesionales));
+      Cookies.set(
+        "ReferenciasProfesionales",
+        JSON.stringify(refProfesionales),
+        { expires: 3650 }
+      );
       limpiar();
       obtenerRefProfesionalesCookies();
     }
@@ -83,7 +91,11 @@ export default function ReferenciasProfesionales() {
     const index = refProfesionales.findIndex((objeto) => objeto.id === id);
     if (index !== -1) {
       refProfesionales.splice(index, 1);
-      Cookies.set("ReferenciasProfesionales", JSON.stringify(refProfesionales));
+      Cookies.set(
+        "ReferenciasProfesionales",
+        JSON.stringify(refProfesionales),
+        { expires: 3650 }
+      );
       obtenerRefProfesionalesCookies();
     }
   }

@@ -34,13 +34,24 @@ export default function Cargar() {
       reader.onload = (event) => {
         const contenidoJSON = JSON.parse(event.target.result);
         localStorage.setItem("fotoPerfil", contenidoJSON.fotoPerfil);
-        Cookies.set("Competencias", contenidoJSON.Competencias);
-        Cookies.set("ExperienciaLaboral", contenidoJSON.ExperienciaLaboral);
-        Cookies.set("InformacionPersonal", contenidoJSON.InformacionPersonal);
-        Cookies.set("InformacionAcademica", contenidoJSON.InformacionAcademica);
+        Cookies.set("Competencias", contenidoJSON.Competencias, {
+          expires: 3650,
+        });
+        Cookies.set("ExperienciaLaboral", contenidoJSON.ExperienciaLaboral, {
+          expires: 3650,
+        });
+        Cookies.set("InformacionPersonal", contenidoJSON.InformacionPersonal, {
+          expires: 3650,
+        });
+        Cookies.set(
+          "InformacionAcademica",
+          contenidoJSON.InformacionAcademica,
+          { expires: 3650 }
+        );
         Cookies.set(
           "ReferenciasProfesionales",
-          contenidoJSON.ReferenciasProfesionales
+          contenidoJSON.ReferenciasProfesionales,
+          { expires: 3650 }
         );
         // setVisible(true);
         // setAnimacion("animate-fade-right");

@@ -28,7 +28,10 @@ export default function InformacionAcademica() {
   useEffect(() => {
     const niveles = [];
     const existe = Cookies.get("InformacionAcademica");
-    if (!existe) Cookies.set("InformacionAcademica", JSON.stringify(niveles));
+    if (!existe)
+      Cookies.set("InformacionAcademica", JSON.stringify(niveles), {
+        expires: 3650,
+      });
     if (existe) obtenerNivelesDesdeCookies();
   }, []);
 
@@ -53,7 +56,9 @@ export default function InformacionAcademica() {
       const data = cargarDatos(id);
       const tmp = JSON.parse(Cookies.get("InformacionAcademica"));
       tmp.push(data);
-      Cookies.set("InformacionAcademica", JSON.stringify(tmp));
+      Cookies.set("InformacionAcademica", JSON.stringify(tmp), {
+        expires: 3650,
+      });
 
       limpiar();
       obtenerNivelesDesdeCookies();
@@ -96,7 +101,9 @@ export default function InformacionAcademica() {
     const index = niveles.findIndex((objeto) => objeto.id === identificador);
     if (index !== -1) {
       niveles[index] = { ...niveles[index], ...nivel };
-      Cookies.set("InformacionAcademica", JSON.stringify(niveles));
+      Cookies.set("InformacionAcademica", JSON.stringify(niveles), {
+        expires: 3650,
+      });
       limpiar();
       obtenerNivelesDesdeCookies();
       datosPorDefecto();
@@ -111,7 +118,9 @@ export default function InformacionAcademica() {
     const index = niveles.findIndex((objeto) => objeto.id === id);
     if (index !== -1) {
       niveles.splice(index, 1);
-      Cookies.set("InformacionAcademica", JSON.stringify(niveles));
+      Cookies.set("InformacionAcademica", JSON.stringify(niveles), {
+        expires: 3650,
+      });
       obtenerNivelesDesdeCookies();
     }
   }

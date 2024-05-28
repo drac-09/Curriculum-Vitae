@@ -29,7 +29,10 @@ export default function InformacionPersonal() {
       estadocivil: "",
     };
     const existe = Cookies.get("InformacionPersonal");
-    if (!existe) Cookies.set("InformacionPersonal", JSON.stringify(info));
+    if (!existe)
+      Cookies.set("InformacionPersonal", JSON.stringify(info), {
+        expires: 3650,
+      });
     if (existe) cargarDatos(JSON.parse(existe));
   }, []);
 
@@ -42,7 +45,7 @@ export default function InformacionPersonal() {
 
   function guardar() {
     const data = nuevo();
-    Cookies.set("InformacionPersonal", JSON.stringify(data));
+    Cookies.set("InformacionPersonal", JSON.stringify(data), { expires: 3650 });
 
     setVisible(true);
     setAnimacion("animate-fade-right");

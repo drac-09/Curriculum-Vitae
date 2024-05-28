@@ -32,7 +32,10 @@ export default function ExperienciaLaboral() {
   useEffect(() => {
     const experiencia = [];
     const existe = Cookies.get("ExperienciaLaboral");
-    if (!existe) Cookies.set("ExperienciaLaboral", JSON.stringify(experiencia));
+    if (!existe)
+      Cookies.set("ExperienciaLaboral", JSON.stringify(experiencia), {
+        expires: 3650,
+      });
     if (existe) obtenerExperienciaCookies();
   }, []);
 
@@ -56,7 +59,7 @@ export default function ExperienciaLaboral() {
       const data = cargarDatos(id);
       const tmp = JSON.parse(Cookies.get("ExperienciaLaboral"));
       tmp.push(data);
-      Cookies.set("ExperienciaLaboral", JSON.stringify(tmp));
+      Cookies.set("ExperienciaLaboral", JSON.stringify(tmp), { expires: 3650 });
 
       limpiar();
       obtenerExperienciaCookies();
@@ -102,7 +105,9 @@ export default function ExperienciaLaboral() {
     );
     if (index !== -1) {
       experiencia[index] = { ...experiencia[index], ...exp };
-      Cookies.set("ExperienciaLaboral", JSON.stringify(experiencia));
+      Cookies.set("ExperienciaLaboral", JSON.stringify(experiencia), {
+        expires: 3650,
+      });
       limpiar();
       obtenerExperienciaCookies();
       datosPorDefecto();
@@ -117,7 +122,9 @@ export default function ExperienciaLaboral() {
     const index = experiencia.findIndex((objeto) => objeto.id === id);
     if (index !== -1) {
       experiencia.splice(index, 1);
-      Cookies.set("ExperienciaLaboral", JSON.stringify(experiencia));
+      Cookies.set("ExperienciaLaboral", JSON.stringify(experiencia), {
+        expires: 3650,
+      });
       obtenerExperienciaCookies();
     }
   }

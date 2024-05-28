@@ -20,7 +20,9 @@ export default function ReferenciasPersonales() {
     const referencias = [];
     const existe = Cookies.get("ReferenciasPersonales");
     if (!existe)
-      Cookies.set("ReferenciasPersonales", JSON.stringify(referencias));
+      Cookies.set("ReferenciasPersonales", JSON.stringify(referencias), {
+        expires: 3650,
+      });
     if (existe) obtenerRefPersonalesCookies();
   }, []);
 
@@ -44,7 +46,9 @@ export default function ReferenciasPersonales() {
       const data = cargarDatos(id);
       const tmp = JSON.parse(Cookies.get("ReferenciasPersonales"));
       tmp.push(data);
-      Cookies.set("ReferenciasPersonales", JSON.stringify(tmp));
+      Cookies.set("ReferenciasPersonales", JSON.stringify(tmp), {
+        expires: 3650,
+      });
 
       limpiar();
       obtenerRefPersonalesCookies();
@@ -69,7 +73,9 @@ export default function ReferenciasPersonales() {
     );
     if (index !== -1) {
       refPersonales[index] = { ...refPersonales[index], ...referencia };
-      Cookies.set("ReferenciasPersonales", JSON.stringify(refPersonales));
+      Cookies.set("ReferenciasPersonales", JSON.stringify(refPersonales), {
+        expires: 3650,
+      });
       limpiar();
       obtenerRefPersonalesCookies();
     }
@@ -83,7 +89,9 @@ export default function ReferenciasPersonales() {
     const index = refPersonales.findIndex((objeto) => objeto.id === id);
     if (index !== -1) {
       refPersonales.splice(index, 1);
-      Cookies.set("ReferenciasPersonales", JSON.stringify(refPersonales));
+      Cookies.set("ReferenciasPersonales", JSON.stringify(refPersonales), {
+        expires: 3650,
+      });
       obtenerRefPersonalesCookies();
     }
   }
