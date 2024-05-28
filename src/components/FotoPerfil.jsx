@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { Cropper } from "react-cropper";
 import Image from "next/image";
 import "cropperjs/dist/cropper.css";
+import { GoTrash } from "react-icons/go";
 import fotoPerfil from "../../public/user.svg";
 
 const defaultSrc = "/imagen.jpg";
@@ -13,7 +14,11 @@ export default function FotoPerfil() {
   const [image, setImage] = useState(defaultSrc);
   const [cropData, setCropData] = useState("#");
   const [cropper, setCropper] = useState();
-  const [mostrarBoton, setMostrarBoton] = useState(false);
+  const [btnAceptar, setBtnAceptar] = useState(false);
+  const [btnEliminar, setBtnEliminar] = useState(false);
+
+  const [mensajeError, setMensajeError] = useState(false);
+  const [animacion, setAnimacion] = useState();
 
   const fileInputRef = useRef(null);
   const [fileName, setFileName] = useState("Selecciona un archivo");
@@ -22,11 +27,12 @@ export default function FotoPerfil() {
     const fotoPerfil = localStorage.getItem("fotoPerfil");
     if (fotoPerfil) {
       setCropData(fotoPerfil);
+      setBtnEliminar(true);
     }
   });
 
   const onChange = (e) => {
-    setMostrarBoton(false);
+    setBtnAceptar(false);
     e.preventDefault();
     let files;
     if (e.dataTransfer) {
@@ -43,7 +49,7 @@ export default function FotoPerfil() {
     setFileName(files[0].name);
 
     if (files[0].size <= 1000000) {
-      setMostrarBoton(true);
+      setBtnAceptar(true);
     }
   };
 
@@ -51,28 +57,41 @@ export default function FotoPerfil() {
     if (fileName !== "Selecciona un archivo") {
       if (typeof cropper !== "undefined") {
         setCropData(cropper.getCroppedCanvas().toDataURL());
-        localStorage.setItem(
-          "fotoPerfil",
-          cropper.getCroppedCanvas().toDataURL()
-        );
-        setModal(!modal);
+        try {
+          localStorage.setItem(
+            "fotoPerfil",
+            cropper.getCroppedCanvas().toDataURL()
+          );
+          setModal(!modal);
+        } catch (error) {
+          setMensajeError(true);
+          setAnimacion("animate-fade");
+          // setTimeout(() => {
+          //   setAnimacion("animate-fade animate-reverse animate-delay-[8s]");
+          // }, 9000);
+          // setTimeout(() => {
+          //   setMensajeError(false);
+          // }, 10000);
+        }
       }
     }
   };
 
   const handleClick = () => {
+    setMensajeError(false);
     fileInputRef.current.click();
   };
 
   const openmodal = () => {
     setModal(!modal);
-    setMostrarBoton(false);
+    setBtnAceptar(false);
   };
 
   const eliminarFoto = () => {
     localStorage.removeItem("fotoPerfil");
     setModalEliminar(!modalEliminar);
     setCropData(fotoPerfil);
+    setBtnEliminar(false);
   };
 
   return (
@@ -100,19 +119,21 @@ export default function FotoPerfil() {
           <br />
           <br />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex gap-2">
           <button className="Button" onClick={openmodal}>
             Seleccionar Foto...
           </button>
-          <button
-            className="Button"
-            onClick={() => {
-              setModalEliminar(!modalEliminar);
-            }}
-          >
-            {" "}
-            Eliminar Foto
-          </button>
+          {btnEliminar && (
+            <a
+              className="flex items-center w-[18px]"
+              onClick={() => {
+                setModalEliminar(!modalEliminar);
+              }}
+            >
+              {" "}
+              <GoTrash className="w-full h-full" />
+            </a>
+          )}
         </div>
       </div>
 
@@ -121,8 +142,8 @@ export default function FotoPerfil() {
           <div className=" CardModal flex flex-col gap-5 w-screen h-screen md:w-[800px] md:h-[460px] bg-gray-950 rounded-xl p-5">
             <div className="flex flex-col gap-3 md:flex-row flex-grow w-full h-full">
               <section className="w-full h-full">
-                <div className="flex flex-col justify-center md:flex-row gap-3 lg:gap-10 w-full">
-                  <div className="Etiqueta">
+                <div className="flex flex-col justify-center md:flex-row gap-3 lg:gap-10 w-full h-full">
+                  <div id="cropper" className="Etiqueta">
                     <Cropper
                       src={image}
                       style={{ height: 300, width: "100%" }}
@@ -164,23 +185,35 @@ export default function FotoPerfil() {
                       </p>
                     </div>
                   </div>
-                  <div className="Etiqueta flex flex-col justify-between items-center p-[10px] box-border w-full md:w-1/3 float-right">
+                  <div
+                    id="vista-previa"
+                    className="Etiqueta flex flex-grow flex-col justify-between items-center p-[10px] box-border w-full md:w-1/3 float-right"
+                  >
                     <div className="flex flex-col items-center">
                       <h1 className="font-bold">Vista previa</h1>
                       <br />
-                      <div className="overflow-hidden h-[170px] w-[200px] rounded-[50%]" />
+                      <div className="overflow-hidden w-[140px] h-[140px] lg:w-[200px] lg:h-[200px] rounded-[50%]" />
+                      <h1 className="text-xs text-center mt-5">
+                        Tamaño Maximo de la imagen:{" "}
+                        <br className="hidden lg:block" /> 1MB = 1000Kb
+                      </h1>
                     </div>
-                    <h1 className="Alerta font-bold text-center text-xs lg:text-sm mt-5">
-                      Tamaño Maximo de la imagen 1MB = 1000Kb
-                    </h1>
+                    {mensajeError && (
+                      <h1
+                        className={`Alerta ${animacion} font-semibold text-center`}
+                      >
+                        Error, no se puede procesar. <br />
+                        Por favor, seleccione otra imagen.
+                      </h1>
+                    )}
                   </div>
                 </div>
-                <br style={{ clear: "both" }} />
+                {/* <br style={{ clear: "both" }} /> */}
               </section>
             </div>
 
             <div className="flex gap-3 justify-end">
-              {mostrarBoton && (
+              {btnAceptar && (
                 <button type="button" className="Button" onClick={getCropData}>
                   Aceptar
                 </button>
@@ -207,7 +240,7 @@ export default function FotoPerfil() {
               <button
                 type="button"
                 onClick={() => {
-                  setModalEliminar(!modal);
+                  setModalEliminar(false);
                 }}
                 className="Button"
               >
