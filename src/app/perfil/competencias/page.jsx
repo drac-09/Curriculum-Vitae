@@ -107,7 +107,7 @@ export default function Competencias() {
             id="habilidad"
             value={habilidad}
             onChange={(e) => setHabilidad(e.target.value)}
-            className="Input flex-grow lg:text-base"
+            className="Input flex-grow "
             list="habilidades"
             autoComplete="off"
           />
@@ -150,7 +150,7 @@ export default function Competencias() {
               .map((habilidad) => (
                 <div
                   key={habilidad.id}
-                  className="Etiqueta max-w-max flex gap-3 lg:text-base"
+                  className="Etiqueta max-w-max flex gap-3 "
                 >
                   <h1>{habilidad.habilidad}</h1>
                   <button
@@ -158,7 +158,7 @@ export default function Competencias() {
                     className="Border-l pl-2"
                     onClick={() => eliminar(habilidad.id, "habilidades")}
                   >
-                    <IoIosCloseCircleOutline className="text-lg Alerta" />
+                    <IoIosCloseCircleOutline className="Alerta" />
                   </button>
                 </div>
               ))}
@@ -186,7 +186,7 @@ export default function Competencias() {
             id="aptitud"
             value={aptitud}
             onChange={(e) => setAptitud(e.target.value)}
-            className="Input flex-grow lg:text-base"
+            className="Input flex-grow "
             list="aptitudes"
             autoComplete="off"
           />
@@ -234,7 +234,7 @@ export default function Competencias() {
               .map((aptitud) => (
                 <div
                   key={aptitud.id}
-                  className="Etiqueta max-w-max flex gap-3 lg:text-base"
+                  className="Etiqueta max-w-max flex gap-3 "
                 >
                   <h1>{aptitud.aptitud}</h1>
                   <button
@@ -242,7 +242,7 @@ export default function Competencias() {
                     className="Border-l pl-2"
                     onClick={() => eliminar(aptitud.id, "aptitudes")}
                   >
-                    <IoIosCloseCircleOutline className="text-lg Alerta" />
+                    <IoIosCloseCircleOutline className="Alerta" />
                   </button>
                 </div>
               ))}
@@ -269,7 +269,7 @@ export default function Competencias() {
             id="lenguaje"
             value={lenguaje}
             onChange={(e) => setLenguaje(e.target.value)}
-            className="Input flex-grow lg:text-base"
+            className="Input flex-grow "
             list="lenguajes"
             autoComplete="off"
           />
@@ -302,7 +302,7 @@ export default function Competencias() {
               .map((lenguaje) => (
                 <div
                   key={lenguaje.id}
-                  className="Etiqueta max-w-max flex gap-3 lg:text-base"
+                  className="Etiqueta max-w-max flex gap-3 "
                 >
                   <h1>{lenguaje.lenguaje}</h1>
                   <button
@@ -310,7 +310,7 @@ export default function Competencias() {
                     className="Border-l pl-2"
                     onClick={() => eliminar(lenguaje.id, "lenguajes")}
                   >
-                    <IoIosCloseCircleOutline className="text-lg Alerta" />
+                    <IoIosCloseCircleOutline className="Alerta" />
                   </button>
                 </div>
               ))}

@@ -189,7 +189,7 @@ export default function InformacionAcademica() {
           información precisa y relevante sobre tus estudios.
         </p>
         <br />
-        <div className="flex flex-col gap-2 mt-2 text-sm lg:text-base">
+        <div className="flex flex-col gap-2 mt-2 text-sm ">
           <section className="flex md:w-2/4">
             <label htmlFor="nivel" className="w-1/3 md:w-1/2">
               Nivel Educativo:
@@ -198,7 +198,7 @@ export default function InformacionAcademica() {
               id="nivel"
               value={nivel}
               onChange={(e) => setNivel(e.target.value)}
-              className="Select w-2/2 lg:text-base"
+              className="Select w-2/2 "
             >
               <option value="Secundaria">Secundaria</option>
               <option value="Superior">Superior</option>
@@ -216,7 +216,7 @@ export default function InformacionAcademica() {
               id="centro"
               value={centro}
               onChange={(e) => setCentro(e.target.value)}
-              className="Input w-2/3 lg:text-base"
+              className="Input w-2/3 "
               autoComplete="off"
             />
           </section>
@@ -229,7 +229,7 @@ export default function InformacionAcademica() {
               id="titulo"
               value={titulo}
               onChange={(e) => setTitulo(e.target.value)}
-              className="Input w-2/3 lg:text-base"
+              className="Input w-2/3 "
               autoComplete="off"
             />
           </section>
@@ -243,7 +243,7 @@ export default function InformacionAcademica() {
                 name="mes"
                 value={mesInicio}
                 onChange={(e) => setMesInicio(e.target.value)}
-                className="Select lg:text-base"
+                className="Select "
               >
                 {meses.map((mes, index) => (
                   <option key={index} value={mes}>
@@ -257,7 +257,7 @@ export default function InformacionAcademica() {
                 name="anio"
                 value={anioInicio}
                 onChange={(e) => setAnioInicio(e.target.value)}
-                className="Select lg:text-base"
+                className="Select "
               >
                 {anios.map((anio, index) => (
                   <option key={index} value={anio}>
@@ -284,7 +284,7 @@ export default function InformacionAcademica() {
                     setMostrarAnio(true);
                   }
                 }}
-                className="Select lg:text-base"
+                className="Select "
               >
                 <option value="Actual">Actual</option>
                 {meses.map((mes, index) => (
@@ -299,7 +299,7 @@ export default function InformacionAcademica() {
                   name="anio"
                   value={anioFinal}
                   onChange={(e) => setAnioFinal(e.target.value)}
-                  className="Select lg:text-base"
+                  className="Select "
                 >
                   {anios.map((anio, index) => (
                     <option key={index} value={anio} defaultValue={2024}>

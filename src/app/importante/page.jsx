@@ -7,7 +7,7 @@ export default function Informacion() {
         <h1 className="Alerta font-bold">Preguntas Frecuentes</h1>
         <hr className="Hr" />
       </section>
-      <section className="flex gap-5 leading-5 text-sm md:text-base">
+      <section className="flex gap-5 leading-5 ">
         <Image
           src="/importante/write.svg"
           alt="descargar"
@@ -25,7 +25,7 @@ export default function Informacion() {
           </p>
         </div>
       </section>
-      <section className="flex gap-5 leading-5  text-sm md:text-base">
+      <section className="flex gap-5 leading-5  ">
         <Image
           src="/importante/archive.svg"
           alt="descargar"
@@ -43,7 +43,7 @@ export default function Informacion() {
           </p>
         </div>
       </section>
-      <section className="flex gap-5 leading-5  text-sm md:text-base ">
+      <section className="flex gap-5 leading-5   ">
         <Image
           src="/importante/download.svg"
           alt="descargar"
@@ -64,7 +64,7 @@ export default function Informacion() {
           </p>
         </div>
       </section>
-      <section className="flex gap-5 leading-5  text-sm md:text-base">
+      <section className="flex gap-5 leading-5  ">
         <Image
           src="/importante/upload.svg"
           alt="descargar"
@@ -86,7 +86,7 @@ export default function Informacion() {
           </p>
         </div>
       </section>
-      <section className="flex gap-5 leading-5  text-sm md:text-base">
+      <section className="flex gap-5 leading-5">
         <Image
           src="/importante/delete.svg"
           alt="descargar"

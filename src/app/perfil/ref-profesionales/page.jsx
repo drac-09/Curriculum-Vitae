@@ -156,7 +156,7 @@ export default function ReferenciasProfesionales() {
           laboral, habilidades y carácter.
         </p>
         <br />
-        <div className="flex flex-col gap-2 mt-2 text-sm lg:text-base">
+        <div className="flex flex-col gap-2 mt-2  ">
           <section className="flex md:w-3/4">
             <label htmlFor="nombre" className="w-1/3">
               Nombre:
@@ -166,7 +166,7 @@ export default function ReferenciasProfesionales() {
               id="nombre"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className="Input w-2/3 lg:text-base"
+              className="Input w-2/3 "
               placeholder="Nombre de la persona"
               autoComplete="off"
             />
@@ -180,7 +180,7 @@ export default function ReferenciasProfesionales() {
               id="empresa"
               value={empresa}
               onChange={(e) => setEmpresa(e.target.value)}
-              className="Input w-2/3 lg:text-base"
+              className="Input w-2/3 "
               placeholder="Nombre de la empresa"
               autoComplete="off"
             />
@@ -194,7 +194,7 @@ export default function ReferenciasProfesionales() {
               id="cargo"
               value={cargo}
               onChange={(e) => setCargo(e.target.value)}
-              className="Input w-2/3 lg:text-base"
+              className="Input w-2/3 "
               placeholder="Puesto que ocupa en la empresa"
               autoComplete="off"
             />
@@ -211,7 +211,7 @@ export default function ReferenciasProfesionales() {
               pattern="[0-9]{4}-[0-9]{4}"
               onChange={(e) => setCelular(e.target.value)}
               placeholder="9999-9999"
-              className="Input w-2/5 lg:text-base"
+              className="Input w-2/5 "
               autoComplete="off"
             />
           </div>
@@ -264,7 +264,7 @@ export default function ReferenciasProfesionales() {
       <div className="flex-grow">
         {refProfesionales.map((ref) => (
           <div key={ref.id} className="Card">
-            <section className="text-sm">
+            <section className="">
               <div className="flex gap-3 w-full">
                 <div className="w-1/3 Border-r">
                   <h1>Nombre Completo</h1>

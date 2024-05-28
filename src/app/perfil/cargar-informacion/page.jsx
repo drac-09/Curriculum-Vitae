@@ -71,7 +71,7 @@ export default function Cargar() {
         archivo y luego pulsas el botón{" "}
         <span className="MsjExito">Cargar Información</span>.
       </p>
-      <h1 className="Alerta text-base font-bold">
+      <h1 className="Alerta mt-2 font-bold">
         Importante: Al cargar tus datos estos reemplazaran los que ya están
         ingresados.
       </h1>
@@ -82,15 +82,15 @@ export default function Cargar() {
           accept=".json"
           ref={fileInputRef}
           onChange={cargarArchivo}
-          className="text-sm border-none max-w-max rounded-sm bg-slate-900 pr-2 hidden"
+          className="border-none max-w-max rounded-sm bg-slate-900 pr-2 hidden"
         />
 
         {/* Botón personalizado */}
-        <div className="flex items-center text-sm max-w-max">
+        <div className="flex items-center max-w-max">
           <button
             onClick={handleClick}
             type="button"
-            className="border-[1px] rounded-none text-sm py-1 px-2 bg-slate-900"
+            className="border-[1px] rounded-none py-1 px-2 bg-slate-900"
           >
             Seleccionar Archivo
           </button>
