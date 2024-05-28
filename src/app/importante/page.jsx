@@ -37,9 +37,9 @@ export default function Informacion() {
           <h1 className="Titulo">¿Donde se guarda la información?</h1>
           <p className="text-justify text-wrap">
             La información se almacena en el navegador, lo que significa que
-            incluso después de cerrar la pestaña, sus datos seguirán
-            disponibles. Sin embargo, al borrar los datos del navegador, también
-            se eliminarán sus datos.
+            incluso después de cerrar la pestaña, tu datos seguirán disponibles.
+            Sin embargo, al borrar los datos del navegador, también se
+            eliminarán tus datos.
           </p>
         </div>
       </section>
@@ -54,8 +54,8 @@ export default function Informacion() {
         <div>
           <h1 className="Titulo">¿Puedo hacer una copia de mi informacion?</h1>
           <p className="text-justify text-wrap">
-            En la pestaña de PERFIL, en el menu a la izquierda en la parte
-            inferior encontraras un botón de{" "}
+            En la pestaña de PERFIL, en la parte inferior encontraras un botón
+            de{" "}
             <span className="border-[1px] text-[11px] md:text-xs rounded-md mx-1 px-2 py-[1px] whitespace-nowrap">
               Descargar
             </span>{" "}
@@ -76,7 +76,7 @@ export default function Informacion() {
           <h1 className="Titulo">¿Que hacer con el archivo descargado?</h1>
           <p className="text-justify text-wrap">
             Con este archivo podrás cargar tu información para actualizarla o
-            agregar mas datos. En la pestaña de PERFIL en el menu ala izquierda
+            agregar mas datos. En la pestaña de PERFIL, en la parte inferior
             encontraras un botón de{" "}
             <span className="border-[1px] text-[11px] md:text-xs rounded-md mx-1 px-2 py-[1px] whitespace-nowrap">
               Cargar
@@ -99,8 +99,8 @@ export default function Informacion() {
             ¿Que hacer si quiero borrar mi informacion del navegador?
           </h1>
           <p className="text-justify text-wrap">
-            En la pestaña de PERFIL en el menu ala izquierda encontraras un
-            botón de{" "}
+            En la pestaña de PERFIL, en la parte inferior encontraras un botón
+            de{" "}
             <span className="border-[1px] text-[11px] md:text-xs rounded-md md:mx-1 px-2 py-[1px] whitespace-nowrap">
               Borrar
             </span>{" "}
