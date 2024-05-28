@@ -185,13 +185,15 @@ export default function ExperienciaLaboral() {
   }
 
   function agregar() {
-    const fecha = new Date();
-    const Nueva = {
-      id: fecha.getTime().toString(),
-      tarea: tarea,
-    };
-    setTareas([...tareas, Nueva]);
-    setTarea("");
+    if (tarea) {
+      const fecha = new Date();
+      const Nueva = {
+        id: fecha.getTime().toString(),
+        tarea: tarea,
+      };
+      setTareas([...tareas, Nueva]);
+      setTarea("");
+    }
   }
 
   function eliminarTarea(id) {
