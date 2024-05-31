@@ -12,7 +12,7 @@ export default function inicio() {
     <main className="p-5 md:p-0">
       <div className="flex h-max lg:h-[80vh] lg:items-center">
         <div className="flex flex-col gap-5 lg:gap-10">
-          <section className="flex flex-col justify-center items-center">
+          <section className="flex flex-col justify-center items-center md:text-base">
             {/* <h1
               className={`${titulo.className} antialiased text-3xl md:text-5xl font-bold lg:hidden`}
             >
