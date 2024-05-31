@@ -96,7 +96,7 @@ export default function Sidebar() {
           <div className="absolute z-10 w-screen bg-black text-white">
             <div className="flex flex-col text-sm h-[85vh] ">
               <FotoPerfil />
-              <div className="flex-grow flex flex-col gap-4 px-5 items-center ">
+              <div className="flex flex-col gap-4 px-5 items-center ">
                 <Link
                   href={"/perfil/info-personal"}
                   className={`${
@@ -163,6 +163,8 @@ export default function Sidebar() {
                   <h1>Referencias Profesionales</h1>
                 </Link>
               </div>
+              <br />
+              <br />
               <div className="flex flex-col items-center justify-center gap-3 mb-10">
                 <h1 className="Titulo font-bold">Datos:</h1>
                 <div className="flex gap-3">
