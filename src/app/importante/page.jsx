@@ -25,7 +25,7 @@ export default function Informacion() {
           </p>
         </div>
       </section>
-      <section className="flex gap-5 leading-5 items-start  ">
+      {/* <section className="flex gap-5 leading-5 items-start  ">
         <Image
           src="/importante/archive.svg"
           alt="descargar"
@@ -42,7 +42,7 @@ export default function Informacion() {
             eliminarán tus datos.
           </p>
         </div>
-      </section>
+      </section> */}
       <section className="flex gap-5 leading-5 items-start   ">
         <Image
           src="/importante/download.svg"
