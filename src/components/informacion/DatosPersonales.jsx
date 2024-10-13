@@ -52,8 +52,8 @@ export default function DatosPersonales({ icono, classTitulo, classBloque }) {
             )}
 
             {datos.direccion !== "" && datos.direccion ? (
-              <div className="flex items-center justify-start gap-1 lg:gap-2">
-                <h1 className="text-[6px] lg:text-[10px]">
+              <div className="flex items-start justify-start gap-1 lg:gap-2">
+                <h1 className="text-[6px] lg:text-[10px] h-4 flex items-center">
                   {icono.direccion}{" "}
                 </h1>
                 <h1>{datos.direccion}</h1>
