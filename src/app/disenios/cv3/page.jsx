@@ -124,13 +124,14 @@ export default function CurriculumVitaeTres() {
               ></Image>
             </div>
             <div className="w-3/4 flex flex-col flex-grow items-center justify-center px-7 py-[5px] lg:py-2">
-              <h5 className="text-[9px] lg:text-sm">{datos.profesion}</h5>
               <div
-                className={`${nombreApellido.className} antialiased text-base lg:text-2xl gap-3 tracking-wider uppercase flex`}
+                className={`${nombreApellido.className} text-center antialiased text-base lg:text-2xl gap-3 tracking-wider uppercase flex`}
               >
-                <h1>{datos.nombre}</h1>
-                <h1>{datos.apellido}</h1>
+                <h1>
+                  {datos.nombre} {datos.apellido}
+                </h1>
               </div>
+              <h5 className="text-[9px] lg:text-sm">{datos.profesion}</h5>
             </div>
           </section>
           <section
