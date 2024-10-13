@@ -36,9 +36,9 @@ export default function Navbar() {
   }
 
   return (
-    <div className="border-b-[1px] border-slate-900 text-sm">
-      <div className="Barra flex">
-        <div>
+    <div className="border-r-[1px] border-slate-900 text-sm h-[100px] md:h-[50px] flex items-center flex-col md:flex-row">
+      <div className="Barra flex flex-col md:flex-row">
+        <div className="flex justify-center md:justify-start w-full">
           <Link
             href={"/"}
             className={`${logo.className} antialiased text-xl font-bold`}
@@ -46,13 +46,15 @@ export default function Navbar() {
             Curriculum Vitae
           </Link>
         </div>
-        <div className="hidden md:flex gap-5 items-center">
+        <br className="block md:hidden" />
+        <div className="flex gap-5 items-center justify-between w-screen px-10 md:justify-normal md:w-auto md:px-0">
           <Link
             href={"/"}
             className={`${pathName === "/" ? "SeleccionadoNavbar" : ""}`}
           >
             <h1>Inicio</h1>
           </Link>
+          |
           <Link
             href={"/perfil/info-personal"}
             className={`${
@@ -63,6 +65,7 @@ export default function Navbar() {
           >
             <h1>Perfil</h1>
           </Link>
+          |
           <Link
             href={"/disenios/cv1"}
             className={`${
@@ -74,6 +77,7 @@ export default function Navbar() {
           >
             <h1>Diseños</h1>
           </Link>
+          |
           <Link
             href={"/importante"}
             className={`${
@@ -83,7 +87,8 @@ export default function Navbar() {
             <h1>Importante</h1>
           </Link>
         </div>
-        <div className="md:hidden flex-grow flex justify-end">
+        {/* Menu Despegable para version Mobile */}
+        {/* <div className="md:hidden flex-grow flex justify-end">
           <button onClick={openMenu}>
             <Image
               src="/menu.svg"
@@ -93,14 +98,15 @@ export default function Navbar() {
               priority={true}
             />
           </button>
-        </div>
-        {menu && (
+        </div> */}
+        {/* Mobil */}
+        {/* {menu && (
           <div className="block sm:hidden">
             <div
               onClick={openMenu}
-              className="fixed z-20 inset-0 left-0 flex items-start justify-end pt-11 pr-1"
+              className="fixed z-20 inset-0 left-0 flex items-start justify-end pt-12"
             >
-              <div className="flex flex-col gap-5 items-start bg-black text-base text-white py-2 pl-5 w-full">
+              <div className="flex flex-col gap-5 items-start bg-black text-base text-white py-2 pl-5 w-screen h-[calc(100vh-50px)]">
                 <Link href={"/"} className="flex items-center gap-2">
                   <LiaHomeSolid />
                   <h1>Inicio</h1>
@@ -126,7 +132,7 @@ export default function Navbar() {
               </div>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

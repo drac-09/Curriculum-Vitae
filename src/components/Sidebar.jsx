@@ -21,6 +21,7 @@ export default function Sidebar() {
 
   return (
     <div className="flex flex-col w-screen md:w-auto">
+      {/* Desktop */}
       <div className="hidden md:flex flex-col h-[85vh] border-r-[1px] border-slate-500 pr-10">
         <div className="flex flex-col gap-3 flex-grow text-sm">
           <FotoPerfil />
@@ -94,15 +95,16 @@ export default function Sidebar() {
         onClick={() => {
           toggleDropdown(titulo);
         }}
-        className="flex items-center justify-center gap-2 md:hidden bg-slate-900 p-3 mb-3"
+        className="flex items-center justify-center gap-2 md:hidden bg-slate-900 p-3 h-[50px]"
       >
         <h1>{titulo}</h1>
         <FaAnglesDown className="text-xs" />
       </button>
+      {/* Mobile */}
       {isOpen && (
         <div className="block sm:hidden ">
-          <div className="absolute z-10 w-screen bg-black text-white">
-            <div className="flex flex-col text-sm h-[85vh] ">
+          <div className="absolute z-10 h-[calc(100vh-150px)] w-screen bg-black text-white">
+            <div className="flex flex-col text-sm">
               <FotoPerfil />
               <div className="flex flex-col gap-4 px-5 items-center ">
                 <Link
