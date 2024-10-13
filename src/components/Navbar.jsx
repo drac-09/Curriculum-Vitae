@@ -47,7 +47,7 @@ export default function Navbar() {
           </Link>
         </div>
         <br className="block md:hidden" />
-        <div className="flex gap-5 items-center justify-between w-screen px-10 md:justify-normal md:w-auto md:px-0">
+        <div className="flex gap-5 items-center justify-between w-screen px-5 md:justify-normal md:w-auto md:px-0">
           <Link
             href={"/"}
             className={`${pathName === "/" ? "SeleccionadoNavbar" : ""}`}
