@@ -10,6 +10,7 @@ export default function DescargarJSON() {
       const ExperienciaLaboral = Cookies.get("ExperienciaLaboral");
       const Competencias = Cookies.get("Competencias");
       const ReferenciasProfesionales = Cookies.get("ReferenciasProfesionales");
+      const ReferenciasPersonales = Cookies.get("ReferenciasPersonales");
 
       const ip = JSON.parse(InformacionPersonal);
       const info = {
@@ -19,12 +20,13 @@ export default function DescargarJSON() {
 
       // Asignar los datos a los estados correspondientes
       const contenidoJSON = {
-        fotoPerfil: fotoPerfil || "",
         Competencias: Competencias || [],
         ExperienciaLaboral: ExperienciaLaboral || [],
         InformacionPersonal: InformacionPersonal || {},
         InformacionAcademica: InformacionAcademica || [],
         ReferenciasProfesionales: ReferenciasProfesionales || [],
+        ReferenciasPersonales: ReferenciasPersonales || [],
+        fotoPerfil: fotoPerfil || "",
       };
 
       // Convertir el objeto JSON a una cadena JSON
