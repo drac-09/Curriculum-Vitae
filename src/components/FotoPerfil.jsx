@@ -155,7 +155,7 @@ export default function FotoPerfil() {
           </div>
           {btnEliminar && (
             <div className="flex items-center p-2 w-full justify-between">
-              <h1>Foto Redonda</h1>
+              <h1>Imagen Circular</h1>
               <label className="flex items-center cursor-pointer">
                 <div className="relative">
                   <input
@@ -165,10 +165,14 @@ export default function FotoPerfil() {
                     onChange={handleToggle} // Cambia el estado
                     className="hidden" // Oculta el checkbox
                   />
-                  <div className="block bg-gray-300 w-8 h-4 rounded-full"></div>
+                  <div
+                    className={`block bg-gray-300 w-8 h-4 rounded-full ${
+                      fotoRedonda ? "bg-green-500" : ""
+                    }`}
+                  ></div>
                   <div
                     className={`absolute left-0 top-0 bg-white w-4 h-4 rounded-full transition-transform ${
-                      fotoRedonda ? "translate-x-full bg-green-500" : ""
+                      fotoRedonda ? "translate-x-full" : ""
                     }`}
                   ></div>
                 </div>
