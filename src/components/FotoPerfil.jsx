@@ -23,13 +23,30 @@ export default function FotoPerfil() {
   const fileInputRef = useRef(null);
   const [fileName, setFileName] = useState("Selecciona un archivo");
 
+  const [fotoRedonda, setFotoRedonda] = useState(false); // Estado del toggle
+
+  useEffect(() => {
+    const estado = localStorage.getItem("fotoRedonda") === "true";
+    if (estado) {
+      setFotoRedonda(estado);
+    }
+  }, []);
+
   useEffect(() => {
     const fotoPerfil = localStorage.getItem("fotoPerfil");
     if (fotoPerfil) {
       setCropData(fotoPerfil);
       setBtnEliminar(true);
     }
+    localStorage.setItem("fotoRedonda", fotoRedonda);
   });
+
+  // Guardar el estado del toggle en LocalStorage cada vez que cambie
+  const handleToggle = () => {
+    const nuevoEstado = !fotoRedonda;
+    setFotoRedonda(nuevoEstado);
+    localStorage.setItem("fotoRedonda", nuevoEstado);
+  };
 
   const onChange = (e) => {
     setBtnAceptar(false);
@@ -105,7 +122,7 @@ export default function FotoPerfil() {
               alt="fotoPerfil"
               width={400}
               height={400}
-              className="rounded-[50%]"
+              className={fotoRedonda ? "rounded-[50%]" : ""}
             ></Image>
           ) : (
             <Image
@@ -113,28 +130,52 @@ export default function FotoPerfil() {
               alt="fotoPerfil"
               width={400}
               height={400}
-              className="rounded-[50%]"
+              className={fotoRedonda ? "rounded-[50%]" : ""}
             ></Image>
           )}
           <br />
           <br />
         </div>
-        <div className="flex gap-2">
-          <button className="Button" onClick={openmodal}>
-            Seleccionar Foto...
-          </button>
+        <section>
+          <div className="flex gap-2">
+            <button className="Button" onClick={openmodal}>
+              Seleccionar Foto...
+            </button>
+            {btnEliminar && (
+              <button
+                className="flex items-center w-[18px]"
+                onClick={() => {
+                  setModalEliminar(!modalEliminar);
+                }}
+              >
+                {" "}
+                <GoTrash className="w-full h-full" />
+              </button>
+            )}
+          </div>
           {btnEliminar && (
-            <a
-              className="flex items-center w-[18px]"
-              onClick={() => {
-                setModalEliminar(!modalEliminar);
-              }}
-            >
-              {" "}
-              <GoTrash className="w-full h-full" />
-            </a>
+            <div className="flex items-center p-2 w-full justify-between">
+              <h1>Foto Redonda</h1>
+              <label className="flex items-center cursor-pointer">
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    id="toggle"
+                    checked={fotoRedonda}
+                    onChange={handleToggle} // Cambia el estado
+                    className="hidden" // Oculta el checkbox
+                  />
+                  <div className="block bg-gray-300 w-8 h-4 rounded-full"></div>
+                  <div
+                    className={`absolute left-0 top-0 bg-white w-4 h-4 rounded-full transition-transform ${
+                      fotoRedonda ? "translate-x-full bg-green-500" : ""
+                    }`}
+                  ></div>
+                </div>
+              </label>
+            </div>
           )}
-        </div>
+        </section>
       </div>
 
       {modal && (

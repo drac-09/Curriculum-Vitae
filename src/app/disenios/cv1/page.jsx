@@ -50,12 +50,15 @@ const item = "▪";
 export default function CurriculumVitaeUno() {
   const [datos, setDatos] = useState([]);
   const [fotoPerfil, setFotoPerfil] = useState(defaultSrc);
+  const [fotoRedonda, setFotoRedonda] = useState(false);
 
   useEffect(() => {
     const image = localStorage.getItem("fotoPerfil");
     if (image) setFotoPerfil(image);
     const existe = Cookies.get("InformacionPersonal");
     if (existe) setDatos(JSON.parse(existe));
+    const estadoFoto = localStorage.getItem("fotoRedonda") === "true";
+    setFotoRedonda(estadoFoto);
   }, []);
 
   function generarPDF() {
@@ -115,7 +118,12 @@ export default function CurriculumVitaeUno() {
                 alt="Foto de Perfil"
                 width={83}
                 height={83}
-                className="rounded-[50%] hidden lg:block"
+                className={
+                  fotoRedonda
+                    ? "rounded-[50%] hidden lg:block"
+                    : "hidden lg:block"
+                }
+                // className="rounded-[50%] hidden lg:block"
               ></Image>
               <Image
                 src={fotoPerfil}

@@ -48,12 +48,15 @@ const defaultSrc = "/user.svg";
 export default function CurriculumVitaeDos() {
   const [datos, setDatos] = useState([]);
   const [fotoPerfil, setFotoPerfil] = useState(defaultSrc);
+  const [fotoRedonda, setFotoRedonda] = useState(false);
 
   useEffect(() => {
     const image = localStorage.getItem("fotoPerfil");
     if (image) setFotoPerfil(image);
     const existe = Cookies.get("InformacionPersonal");
     if (existe) setDatos(JSON.parse(existe));
+    const estadoFoto = localStorage.getItem("fotoRedonda") === "true";
+    setFotoRedonda(estadoFoto);
   }, []);
 
   function generarPDF() {
@@ -106,7 +109,11 @@ export default function CurriculumVitaeDos() {
                     alt="Foto de Perfil"
                     width={100}
                     height={100}
-                    className="rounded-[50%] hidden lg:block"
+                    className={
+                      fotoRedonda
+                        ? "rounded-[50%] hidden lg:block"
+                        : "hidden lg:block"
+                    }
                   ></Image>
                   <Image
                     src={fotoPerfil}
