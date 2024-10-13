@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Informacion() {
   return (
-    <div className="flex flex-col gap-10 p-5 md:p-0 h-[92vh] md:h-[85vh] overflow-y-auto md:text-[15px]">
+    <div className="flex flex-col gap-10 p-5 md:p-0 md:text-[15px]">
       <section>
         <h1 className="Alerta font-bold">Preguntas Frecuentes</h1>
         <hr className="Hr" />

@@ -100,7 +100,7 @@ export default function Competencias() {
         </p>
       </div>
       <br />
-      <form action="" className="mb-32">
+      <form action="" className="mb-20">
         <section className="flex gap-3 md:w-full">
           <label htmlFor="habilidad" className="w-1/8">
             Habilidad:
@@ -179,7 +179,7 @@ export default function Competencias() {
         </p>
       </div>
       <br />
-      <form action="" className="mb-32">
+      <form action="" className="mb-20">
         <section className="flex gap-3 md:w-full">
           <label htmlFor="aptitud" className="w-1/8">
             Aptitud:
@@ -262,7 +262,7 @@ export default function Competencias() {
         </p>
       </div>
       <br />
-      <form action="" className="mb-32">
+      <form action="" className="mb-20">
         <section className="flex gap-3 md:w-full">
           <label htmlFor="lenguaje" className="w-1/8">
             Lenguajes:
