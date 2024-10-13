@@ -113,7 +113,7 @@ export default function FotoPerfil() {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-center md:border-b-[1px] border-slate-500 pb-5 mb-5 h-72 md:h-auto">
+      <div className="flex flex-col items-center justify-center md:border-b-[1px] border-slate-500 pb-5 mt-5 md:mt-0 mb-5 h-72 md:h-auto">
         {/* <PiUserCircleThin className="w-[150px] text-[150px] bg-red-300" /> */}
         <div className="w-[200px] md:w-[150px] rounded-[50%]">
           {cropData === "#" ? (
