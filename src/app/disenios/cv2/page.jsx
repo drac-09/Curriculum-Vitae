@@ -102,7 +102,7 @@ export default function CurriculumVitaeDos() {
               id="izquierda"
               className="w-2/5 h-[700px] bg-[#424e5e] text-white p-3 lg:p-5"
             >
-              <section className="flex flex-col justify-between w-auto h-auto pb-2 mb-2">
+              <section className="flex flex-col justify-between w-auto h-auto mb-2 md:mb-4">
                 <div className="mx-auto w-auto h-auto mt-auto mb-2">
                   <Image
                     src={fotoPerfil}
@@ -131,9 +131,11 @@ export default function CurriculumVitaeDos() {
                       {datos.nombre} {datos.apellido}
                     </h1>
                   </div>
-                  <h5 className="text-[9px] lg:text-[14px] mt-1">
-                    {datos.profesion}
-                  </h5>
+                  {datos.profesion && (
+                    <h5 className="text-[9px] lg:text-[13px]">
+                      {datos.profesion}
+                    </h5>
+                  )}
                 </div>
               </section>
               {datos.sobremi !== "" && datos.sobremi ? (
