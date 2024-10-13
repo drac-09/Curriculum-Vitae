@@ -125,10 +125,11 @@ export default function CurriculumVitaeDos() {
                 </div>
                 <div className="flex flex-col justify-between">
                   <div
-                    className={`${nombreApellido.className} font-semibold antialiased tracking-widest text-[16px] lg:text-[25px] leading-[15px] lg:leading-6 uppercase flex flex-col justify-end `}
+                    className={`${nombreApellido.className} h-auto w-[180px] antialiased tracking-widest leading-[15px] lg:leading-6 uppercase flex flex-col justify-end overflow-hidden`}
                   >
-                    <h1>{datos.nombre}</h1>
-                    <h1>{datos.apellido}</h1>
+                    <h1 className="text-[clamp(1.2rem,5vw,1.3rem)] font-semibold">
+                      {datos.nombre} {datos.apellido}
+                    </h1>
                   </div>
                   <h5 className="text-[9px] lg:text-[14px] mt-1">
                     {datos.profesion}
