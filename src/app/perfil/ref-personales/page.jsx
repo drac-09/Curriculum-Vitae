@@ -130,7 +130,7 @@ export default function ReferenciasPersonales() {
   };
 
   function verificarCamposVacios() {
-    const todasVacias = !nombre || !empresa || !cargo || !celular;
+    const todasVacias = !nombre || !celular;
 
     if (todasVacias) {
       setBAgregar(true);

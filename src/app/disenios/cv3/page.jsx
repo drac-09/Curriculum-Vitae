@@ -4,6 +4,7 @@ import HabilidadesBlandas from "@/components/informacion/HabilidadesBlandas";
 import HabilidadesTecnicas from "@/components/informacion/HabilidadesTecnicas";
 import Lenguajes from "@/components/informacion/Lenguajes";
 import RefProfesionales from "@/components/informacion/RefProfesionales";
+import RefPersonales from "@/components/informacion/RefPersonales";
 
 import Experiencia from "@/components/informacion/Experiencia";
 import Educacion from "@/components/informacion/Educacion";
@@ -146,6 +147,7 @@ export default function CurriculumVitaeTres() {
                 classTitulo={borde}
               />
               <RefProfesionales classBloque="mt-2" classTitulo={borde} />
+              <RefPersonales classBloque="mt-2" classTitulo={borde} />
             </section>
 
             <section

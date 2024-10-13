@@ -122,7 +122,7 @@ export default function InformacionPersonal() {
               id="nombre"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className="Input w-1/3"
+              className="Input w-2/3 md:w-2/5"
               placeholder="Primer nombre"
               autoComplete="off"
             />
@@ -136,7 +136,7 @@ export default function InformacionPersonal() {
               id="apellido"
               value={apellido}
               onChange={(e) => setApellido(e.target.value)}
-              className="Input w-1/3"
+              className="Input w-2/3 md:w-2/5"
               placeholder="Primer apellido"
               autoComplete="off"
             />

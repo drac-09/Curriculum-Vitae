@@ -2,7 +2,7 @@
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 
-export default function RefProfesionales({
+export default function RefPersonales({
   icon,
   classTitulo,
   classBloque,
@@ -11,7 +11,7 @@ export default function RefProfesionales({
   const [datos, setDatos] = useState([]);
 
   useEffect(() => {
-    const existe = Cookies.get("ReferenciasProfesionales");
+    const existe = Cookies.get("ReferenciasPersonales");
     if (existe) {
       setDatos(JSON.parse(existe));
     }
@@ -22,7 +22,7 @@ export default function RefProfesionales({
       {datos.length !== 0 ? (
         <div className={`${classBloque}`}>
           <h2 className={`${classTitulo} font-bold mb-1`}>
-            REFERENCIAS PROFESIONALES
+            REFERENCIAS PERSONALES
           </h2>
           {datos.map((ref, index) => (
             <div key={ref.id} className={`${classBody} mb-2`}>

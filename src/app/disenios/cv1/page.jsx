@@ -4,6 +4,7 @@ import HabilidadesBlandas from "@/components/informacion/HabilidadesBlandas";
 import HabilidadesTecnicas from "@/components/informacion/HabilidadesTecnicas";
 import Lenguajes from "@/components/informacion/Lenguajes";
 import RefProfesionales from "@/components/informacion/RefProfesionales";
+import RefPersonales from "@/components/informacion/RefPersonales";
 
 import Experiencia from "@/components/informacion/Experiencia";
 import Educacion from "@/components/informacion/Educacion";
@@ -138,6 +139,7 @@ export default function CurriculumVitaeUno() {
               <HabilidadesTecnicas icono={item} classBloque={borde} />
               <Lenguajes icono={item} classBloque={borde} />
               <RefProfesionales classBloque={borde} />
+              <RefPersonales classBloque={borde} />
             </section>
             <section
               id="col-derecha"

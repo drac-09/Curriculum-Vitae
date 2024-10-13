@@ -4,6 +4,7 @@ import HabilidadesBlandas from "@/components/informacion/HabilidadesBlandas";
 import HabilidadesTecnicas from "@/components/informacion/HabilidadesTecnicas";
 import Lenguajes from "@/components/informacion/Lenguajes";
 import RefProfesionales from "@/components/informacion/RefProfesionales";
+import RefPersonales from "@/components/informacion/RefPersonales";
 
 import Experiencia from "@/components/informacion/Experiencia";
 import Educacion from "@/components/informacion/Educacion";
@@ -169,6 +170,11 @@ export default function CurriculumVitaeDos() {
                 classBody="pl-3"
               />
               <RefProfesionales
+                classBloque="mb-2"
+                classTitulo="bg-[#fdedcb] pl-1"
+                classBody="pl-3"
+              />
+              <RefPersonales
                 classBloque="mb-2"
                 classTitulo="bg-[#fdedcb] pl-1"
                 classBody="pl-3"

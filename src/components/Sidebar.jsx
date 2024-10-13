@@ -68,6 +68,14 @@ export default function Sidebar() {
           >
             <h1>Referencias Profesionales</h1>
           </Link>
+          <Link
+            href={"/perfil/ref-personales"}
+            className={`${
+              pathName === "/perfil/ref-personales" ? "SeleccionadoSidebar" : ""
+            }`}
+          >
+            <h1>Referencias Personales</h1>
+          </Link>
         </div>
         <div className="flex flex-col gap-3">
           <h1 className="Titulo font-bold">Datos:</h1>
@@ -161,6 +169,19 @@ export default function Sidebar() {
                   }}
                 >
                   <h1>Referencias Profesionales</h1>
+                </Link>
+                <Link
+                  href={"/perfil/ref-personales"}
+                  className={`${
+                    pathName === "/perfil/ref-personales"
+                      ? "SeleccionadoSidebar"
+                      : ""
+                  }`}
+                  onClick={() => {
+                    toggleDropdown("Referencias Personales");
+                  }}
+                >
+                  <h1>Referencias Personales</h1>
                 </Link>
               </div>
               <br />
