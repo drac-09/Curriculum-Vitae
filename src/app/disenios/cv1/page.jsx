@@ -167,9 +167,7 @@ export default function CurriculumVitaeUno() {
                 icono="✓&nbsp;"
                 classBloque={`${datos.sobremi ? `${borde}` : ""}`}
               />
-              <Educacion
-                classBloque={`${datos.Experiencia ? `${borde}` : ""}`}
-              />
+              <Educacion classBloque={borde} />
             </section>
           </section>
         </div>

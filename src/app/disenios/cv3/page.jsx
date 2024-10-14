@@ -177,10 +177,7 @@ export default function CurriculumVitaeTres() {
                 classBloque="mt-2"
                 classTitulo={borde}
               />
-              <Educacion
-                classBloque={`${datos.experiencia ? "mt-2" : ""}`}
-                classTitulo={borde}
-              />
+              <Educacion classBloque="mt-2" classTitulo={borde} />
             </section>
           </section>
           {/* <DatosPersonales /> */}
