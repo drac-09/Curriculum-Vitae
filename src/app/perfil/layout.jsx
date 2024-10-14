@@ -6,6 +6,8 @@ export default function layout({ children }) {
       <Sidebar />
       <section className="pt-5 px-5 md:px-10 flex-grow h-[calc(100vh-150px)] overflow-y-auto antialiased">
         {children}
+        <br className="md:hidden" />
+        <br className="md:hidden" />
       </section>
     </div>
   );

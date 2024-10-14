@@ -24,6 +24,7 @@ export default function Navbar() {
     "/perfil/competencias",
     "/perfil/experiencia-laboral",
     "/perfil/ref-profesionales",
+    "/perfil/ref-personales",
     "/perfil/cargar-importante",
   ];
 

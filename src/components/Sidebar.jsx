@@ -103,7 +103,7 @@ export default function Sidebar() {
       {/* Mobile */}
       {isOpen && (
         <div className="block sm:hidden ">
-          <div className="absolute z-10 h-full w-screen bg-black text-white">
+          <div className="absolute z-10 h-[calc(100vh-150px)] overflow-y-auto  w-screen bg-black text-white">
             <div className="flex flex-col text-sm">
               <FotoPerfil />
               <div className="flex flex-col gap-4 px-5 items-center ">
